@@ -1,0 +1,16 @@
+{
+  "name": "forum-della-moda",
+  "private": true,
+  "version": "1.0.0",
+  "description": "PratoHub — Professional Textile Industry Platform",
+  "type": "module",
+  "scripts": {
+    "dev": "npx vite",
+    "build": "npx vite build",
+    "preview": "npx vite preview"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "vite": "^8.0.0"
+  }
+}

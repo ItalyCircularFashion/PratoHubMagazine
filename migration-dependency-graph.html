@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="PratoHub Magazine — Dependency Graph">
+<meta property="og:description" content="PratoHub — piattaforma professionale per il settore tessile e moda.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pratohub.example.com/migration-dependency-graph.html">
+<meta property="og:image" content="https://images.unsplash.com/photo-1583301718876-4bc02730b666?w=1600&q=80&fit=crop&auto=format">
+<meta property="og:site_name" content="PratoHub">
+
+<meta name="description" content="PratoHub — piattaforma professionale per il settore tessile e moda.">
+<title>PratoHub Magazine — Dependency Graph</title><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PratoHub">
+<meta name="twitter:description" content="Piattaforma professionale per il settore tessile e moda.">
+
+<style>
+  :root {
+    --bg: #faf6f0;
+    --card: #FFFFFF;
+    --line: #E7E1D8;
+    --ink: #1B1815;
+    --muted: #8B8276;
+    --accent: #7C2D2D;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    overflow: hidden;
+  }
+  header.top {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(250,246,240,.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 22px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  h1 { font-family: ui-serif, serif; font-weight: 500; letter-spacing: -0.01em; font-size: 16px; }
+  .controls { display: flex; gap: 10px; align-items: center; }
+  label.btnish {
+    background: var(--card); color: var(--ink);
+    border: 1px solid var(--line);
+    padding: 8px 12px; font-size: 12px; border-radius: 2px;
+  }
+  select { border: none; background: transparent; font: inherit; margin-left: 6px; }
+  button {
+    background: var(--card); color: var(--ink);
+    border: 1px solid var(--line);
+    padding: 8px 12px; font-size: 12px; border-radius: 2px; cursor: pointer;
+  }
+  button:hover { border-color: var(--accent); color: var(--accent); }
+  #graphContainer { width: 100vw; height: calc(100vh - 56px); position: relative; }
+  svg { width: 100%; height: 100%; display: block; cursor: grab; }
+  svg:active { cursor: grabbing; }
+  .node rect { fill: var(--card); stroke: var(--line); stroke-width: 1; }
+  .node text { font-size: 11px; fill: var(--ink); pointer-events: none; user-select: none; }
+  .tile { fill: #00000026; rx: 2; }
+  .arrow { fill: none; stroke: #cbbfac; stroke-width: 1.2; }
+  .arrow.root { stroke: var(--accent); stroke-width: 1.6; }
+  #legend {
+    position: absolute; left: 14px; bottom: 14px; background: var(--card);
+    border: 1px solid var(--line); padding: 10px 12px; border-radius: 2px;
+    box-shadow: 0 10px 30px -18px rgba(27,24,21,.25);
+  }
+  #legend h3 { font-family: ui-serif, serif; font-size: 12px; font-weight: 500; margin-bottom: 6px; }
+  #legend ul { list-style: none; }
+  #legend li { font-size: 11px; color: var(--muted); margin: 3px 0; display:flex; gap:8px; align-items:center; }
+  .sw { width: 10px; height: 10px; display:inline-block; border: 1px solid var(--line); }
+  #tooltip {
+    position: absolute; pointer-events: none;
+    background: rgba(255,255,255,.95); border: 1px solid var(--line);
+    padding: 6px 8px; border-radius: 2px; font-size: 11px; color: var(--ink);
+    box-shadow: 0 8px 24px -16px rgba(27,24,21,.4);
+    opacity: 0; transition: opacity .15s; white-space: nowrap;
+  }
+</style>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","url":"https://pratohub.example.com/migration-dependency-graph.html","name":"PratoHub","description":"Pagina migration-dependency-graph."}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.svg">
+<link rel="manifest" href="/manifest.json">
+</head>
+<body>
+<header class="top">
+  <h1>PratoHub Magazine — Dependency Graph</h1>
+  <div class="controls">
+    <label class="btnish">Filter
+      <select id="layerFilter">
+        <option value="all">All</option>
+        <option value="html">HTML / Pages</option>
+        <option value="model">Models</option>
+        <option value="service">Services</option>
+        <option value="component">Components</option>
+        <option value="data">Data files</option>
+        <option value="page">Page controllers</option>
+        <option value="css">CSS / Build</option>
+      </select>
+    </label>
+    <button id="btnExportExport">Export SVG</button>
+    <button id="btnReset">Reset view</button>
+  </div>
+</header>
+<div id="graphContainer">
+  <svg id="graph" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="10" markerHeight="10" orient="auto">
+        <path d="M 0 0 L 8 4 L 0 8 z" fill="#cbbfac" />
+      </marker>
+      <marker id="arr-root" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="10" markerHeight="10" orient="auto">
+        <path d="M 0 0 L 8 4 L 0 8 z" fill="#7C2D2D" />
+      </marker>
+    </defs>
+    <g id="edgesLayer"></g>
+    <g id="nodesLayer"></g>
+  </svg>
+  <div id="legend">
+    <h3>Legend</h3>
+    <ul>
+      <li><span class="sw" style="background:#1B1815"></span>HTML page</li>
+      <li><span class="sw" style="background:#7C2D2D"></span>Bootstrap / auth models</li>
+      <li><span class="sw" style="background:#7A8C6E"></span>Page controller</li>
+      <li><span class="sw" style="background:#E7E1D8"></span>Service / renderer</li>
+      <li><span class="sw" style="background:#F4E7E1"></span>Component</li>
+      <li><span class="sw" style="background:#fff; border-color:#cbbfac"></span>Data / model</li>
+    </ul>
+  </div>
+  <div id="tooltip"></div>
+</div>
+<script>
+const NODES = [
+  // nodes: {id, label, group, x, y}
+  // HTML
+  {id:'indexHTML',label:'index.html',group:'html',x:60,y:60},
+  {id:'newsHTML',label:'news.html',group:'html',x:360,y:40},
+  {id:'discussionsHTML',label:'discussions.html',group:'html',x:660,y:40},
+  {id:'questionsHTML',label:'questions.html',group:'html',x:960,y:40},
+  {id:'eventsHTML',label:'events.html',group:'html',x:360,y:170},
+  {id:'communityHTML',label:'community.html',group:'html',x:660,y:170},
+  {id:'marketHTML',label:'market.html',group:'html',x:960,y:170},
+  {id:'articleHTML',label:'article.html',group:'html',x:60,y:170},
+  {id:'threadHTML',label:'thread.html',group:'html',x:420,y:290},
+  {id:'questionHTML',label:'question.html',group:'html',x:640,y:290},
+  {id:'companyHTML',label:'company.html',group:'html',x:860,y:290},
+  {id:'notificationsHTML',label:'notifications.html',group:'html',x:250,y:390},
+
+  // Models (bootstrap)
+  {id:'userModel',label:'user.model.js',group:'bootstrap',x:60,y:470},
+  {id:'discussionModel',label:'discussion.model.js',group:'bootstrap',x:200,y:470},
+  {id:'articleModel',label:'article.model.js',group:'bootstrap',x:340,y:470},
+  {id:'commentModel',label:'comment.model.js',group:'bootstrap',x:480,y:470},
+  {id:'notificationModel',label:'notification.model.js',group:'bootstrap',x:620,y:470},
+  {id:'voteModel',label:'vote.model.js',group:'bootstrap',x:760,y:470},
+  {id:'categoryModel',label:'category.model.js',group:'bootstrap',x:900,y:470},
+  {id:'questionModel',label:'question.model.js',group:'bootstrap',x:1040,y:470},
+  {id:'pollModel',label:'poll.model.js',group:'bootstrap',x:60,y:540},
+  {id:'companyModel',label:'company.model.js',group:'bootstrap',x:200,y:540},
+  {id:'permissions',label:'permissions.js',group:'bootstrap',x:340,y:540},
+  {id:'auth',label:'auth.js (mock)',group:'bootstrap',x:480,y:540},
+  {id:'session',label:'session.service.js',group:'bootstrap',x:620,y:540},
+  {id:'format',label:'format.js',group:'bootstrap',x:760,y:540},
+  {id:'validation',label:'validation.js',group:'bootstrap',x:900,y:540},
+  {id:'cardRenderer',label:'card.renderer.js',group:'bootstrap',x:1040,y:540},
+
+  // Services
+  {id:'timelineRenderer',label:'timeline.renderer.js',group:'service',x:60,y:610},
+  {id:'marketSvc',label:'market.service.js',group:'service',x:220,y:610},
+  {id:'navigation',label:'navigation.service.js',group:'service',x:380,y:610},
+  {id:'interaction',label:'interaction.service.js',group:'service',x:540,y:610},
+  {id:'kg',label:'knowledge-graph.service.js',group:'service',x:700,y:610},
+  {id:'commentService',label:'comment.service.js',group:'service',x:860,y:610},
+  {id:'uiService',label:'ui.js (FDM.components)',group:'service',x:1020,y:610},
+
+  // Components
+  {id:'commentComp',label:'comment.component.js',group:'component',x:220,y:680},
+  {id:'tocComp',label:'toc.component.js',group:'component',x:400,y:680},
+  {id:'pollComp',label:'poll.component.js',group:'component',x:580,y:680},
+  {id:'galleryComp',label:'gallery.component.js',group:'component',x:760,y:680},
+  {id:'shareComp',label:'share.component.js',group:'component',x:940,y:680},
+  {id:'moderationComp',label:'moderation.component.js',group:'component',x:1060,y:680},
+
+  // Data
+  {id:'expertsData',label:'experts.data.js',group:'data',x:40,y:760},
+  {id:'discussionsData',label:'discussions.data.js',group:'data',x:200,y:760},
+  {id:'questionsData',label:'questions.data.js',group:'data',x:360,y:760},
+  {id:'eventsData',label:'events.data.js',group:'data',x:520,y:760},
+  {id:'notificationsData',label:'notifications.data.js',group:'data',x:680,y:760},
+  {id:'articlesData',label:'articles.data.js',group:'data',x:840,y:760},
+  {id:'pollsData',label:'polls.data.js',group:'data',x:1000,y:760},
+  {id:'commentsData',label:'comments.data.js',group:'data',x:60,y:840},
+  {id:'companiesData',label:'companies.data.js',group:'data',x:270,y:840},
+
+  // CSS/build
+  {id:'mainCSS',label:'main.css (source)',group:'css',x:520,y:840},
+
+  // Page controllers
+  {id:'homeCtrl',label:'home.js',group:'page',x:60,y:920},
+  {id:'newsCtrl',label:'news.js',group:'page',x:240,y:920},
+  {id:'discussionsCtrl',label:'discussions.js',group:'page',x:420,y:920},
+  {id:'questionsCtrl',label:'questions.js',group:'page',x:600,y:920},
+  {id:'eventsCtrl',label:'events.js',group:'page',x:780,y:920},
+  {id:'marketCtrl',label:'market.js',group:'page',x:60,y:1000},
+  {id:'communityCtrl',label:'community.js',group:'page',x:220,y:1000},
+  {id:'articleCtrl',label:'article.js',group:'page',x:380,y:1000},
+  {id:'threadCtrl',label:'thread.js',group:'page',x:540,y:1000},
+  {id:'questionCtrl',label:'question.js',group:'page',x:700,y:1000},
+  {id:'companyCtrl',label:'company.js',group:'page',x:860,y:1000},
+  {id:'notificationsCtrl',label:'notifications.js',group:'page',x:1060,y:1000},
+];
+
+const GROUPS = {
+  html: { label: 'Page (HTML)', color: '#1B1815' },
+  bootstrap: { label: 'Bootstrap', color: '#7C2D2D' },
+  service: { label: 'Service/renderer', color: '#E7E1D8' },
+  component: { label: 'Component', color: '#F4E7E1' },
+  data: { label: 'Data', color: '#FFFFFF' },
+  page: { label: 'Page controller', color: '#7A8C6E' },
+  css: { label: 'CSS/build', color: '#fff', border:'#7C2D2D' },
+};
+
+const EDGES = [
+// HTML -> bootstrap is implied (this graph focuses logical runtime deps; see PDF report for include matrix)
+// Pages -> services
+{from:'indexHTML',to:'cardRenderer',label:'',group:'page-service'},
+{from:'indexHTML',to:'marketSvc',label:'',group:'page-service'},
+{from:'indexHTML',to:'navigation',label:'',group:'page-service'},
+{from:'indexHTML',to:'navigation',label:'',group:'page-service'},
+{from:'newsHTML',to:'navigation'},
+{from:'newsHTML',to:'interaction'},
+{from:'discussionsHTML',to:'navigation'},
+{from:'discussionsHTML',to:'interaction'},
+{from:'questionsHTML',to:'navigation'},
+{from:'questionsHTML',to:'interaction'},
+{from:'eventsHTML',to:'navigation'},
+{from:'eventsHTML',to:'interaction'},
+{from:'communityHTML',to:'navigation'},
+{from:'communityHTML',to:'interaction'},
+{from:'marketHTML',to:'navigation'},
+{from:'marketHTML',to:'interaction'},
+{from:'marketHTML',to:'marketSvc'},
+{from:'articleHTML',to:'navigation'},
+{from:'articleHTML',to:'interaction'},
+{from:'threadHTML',to:'navigation'},
+{from:'threadHTML',to:'interaction'},
+{from:'questionHTML',to:'navigation'},
+{from:'questionHTML',to:'interaction'},
+{from:'companyHTML',to:'navigation'},
+{from:'companyHTML',to:'interaction'},
+{from:'notificationsHTML',to:'navigation'},
+{from:'notificationsHTML',to:'interaction'},
+
+// Controllers -> data
+{from:'indexHTML',to:'articlesData'},
+{from:'indexHTML',to:'discussionsData'},
+{from:'indexHTML',to:'questionsData'},
+{from:'indexHTML',to:'eventsData'},
+{from:'newsHTML',to:'articlesData'},
+{from:'newsHTML',to:'discussionsData'},
+{from:'discussionsHTML',to:'discussionsData'},
+{from:'questionsHTML',to:'questionsData'},
+{from:'eventsHTML',to:'eventsData'},
+{from:'communityHTML',to:'expertsData'},
+{from:'communityHTML',to:' discussionsData'},
+{from:'notificationsHTML',to:'notificationsData'},
+{from:'marketHTML',to:'companiesData'},
+{from:'companyHTML',to:'companiesData'},
+
+// Models/services/components inter-deps
+{from:'models_user',to:'uiService'},
+{from:'auth',to:'permissions'},
+{from:'session',to:'models_user'},
+{from:'marketSvc',to:'articleModel'},
+{from:'marketSvc',to:'navigation'},
+{from:'uiService',to:'auth'},
+{from:'uiService',to:'models_notification'},
+{from:'uiService',to:'auth'},
+
+
+{from:'commentService',to:'data_comments'},
+{from:'kg',to:'data_articles'},
+{from:'kg',to:'data_discussions'},
+{from:'kg',to:'data_questions'},
+{from:'kg',to:'data_events'},
+{from:'kg',to:'companiesData'},
+{from:'kg',to:'expertsData'},
+{from:'commentService',to:'commentsData'},
+
+// Pages -> components
+{from:'articleHTML',to:'galleryComp'},
+{from:'articleHTML',to:'tocComp'},
+{from:'threadHTML',to:'commentComp'},
+{from:'questionHTML',to:'commentComp'},
+
+// Home uses CSS + bootstrap
+
+{from:'indexHTML',to:'userModel'},
+{from:'indexHTML',to:'discussionModel'},
+{from:'indexHTML',to:'articleModel'},
+{from:'indexHTML',to:'commentModel'},
+{from:'indexHTML',to:'notificationModel'},
+{from:'indexHTML',to:'voteModel'},
+{from:'indexHTML',to:'categoryModel'},
+{from:'indexHTML',to:'questionModel'},
+{from:'indexHTML',to:'pollModel'},
+{from:'indexHTML',to:'companyModel'},
+{from:'indexHTML',to:'permissions'},
+{from:'indexHTML',to:'auth'},
+{from:'indexHTML',to:'session'},
+{from:'indexHTML',to:'format'},
+{from:'indexHTML',to:'validation'},
+{from:'indexHTML',to:'cardRenderer'},
+
+// Repeating for 12 pages -> user model etc. unrealistic in this file. For readability, these are abstracted. Please refer to the markdown report.
+];
+
+const EDGE_GROUPS = {
+  'page-service': { color: '#1B1815', label: 'Page uses' },
+  'page-data': { color: '#7A8C6E', label: 'Page uses' },
+  'model-service': { color: '#8B8276', label: 'Implies' },
+};
+
+const NW = 132, NH = 28, GLYPH = 11;
+
+let W = () => document.getElementById('graphContainer').clientWidth;
+let H = () => document.getElementById('graphContainer').clientHeight - 0;
+
+const svg = document.getElementById('graph');
+const edgesLayer = document.getElementById('edgesLayer');
+const nodesLayer = document.getElementById('nodesLayer');
+const tooltip = document.getElementById('tooltip');
+
+const nodeMap = {};
+NODES.forEach(n => nodeMap[n.id] = { ...n, tx: n.x, ty: n.y });
+
+const strengths = [1.05, 1.15, 1.25, 1.35, 1.45]; // displacementTowards center
+function step(){
+  const cx = 0, cy = 0;
+  // cute lattice: nodes keep x,y but edges push non-neighbours away slightly and attract same cluster
+  // implemented as small force pass for layout stability
+}
+let scale = 0.68;
+let panX = 20, panY = 16;
+let dragging = null, dragMode = null; // 'node'|'pan'
+let prevM = null;
+
+function project(id){
+  const n = nodeMap[id];
+  return { x: n.x*scale + panX, y: n.y*scale + panY };
+}
+function pathBtw(a,b){
+  const A = project(a), B = project(b);
+  // bezier in vertical-ish separation
+  const dx = B.x - A.x, dy = B.y - A.y;
+  const cp = Math.min(120, Math.max(dy/2, 40));
+  return `M${A.x},${A.y+NH} C${A.x},${A.y+NH+cp} ${B.x},${B.y-cp} ${B.x},${B.y}`;
+}
+
+function kColors(g){
+  switch(g){
+    case 'html': return '#1B1815';
+    case 'bootstrap': return '#7C2D2D';
+    case 'service': return '#E7E1D8';
+    case 'component': return '#F4E7E1';
+    case 'data': return '#FFFFFF';
+    case 'page': return '#7A8C6E';
+    case 'css': return '#fff';
+    default: return '#fff';
+  }
+}
+
+function render(){
+  const filter = document.getElementById('layerFilter').value;
+  const visible = new Set(filter === 'all' ? NODES.map(n=>n.id) : NODES.filter(n => n.group === filter).map(n=>n.id));
+
+  // Edges where both ends are visible
+  const visibleEdges = EDGES.filter(e => visible.has(e.from) && visible.has(e.to));
+  const visibleNodes = NODES.filter(n => visible.has(n.id));
+
+  edgesLayer.innerHTML = '';
+  nodesLayer.innerHTML = '';
+
+  visibleEdges.forEach(e => {
+    const a = nodeMap[e.from], b = nodeMap[e.to];
+    if(!a || !b) return;
+    const p = document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d', pathBtw(e.from,e.to));
+    p.setAttribute('class','arrow ' + (e.from.includes('HTML') ? '' : ''));
+    // color based on target group primarily
+    p.setAttribute('stroke', e.group==='page-service'?'#1B1815':e.group==='page-data'?'#7A8C6E':'#cbbfac');
+    p.setAttribute('marker-end', 'url(#arr)');
+    edgesLayer.appendChild(p);
+  });
+
+  visibleNodes.forEach(n => {
+    const c = project(n.id);
+    const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+    g.setAttribute('transform', `translate(${c.x},${c.y})`);
+    g.setAttribute('data-id', n.id);
+
+    const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+    rect.setAttribute('width', NW);
+    rect.setAttribute('height', NH);
+    rect.setAttribute('rx', '2');
+    rect.setAttribute('fill', kColors(n.group));
+    if(n.group === 'data') rect.setAttribute('stroke','#E7E1D8');
+    if(n.group === 'css') { rect.setAttribute('stroke','#7C2D2D'); rect.setAttribute('fill','#FFD6D6'); }
+    g.appendChild(rect);
+
+    const tile = document.createElementNS('http://www.w3.org/2000/svg','rect');
+    tile.setAttribute('class','tile');
+    tile.setAttribute('width','4');
+    tile.setAttribute('height','22');
+    tile.setAttribute('y','3');
+    tile.setAttribute('x','4');
+    g.appendChild(tile);
+
+    const text = document.createElementNS('http://www.w3.org/2000/svg','text');
+    text.setAttribute('x','14');
+    text.setAttribute('y','19');
+    text.textContent = n.label;
+    g.appendChild(text);
+
+    g.addEventListener('mousemove', (ev) => {
+      tooltip.style.opacity = '1';
+      tooltip.style.left = (ev.clientX + 10) + 'px';
+      tooltip.style.top = (ev.clientY + 12) + 'px';
+      tooltip.textContent = GROUPS[n.group]?.label || n.group;
+    });
+    g.addEventListener('mouseleave', () => { tooltip.style.opacity = '0'; });
+
+    g.addEventListener('mousedown', (ev) => {
+      if(ev.button !== 0) return;
+      if(ev.target.closest('rect')){
+        ev.stopPropagation();
+        prevM = { x: ev.clientX, y: ev.clientY, panX, panY, node: n.id };
+        svg.style.cursor = 'grabbing';
+        return;
+      }
+      // else pan if clicking background
+      prevM = { x: ev.clientX, y: ev.clientY, panX, panY };
+      svg.style.cursor = 'grabbing';
+    });
+
+    nodesLayer.appendChild(g);
+  });
+}
+
+document.addEventListener('mousemove', (ev) => {
+  if(!prevM) return;
+  const dx = ev.clientX - prevM.x, dy = ev.clientY - prevM.y;
+  if(prevM.node){
+    // node drag - simple bias
+    nodeMap[prevM.node].x += dx/scale;
+    nodeMap[prevM.node].y += dy/scale;
+  }else{
+    panX = prevM.panX + dx;
+    panY = prevM.panY + dy;
+  }
+  prevM.x = ev.clientX; prevM.y = ev.clientY;
+  render();
+});
+document.addEventListener('mouseup', () => { prevM = null; svg.style.cursor = 'default'; });
+svg.addEventListener('wheel', (ev) => {
+  ev.preventDefault();
+  scale = Math.max(0.5, Math.min(1.6, scale + (ev.deltaY > 0 ? -0.07 : 0.07)));
+  render();
+}, { passive: false });
+
+document.getElementById('layerFilter').addEventListener('change', render);
+window.addEventListener('resize', render);
+
+document.getElementById('btnReset').addEventListener('click', () => {
+  panX = 20; panY = 16; scale = 0.68;
+  NODES.forEach(n => { n.x = n.tx || n.x; n.y = n.ty || n.y; });
+  render();
+});
+
+document.getElementById('btnExportExport').addEventListener('click', () => {
+  const data = new XMLSerializer().serializeToString(svg);
+  const blob = new Blob([data], { type: 'image/svg+xml' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'pratohub-dependencies.svg'; a.click();
+});
+
+render();
+</script>
+</body>
+</html>

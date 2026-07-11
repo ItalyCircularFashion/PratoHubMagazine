@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Market &amp; Industry — Forum della Moda">
+<meta property="og:description" content="Searchable directory of textile companies in the Prato district, plus live commodity pricing for cotton, wool, cashmere and energy inputs.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pratohub.example.com/market.html">
+<meta property="og:image" content="https://images.unsplash.com/photo-1583301718876-4bc02730b666?w=1600&q=80&fit=crop&auto=format">
+<meta property="og:site_name" content="PratoHub">
+
+<title>Market &amp; Industry — Forum della Moda</title><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PratoHub">
+<meta name="twitter:description" content="Piattaforma professionale per il settore tessile e moda.">
+
+<meta name="description" content="Searchable directory of textile companies in the Prato district, plus live commodity pricing for cotton, wool, cashmere and energy inputs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.svg">
+<link rel="manifest" href="/manifest.json">
+
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles/main.css">
+<link rel="canonical" href="https://pratohub.example.com/market.html">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","url":"https://pratohub.example.com/market.html","name":"PratoHub","description":"Pagina market."}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<div class="folio" id="folio">
+  <div class="folio-inner">
+    <span class="folio-mark">X</span>
+    <div class="folio-line"></div>
+    <span class="folio-label" data-for="pageHeader">Market</span>
+    <span class="folio-label" data-for="directory">Companies</span>
+    <span class="folio-label" data-for="commodities">Commodities</span>
+    <div class="folio-line"></div>
+  </div>
+</div>
+
+<header id="siteHeader">
+  <a href="index.html" class="logo">
+    <span class="l1">Forum della Moda</span>
+    <span class="l2">FASHION · INTELLIGENCE · COMMUNITY</span>
+  </a>
+  <nav class="primary" aria-label="Primary navigation">
+    <a href="news.html">News</a>
+    <a href="market.html" class="current">Market</a>
+    <a href="discussions.html">Discussions</a>
+    <a href="questions.html">Questions</a>
+    <a href="events.html">Events</a>
+    <a href="community.html">Community</a>
+  </nav>
+  <div class="nav-cta">
+    <div id="authNav" class="auth-nav"></div>
+    <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="main-content">
+
+<!-- PAGE HEADER -->
+<section class="page-header" id="pageHeader">
+  <div class="wrap">
+    <nav class="breadcrumbs" id="mktBreadcrumbs" aria-label="Breadcrumb"></nav>
+    <div class="eyebrow" style="margin-bottom:18px;">Textile Industry &amp; Market Intelligence</div>
+    <h1>Market &amp; Companies</h1>
+    <p class="desc">A searchable directory of textile companies in the Prato district, alongside live commodity indicators for cotton, wool, cashmere, energy and exchange rates.</p>
+    <div class="page-header-meta" id="mktStats"></div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<!-- COMPANY DIRECTORY (primary section) -->
+<section id="directory">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:18px;">Prato Textile District</div>
+        <h2>Company Directory</h2>
+      </div>
+      <p class="desc">Manufacturers, laboratories, machinery suppliers and service providers. Click any card for full company details.</p>
+    </div>
+
+    <div class="filter-bar reveal">
+      <form class="search-bar" id="coSearch">
+        <input type="text" placeholder="Search by name, city, specialization, certification…" aria-label="Search companies">
+        <button type="submit" aria-label="Search">&#x2315;</button>
+      </form>
+      <select class="sort-select" id="coSort" aria-label="Sort companies">
+        <option value="name">Name A–Z</option>
+        <option value="founded">Oldest first</option>
+        <option value="employees">Largest first</option>
+      </select>
+    </div>
+
+    <div class="chips reveal" id="coSpecChips">
+      <div class="chip active">All</div>
+      <div class="chip">Spinning</div>
+      <div class="chip">Weaving</div>
+      <div class="chip">Knitting</div>
+      <div class="chip">Dyeing</div>
+      <div class="chip">Finishing</div>
+      <div class="chip">Machinery</div>
+      <div class="chip">Chemicals</div>
+      <div class="chip">Sustainability</div>
+      <div class="chip">Technology</div>
+      <div class="chip">Logistics</div>
+      <div class="chip">Laboratory</div>
+      <div class="chip">Design</div>
+    </div>
+
+    <div class="chips reveal" id="coCertChips" style="margin-top:-12px;">
+      <div class="chip active">All Certifications</div>
+      <div class="chip">GOTS</div>
+      <div class="chip">GRS</div>
+      <div class="chip">ZDHC</div>
+      <div class="chip">Bluesign</div>
+      <div class="chip">ISO 9001</div>
+      <div class="chip">Oeko-Tex 100</div>
+    </div>
+
+    <div class="company-grid reveal" id="coGrid"></div>
+
+    <div class="pagination" id="coPagination">
+      <button data-page="prev" disabled>&#x2039;</button>
+      <button data-page="1" class="active">1</button>
+      <button data-page="next" disabled>&#x203a;</button>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<!-- COMMODITY MARKET (secondary section) -->
+<section id="commodities" class="tight">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:18px;">Live Indicators</div>
+        <h2>Commodity &amp; Market Intelligence</h2>
+      </div>
+      <p class="desc">Price movements for fibres, energy and currencies that directly influence production costs across the district.</p>
+    </div>
+
+    <div class="market-head" style="text-align:left; margin-bottom:40px; max-width:none;">
+      <p class="market-summary" id="mktSummary">Today's textile markets show moderate stability, with cotton recovering while energy costs remain elevated. These movements continue to influence sourcing strategies across Europe.</p>
+      <div class="market-meta" id="mktMeta" style="justify-content:flex-start;"></div>
+    </div>
+
+    <div class="market-grid reveal" id="marketGrid"></div>
+  </div>
+</section>
+
+<section class="newsletter" id="newsletter">
+  <div class="wrap reveal">
+    <div class="eyebrow" style="justify-content:center; color:rgba(255,255,255,.6);"><span style="color:rgba(255,255,255,.6)">Weekly Digest</span></div>
+    <h2 style="margin-top:22px;">Join 42,000 fashion professionals who read before everyone else.</h2>
+    <p>Trending discussions, the best expert answers, and what's worth your attention this week — every Friday.</p>
+    <form class="nl-form" onsubmit="return false;">
+      <input type="email" placeholder="your@email.com" required>
+      <button type="submit">Subscribe &#x2192;</button>
+    </form>
+    <div class="nl-note">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+
+</main>
+
+<footer id="footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="l1" style="font-family:var(--serif);">Forum della Moda</span>
+        <p>Where fashion meets collective intelligence. Journalism and community, reinforcing one another.</p>
+      </div>
+      <div class="foot-col">
+        <h6>Read</h6>
+        <a href="news.html">News</a>
+        <a href="news.html#featured">Featured Stories</a>
+        <a href="index.html#agenda">Daily Agenda</a>
+        <a href="#newsletter">Newsletter</a>
+      </div>
+      <div class="foot-col">
+        <h6>Discuss</h6>
+        <a href="discussions.html">Discussions</a>
+        <a href="questions.html">Questions</a>
+        <a href="community.html">Experts</a>
+        <a href="community.html">Guidelines</a>
+      </div>
+      <div class="foot-col">
+        <h6>Explore</h6>
+        <a href="events.html">Events</a>
+        <a href="market.html">Companies</a>
+        <a href="market.html#commodities">Market Data</a>
+        <a href="#">Brands</a>
+      </div>
+      <div class="foot-col">
+        <h6>Company</h6>
+        <a href="#">About</a>
+        <a href="#">Careers</a>
+        <a href="#">Press</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&#x00A9; 2026 Forum della Moda. All rights reserved.</span>
+      <span>Privacy &#xB7; Terms &#xB7; Editorial Standards</span>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="assets/pages/market.js"></script>
+</body>
+</html>
