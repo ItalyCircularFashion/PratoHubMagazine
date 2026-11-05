@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://pratohub.example.com/index.html</loc>
+    <loc>https://italycircularfashion.github.io/PratoHubMagazine/index.html</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://pratohub.example.com/news.html</loc>
+    <loc>https://italycircularfashion.github.io/PratoHubMagazine/news.html</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pratohub.example.com/article.html</loc>
+    <loc>https://italycircularfashion.github.io/PratoHubMagazine/article.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://pratohub.example.com/discussions.html</loc>
+    <loc>https://italycircularfashion.github.io/PratoHubMagazine/discussions.html</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pratohub.example.com/thread.html</loc>
+    <loc>https://italycircularfashion.github.io/PratoHubMagazine/thread.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pratohub.example.com/questions.html</loc>
+    <loc>https://italycircularfashion.github.io/PratoHubMagazine/questions.html</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pratohub.example.com/question.html</loc>
+    <loc>https://italycircularfashion.github.io/PratoHubMagazine/question.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pratohub.example.com/events.html</loc>
+    <loc>https://italycircularfashion.github.io/PratoHubMagazine/events.html</loc>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://pratohub.example.com/company.html</loc>
+    <loc>https://italycircularfashion.github.io/PratoHubMagazine/company.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://pratohub.example.com/market.html</loc>
+    <loc>https://italycircularfashion.github.io/PratoHubMagazine/market.html</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pratohub.example.com/community.html</loc>
+    <loc>https://italycircularfashion.github.io/PratoHubMagazine/community.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://pratohub.example.com/notifications.html</loc>
+    <loc>https://italycircularfashion.github.io/PratoHubMagazine/notifications.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://pratohub.example.com/ecobalyse.html</loc>
+    <loc>https://italycircularfashion.github.io/PratoHubMagazine/ecobalyse.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

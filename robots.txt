@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Allow: /assets/
+Disallow: /assets/migration-dependency-graph.html
+Disallow: /output/
+Disallow: /test-results/
+Disallow: /*.json
+Disallow: /*.csv
+Sitemap: https://italycircularfashion.github.io/PratoHubMagazine/sitemap.xml

@@ -6,4 +6,4 @@ Disallow: /output/
 Disallow: /test-results/
 Disallow: /*.json
 Disallow: /*.csv
-Sitemap: https://pratohub.example.com/sitemap.xml
+Sitemap: https://italycircularfashion.github.io/PratoHubMagazine/sitemap.xml
