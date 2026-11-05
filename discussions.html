@@ -16,6 +16,7 @@
 
 <meta name="description" content="Professional discussions across luxury, manufacturing, sustainability and the fashion supply chain.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://images.unsplash.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./apple-touch-icon.svg">
@@ -132,10 +133,10 @@
     <div class="disc-list reveal" id="discListContainer"></div>
 
     <div class="pagination" id="discPagination">
-      <button data-page="prev" disabled>‹</button>
+      <button data-page="prev" disabled aria-label="Previous page">‹</button>
       <button data-page="1" class="active">1</button>
       <button data-page="2">2</button>
-      <button data-page="next">›</button>
+      <button data-page="next" aria-label="Next page">›</button>
     </div>
   </div>
 </section>
@@ -169,7 +170,7 @@
     <h2 style="margin-top:22px;">Join 42,000 fashion professionals who read before everyone else.</h2>
     <p>Trending discussions, the best expert answers, and what's worth your attention this week — every Friday.</p>
     <form class="nl-form" onsubmit="return false;">
-      <input type="email" placeholder="your@email.com" required>
+      <input type="email" aria-label="Email address" placeholder="your@email.com" required>
       <button type="submit">Subscribe →</button>
     </form>
     <div class="nl-note">No spam. Unsubscribe anytime.</div>
