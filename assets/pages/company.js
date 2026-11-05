@@ -3,16 +3,21 @@ import { mount as mountGallery } from '../components/gallery.component.js';
 import { findArticle, findDiscussion, findQuestion, findEvent, findPoll, findCompany, findUser, getRelatedForCompany, getRelatedForArticle as getRelatedForArticle_kg, getRelatedForDiscussion, getRelatedForQuestion, findExpert, findCommodity } from '../services/knowledge-graph.service.js';
 import { mountBreadcrumbs, navigateTo, navigateBack } from '../services/navigation.service.js';
 import { companies } from '../data/companies.data.js';
+import { companiesSynthetic, companiesRealAllowlist } from '../data/companies.synthetic.js';
    COMPANY.JS — page-specific composition for company.html.
    Reads ?id= from the URL, falls back to the first company.
    Pure orchestration — no rendering or business logic lives here.
    ============================================================ */
 
-const urlId = new URLSearchParams(window.location.search).get('id');
-const company = findCompany(urlId) || companies[0]; if(!findCompany(urlId)){ console.warn('[company] fallback a primo record demo'); }
+const qs = new URLSearchParams(window.location.search);
+const urlId = qs.get('id'); const setParam = (qs.get('set')||'synthetic').toLowerCase();
+const pool = setParam==='legacy-demo' ? companies : (set==='real' ? companiesRealAllowlist : companiesSynthetic);
+const company = urlId ? pool.find(c => c.id === urlId) : null;
 
-if(!company){
-  document.getElementById('coHero').appendChild(renderErrorState('Company not found.'));
+if(!urlId){
+  document.getElementById('coHero').insertAdjacentHTML('beforeend', '<div class="empty" role="alert"><h2>Record non specificato</h2><p>Inserisci un identificativo valido: company.html?id=demo-filatura-cardata-001</p><p><a href="aziende.html">Torna alla directory</a></p></div>');
+} else if(!company){
+  document.getElementById('coHero').insertAdjacentHTML('beforeend', `<div class="empty" role="alert"><h2>Record non trovato</h2><p>Nessuna azienda con id <code>${urlId}</code> nel dataset ${setParam}. <a href="aziende.html?set=${encodeURIComponent(setParam)}">Torna alla directory</a></p></div>`);
 } else {
   renderCompanyPage(company);
 }
