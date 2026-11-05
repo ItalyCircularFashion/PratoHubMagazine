@@ -39,6 +39,9 @@ Thumbs.db
 *~
 
 # Local/test artifacts
+playwright-report/
+artifacts/
+*.bak-pre2.0
 test-results/
 mnt/
 output/
@@ -50,5 +53,14 @@ oc23-runtime-equivalence-review.md
 oc24-migration-execution-playbook.md
 playwright.config.ts
 tests/
+# Keep legacy/local tests ignored; track only the new repeatable suite.
+!tests/
+/tests/*
+!/tests/magazine-interactions.mjs
+!/tests/magazine-smoke.mjs
+!/tests/distretto.cjs
+!/tests/fixtures/
+/tests/fixtures/*
+!/tests/fixtures/companies.expected.json
 migration-dependency-graph.html
 *.bak-20261105T1253Z

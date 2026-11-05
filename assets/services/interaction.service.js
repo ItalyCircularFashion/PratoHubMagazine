@@ -1,131 +1,55 @@
-/* ============================================================
-   INTERACTION SERVICE
-   assets/services/interaction.service.js
-
-   Reveal-on-scroll, chip filters, pagination, search-bar wiring,
-   and the newsletter form. Every init is null-safe.
-   ============================================================ */
-
-import { castVote, getVoteState } from './session.service.js';
-
-window.FDM = window.FDM || {};
-
-export function initReveal(){
-  const revealEls = document.querySelectorAll('.reveal');
-  if(!revealEls.length) return;
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('is-visible'); });
-  }, {threshold:.12});
-  revealEls.forEach(e => io.observe(e));
-}
-export function initChipFilters(){
-  document.querySelectorAll('.chips').forEach(group => {
-    group.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => {
-      group.querySelectorAll('.chip').forEach(x => x.classList.remove('active'));
-      c.classList.add('active');
-    }));
-  });
-}
-export function initNewsletterForm(){
-  const form = document.querySelector('.nl-form');
-  if(!form) return;
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const btn = e.target.querySelector('button');
-    btn.textContent = 'Subscribed ✓';
-    e.target.querySelector('input').value = '';
-  });
-}
-export function initPagination(){
-  document.querySelectorAll('.pagination').forEach(group => {
-    group.querySelectorAll('button[data-page]').forEach(b => b.addEventListener('click', () => {
-      if(b.disabled) return;
-      group.querySelectorAll('button[data-page]').forEach(x => x.classList.remove('active'));
-      b.classList.add('active');
-      group.dispatchEvent(new CustomEvent('pagechange', {detail:{page:b.dataset.page}, bubbles:true}));
-    }));
-  });
-}
-export function initSearchBars(){
-  document.querySelectorAll('.search-bar').forEach(bar => {
-    bar.addEventListener('submit', (e) => e.preventDefault());
-  });
-}
-export function wireSearchFilter(formSelector, itemsContainerSelector, itemSelector){
-  const form = document.querySelector(formSelector);
-  const container = document.querySelector(itemsContainerSelector);
-  if(!form || !container) return;
-  const input = form.querySelector('input');
-  const apply = () => {
-    const q = input.value.trim().toLowerCase();
-    container.querySelectorAll(itemSelector).forEach(item => {
-      const hay = [item.dataset.title, item.dataset.type, item.dataset.category, item.textContent].filter(Boolean).join(' ').toLowerCase();
-      item.style.display = (!q || hay.includes(q)) ? '' : 'none';
-    });
-  };
-  input.addEventListener('input', apply);
-  form.addEventListener('submit', (e) => { e.preventDefault(); apply(); });
-}
-export function wireSortSelect(selectSelector, itemsContainerSelector, compareFns){
-  const select = document.querySelector(selectSelector);
-  const container = document.querySelector(itemsContainerSelector);
-  if(!select || !container) return;
-  select.addEventListener('change', () => {
-    const fn = compareFns[select.value];
-    if(!fn) return;
-    [...container.children].sort(fn).forEach(node => container.appendChild(node));
-  });
-}
-export function wireChipFilter(chipsSelector, itemsContainerSelector, itemSelector, dataAttr){
-  const chips = document.querySelector(chipsSelector);
-  const container = document.querySelector(itemsContainerSelector);
-  if(!chips || !container) return;
-  chips.querySelectorAll('.chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      const wanted = chip.textContent.trim().toLowerCase();
-      container.querySelectorAll(itemSelector).forEach(item => {
-        const val = (item.dataset[dataAttr] || '').toLowerCase();
-        item.style.display = (wanted === 'all' || val === wanted) ? '' : 'none';
-      });
-    });
-  });
-}
-export function wireChipCategoryFilter(chipsSelector, itemsContainerSelector, itemSelector){
-  wireChipFilter(chipsSelector, itemsContainerSelector, itemSelector, 'category');
-}
-
-export function initVoteControls(){
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.vote-btn');
-    if(!btn || btn.disabled) return;
-    const control = btn.closest('.vote-control');
-    const { targetType, targetId } = control.dataset;
-    if(!targetType || !targetId) return;
-    const delta = castVote(targetType, targetId, btn.dataset.dir);
-    const countEl = control.querySelector('.vote-count');
-    countEl.textContent = Number(countEl.textContent) + delta;
-    control.querySelectorAll('.vote-btn').forEach(b => b.classList.remove('is-active'));
-    const state = getVoteState(targetType, targetId);
-    if(state) control.querySelector(`[data-dir="${state}"]`).classList.add('is-active');
-  });
-}
-
-window.FDM.interaction = {
-  initReveal,
-  initChipFilters,
-  initNewsletterForm,
-  initPagination,
-  initSearchBars,
-  wireSearchFilter,
-  wireSortSelect,
-  wireChipFilter,
-  wireChipCategoryFilter,
-  initVoteControls
- };
-
- initReveal();
- initChipFilters();
- initNewsletterForm();
- initPagination();
- initSearchBars();
- initVoteControls();
+/* Shared, composable filters. A filter never resets another active filter. */
+window.FDM=window.FDM||{};
+(function(){
+  const states=new Map();
+  function state(selector,item){
+    const container=typeof selector==='string'?document.querySelector(selector):selector;
+    if(!container)return null;
+    if(!states.has(container)){
+      const summary=document.createElement('p');summary.className='result-count';summary.setAttribute('role','status');container.before(summary);
+      const empty=document.createElement('p');empty.className='filter-empty';empty.textContent='Nessun risultato. Modifica o azzera i filtri.';container.after(empty);
+      states.set(container,{container,item,filters:new Map(),summary,empty});
+    }
+    return states.get(container);
+  }
+  function apply(s){
+    if(!s)return;
+    const items=[...s.container.querySelectorAll(s.item)];let n=0;
+    items.forEach(el=>{const show=[...s.filters.values()].every(fn=>fn(el));el.hidden=!show;el.style.display=show?'':'none';if(show)n++;});
+    s.summary.textContent=n+' risultati su '+items.length;s.empty.hidden=n!==0;
+  }
+  const norm=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  function wireSearchFilter(formSelector,containerSelector,item){
+    const form=document.querySelector(formSelector),s=state(containerSelector,item);if(!form||!s)return;
+    const input=form.querySelector('input');if(!input)return;
+    const run=()=>{const words=norm(input.value).trim().split(/\s+/).filter(Boolean);s.filters.set('search',el=>words.every(w=>norm(el.textContent).includes(w)));apply(s);};
+    input.addEventListener('input',run);form.addEventListener('submit',e=>{e.preventDefault();run();});run();
+  }
+  function setFilter(container,item,key,predicate){const s=state(container,item);if(!s)return;s.filters.set(key,predicate);apply(s);}
+  function wireChipFilter(groupSelector,containerSelector,item,attr){
+    const group=document.querySelector(groupSelector),s=state(containerSelector,item);if(!group||!s)return;
+    group.addEventListener('click',e=>{
+      const chip=e.target.closest('.chip');if(!chip)return;
+      group.querySelectorAll('.chip').forEach(c=>{c.classList.toggle('active',c===chip);c.setAttribute('aria-pressed',String(c===chip));});
+      const wanted=norm(chip.dataset.value||chip.textContent).trim();
+      const all=['all','tutte','tutti','all experts','all companies','all certifications'].includes(wanted);
+      s.filters.set(groupSelector,node=>all||norm(node.dataset[attr]).split('|').some(v=>v===wanted));apply(s);
+    });apply(s);
+  }
+  function wireSortSelect(selector,containerSelector,compareFns){
+    const select=document.querySelector(selector),container=document.querySelector(containerSelector);if(!select||!container)return;
+    const run=()=>{const fn=compareFns[select.value];if(fn)[...container.children].sort(fn).forEach(el=>container.append(el));};select.addEventListener('change',run);run();
+  }
+  function initVoteControls(){document.addEventListener('click',e=>{
+    const b=e.target.closest('.vote-btn');if(!b||b.disabled)return;
+    const c=b.closest('.vote-control');const {targetType,targetId}=c.dataset;if(!targetType||!targetId)return;
+    const delta=FDM.session.castVote(targetType,targetId,b.dataset.dir),count=c.querySelector('.vote-count');count.textContent=Number(count.textContent)+delta;
+    c.querySelectorAll('.vote-btn').forEach(n=>n.classList.toggle('is-active',FDM.session.getVoteState(targetType,targetId)===n.dataset.dir));
+  });}
+  function initChipFilters(){document.querySelectorAll('.chip:not(button)').forEach(n=>{n.setAttribute('role','button');n.tabIndex=0;n.setAttribute('aria-pressed',String(n.classList.contains('active')));});}
+  function initSearchBars(){document.querySelectorAll('.search-bar').forEach(f=>f.addEventListener('submit',e=>e.preventDefault()));}
+  function initReveal(){document.querySelectorAll('.reveal').forEach(n=>n.classList.add('is-visible'));}
+  function initNewsletterForm(){}function initPagination(){}
+  FDM.interaction={wireSearchFilter,wireChipFilter,wireChipCategoryFilter:(g,c,i)=>wireChipFilter(g,c,i,'category'),wireSortSelect,setFilter,initReveal,initChipFilters,initSearchBars,initVoteControls,initNewsletterForm,initPagination};
+  initVoteControls();
+})();

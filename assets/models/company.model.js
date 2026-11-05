@@ -1,22 +1,21 @@
 /* ============================================================
-   COMPANY MODEL — v2 (PUBLIC Directory)
+   COMPANY MODEL
    assets/models/company.model.js
-   Schema pubblico definito: non usare P.IVA come condizione sufficiente.
    ============================================================ */
+window.FDM = window.FDM || {};
+FDM.models = FDM.models || {};
 
-export function createCompany(overrides){
+FDM.models.createCompany = function createCompany(overrides){
   return Object.assign({
     id: null, name: '', logoUrl: '', city: '', district: '', region: 'Tuscany', country: 'IT',
     specialization: '', description: '', foundedYear: null, employeeRange: '',
-    website: '', vatNumber: null, rea: null, legalForm: '',
+    website: '', vatNumber: '', rea: '', legalForm: '',
     certifications: [], productSectors: [], exportMarkets: [],
     sustainabilityHighlights: [], technologies: [],
-    texCodes: [], sectorsB2B: [], sources: [],
-    datasetType: 'DEMO',
-    verification: {identity: 'DEMO', information: 'DEMO', publishEligibility: 'DEMO_FORBIDDEN'},
-    publish: {allowed: false, reason: ''},
+    // Company detail fields (used by future company.html)
     history: '', timeline: [], galleryImages: [], products: [],
+    // Knowledge graph
     relatedArticleIds: [], relatedDiscussionIds: [], relatedQuestionIds: [],
     relatedExpertIds: [], relatedEventIds: [],
   }, overrides || {});
-}
+};

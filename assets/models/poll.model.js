@@ -2,6 +2,8 @@
    POLL MODEL
    assets/models/poll.model.js
    ============================================================ */
+window.FDM = window.FDM || {};
+FDM.models = FDM.models || {};
 
 /**
  * @typedef {Object} PollOption
@@ -16,7 +18,7 @@
  * @property {string} targetId
  * @property {PollOption[]} options
  */
-export function createPoll(overrides){
+FDM.models.createPoll = function createPoll(overrides){
   overrides = overrides || {};
   return Object.assign({
     id: null,
@@ -25,4 +27,4 @@ export function createPoll(overrides){
     targetId: null,
     options: [],
   }, overrides);
-}
+};

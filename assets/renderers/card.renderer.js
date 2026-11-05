@@ -2,7 +2,8 @@
    CARD RENDERERS
    assets/renderers/card.renderer.js
 
-   Public API:
+   @module card.renderer
+   Public API (every function below is a named export candidate):
      el, renderRoleBadge, renderAgendaCard, renderNewsCard, renderPick,
      renderDiscussionRow, renderQuestionCard, renderEventCard, renderEventCardFull,
      renderAuthorCard, renderUserCard, renderCommentItem, renderCompanyCard,
@@ -11,78 +12,61 @@
      renderKgDiscussionItem, renderKgQuestionItem, adaptEventForCard,
      renderArticleAsNewsCard, renderEntityByline, renderFeedCard,
      renderLeaderboardRow
+
+   Internal (not exported):
+     renderLoadingState  — @private, no current consumers
+
+   All functions are top-level declarations: adding `export` before any of
+   them is the only change required during the ES module migration.
    ============================================================ */
-
-import { formatRelativeTime, formatDate, formatCompactNumber } from '../utils/format.js';
-import { staff } from '../data/articles.data.js';
-
-// Stable Unsplash textile-industry image pool used by card renderers
-const UNSPLASH_TEXTILE = [
-  'photo-1660980041852-230420b8f99f',
-  'photo-1758272024360-a95be2abe403',
-  'photo-1758269736002-71d2e00f6ba3',
-  'photo-1528458909336-e7a0adfed0a5',
-  'photo-1583339824000-5afecfd41835',
-  'photo-1606259458027-54d2a728b6ab',
-  'photo-1611007725135-21ca8d0d5357',
-  'photo-1524404794194-16bae22718c0',
-];
-const UNSPLASH_PROFESSIONAL = [
-  'photo-1472099645785-5658abf4ff4e',
-  'photo-1494790108377-be9c29b29330',
-  'photo-1507003211169-0a1dd7228f2d',
-  'photo-1438761680603-b69e5e7c3c2a',
-  'photo-1500648767791-00dcc994a43e',
-  'photo-1544005313-94ddf0286df2',
-];
-function unsplashUrl(seed, w, q=80){
-  const list = String(seed).length % 2 === 0 ? UNSPLASH_TEXTILE : UNSPLASH_PROFESSIONAL;
-  const id = list[Math.abs(hashCode(seed)) % list.length];
-  return `https://images.unsplash.com/${id}?w=${w}&q=${q}&fit=crop&auto=format`;
-}
-function hashCode(s){ let h=0; for(let i=0;i<s.length;i++) h=((h<<5)-h)+s.charCodeAt(i); return h; }
+window.FDM = window.FDM || {};
 
 // ---- DOM helper ----
-export function el(h){ const t=document.createElement('template'); t.innerHTML=h.trim(); return t.content.firstChild; }
+function el(h){ const t=document.createElement('template'); t.innerHTML=h.trim(); return t.content.firstChild; }
 
-/** Pure role badge — depends only on user.role. */
-export function renderRoleBadge(user){
+/**
+ * Pure role badge — depends only on user.role.
+ * Defined here so renderers never need to call FDM.components.renderRoleBadge.
+ * ui.js re-exposes this via FDM.components.renderRoleBadge for backward compat with controllers.
+ */
+function renderRoleBadge(user){
   if(!user || !user.role || user.role === 'guest') return '';
   const labels = { member:'Member', expert:'Expert', moderator:'Moderator', admin:'Admin' };
   return `<span class="role-badge role-badge--${user.role}">${labels[user.role] || user.role}</span>`;
 }
 
-export function renderAgendaCard(item){
+function renderAgendaCard(item){
   const [cat,title,author,time,seed] = item;
   const imgSeed = seed || (cat+title.length);
   return el(`
     <div class="agenda-card" data-title="${title.toLowerCase()}">
-      <div class="agenda-media"><img loading="lazy" src="${unsplashUrl(imgSeed,420)}" alt=""></div>
+      <div class="agenda-media"><img loading="lazy" src="assets/images/editorial-0.svg" alt=""></div>
       <div class="cat">${cat}</div>
       <h4>${title}</h4>
       <div class="meta">${author} · ${time} read</div>
     </div>`);
 }
-export function renderNewsCard(n){
+function renderNewsCard(n){
   return el(`
     <div class="news-card ${n.lead?'lead':''}" data-title="${n.title.toLowerCase()}">
-      <div class="news-media"><img loading="lazy" src="${unsplashUrl(n.seed,n.lead?700:500)}" alt=""></div>
+      <div class="news-media"><img loading="lazy" src="assets/images/editorial-0.svg" alt=""></div>
       <span class="badge-editor">Editorial</span>
       <div class="cat">${n.cat}</div>
-      <h4>${n.title}</h4>
+      <h4><a href="article.html?id=${encodeURIComponent(n.id||'art-tariff-spreadsheet')}">${n.title}</a></h4>
       <div class="meta"><span>${n.author}</span><span class="dot"></span><span>${n.time} read</span><span class="dot"></span><span>${n.date}</span></div>
     </div>`);
 }
-export function renderPick(item){
+function renderPick(item){
   const [k,title,seed] = item;
   return el(`
     <div class="pick">
-      <img loading="lazy" src="${unsplashUrl(seed,120)}" alt="">
+      <img loading="lazy" src="assets/images/avatar.svg" alt="">
       <div><div class="n">${k}</div><h5>${title}</h5></div>
     </div>`);
 }
-export function renderDiscussionRow(item, author, followHtml){
+function renderDiscussionRow(item, author, followHtml){
   if(Array.isArray(item)){
+    // Legacy shape used by index.html/news.html — output unchanged.
     const [cat,title,votes,replies,avs] = item;
     return el(`
       <div class="disc-row">
@@ -91,13 +75,15 @@ export function renderDiscussionRow(item, author, followHtml){
           <div class="cat">${cat}</div>
           <h4>${title}</h4>
           <div class="meta">
-            ${avs.map(a=>`<img loading="lazy" src="${unsplashUrl(a,60)}" alt="">`).join('')}
+            <div class="avatars">${avs.map(a=>`<img loading="lazy" src="assets/images/avatar.svg" alt="">`).join('')}</div>
             <span>${avs.length} contributors</span><span class="dot"></span><span>Active now</span>
           </div>
         </div>
         <div class="disc-right"><span class="replies">${replies}</span>replies</div>
       </div>`);
   }
+  // Full Discussion model — richer status badges, real author + timestamps,
+  // plus data attributes the interaction service sorts/filters by.
   const badges = [
     item.isPinned && '<span class="tag">Pinned</span>',
     item.acceptedAnswerId && '<span class="tag" style="color:var(--mkt-pos); border-color:var(--mkt-pos);">Solved</span>',
@@ -112,26 +98,26 @@ export function renderDiscussionRow(item, author, followHtml){
       <div class="vote"><span class="n">${item.voteCount}</span><span class="l">Votes</span></div>
       <div class="disc-main">
         <div class="cat">${item.category} ${badges}</div>
-        <h4><a href="thread.html">${item.title}</a></h4>
+        <h4><a href="thread.html?id=${encodeURIComponent(item.id)}">${item.title}</a></h4>
         <div class="meta">
           <img class="avatar" style="width:24px;height:24px;" src="${author?author.avatarUrl:''}" alt="">
           <span>${author?author.nickname:'Member'}</span> ${roleBadge}
-          <span class="dot"></span><span>Updated ${formatRelativeTime(item.updatedAt)}</span>
+          <span class="dot"></span><span>Updated ${FDM.utils.formatRelativeTime(item.updatedAt)}</span>
           ${followBtn ? '<span class="dot"></span>' + followBtn : ''}
         </div>
       </div>
       <div class="disc-right"><span class="replies">${item.replyCount}</span>replies</div>
     </div>`);
 }
-export function renderQuestionCard(q){
+function renderQuestionCard(q){
   return el(`
     <div class="q-card" data-title="${(q.q||'').toLowerCase()}" data-category="${q.category||''}" data-difficulty="${q.difficulty||''}"
          data-expert="${q.expert||''}" data-votes="${q.voteCount||0}" data-answers="${q.answerCount||0}"
          data-created="${q.createdAt ? new Date(q.createdAt).getTime() : 0}">
       <div class="tags">${q.tags.map(t=>`<span class="q-tag">${t}</span>`).join('')}</div>
-      <h4>${q.q}</h4>
+      <h4><a href="question.html?id=${encodeURIComponent(q.id||'q-jacquard')}">${q.q}</a></h4>
       <div class="answer-row">
-        <img loading="lazy" src="${unsplashUrl(q.seed,64)}" alt="">
+        <img loading="lazy" src="assets/images/avatar.svg" alt="">
         <div class="answer-meta">
           <div class="name">${q.expert} <span class="verified"></span></div>
           <div class="role">${q.role}</div>
@@ -140,8 +126,8 @@ export function renderQuestionCard(q){
       </div>
     </div>`);
 }
-/** Standard compact event card — unchanged. */
-export function renderEventCard(item){
+/** Standard compact event card — unchanged, used by hompage/article/thread sidebars. */
+function renderEventCard(item){
   const [day,mon,type,title] = item;
   return el(`
     <div class="event-card">
@@ -153,8 +139,8 @@ export function renderEventCard(item){
       </div>
     </div>`);
 }
-/** Full event card for events.html. */
-export function renderEventCardFull(ev){
+/** Full event card for events.html — consumes the richer event object shape. */
+function renderEventCardFull(ev){
   return el(`
     <div class="event-card-full ${ev.past?'is-past':''}" data-type="${ev.type.toLowerCase()}" data-title="${ev.title.toLowerCase()}" data-day="${ev.day}">
       <div class="event-date"><span class="day">${ev.day}</span><span class="mon">${ev.month}</span></div>
@@ -174,8 +160,8 @@ export function renderEventCardFull(ev){
 
 /* ---- NEW shared components ---- */
 
-/** Compact author byline card. */
-export function renderAuthorCard(user){
+/** Compact author byline card — used on article bylines and expert mentions. */
+function renderAuthorCard(user){
   if(!user) return el('<div class="author-card"></div>');
   const badge = renderRoleBadge(user);
   return el(`
@@ -188,8 +174,8 @@ export function renderAuthorCard(user){
     </div>`);
 }
 
-/** Generic member/user card. */
-export function renderUserCard(user){
+/** Generic member/user card — community directory, follower lists, expert grids. */
+function renderUserCard(user){
   const badge = renderRoleBadge(user);
   const expertise = (user.expertise || []).join(', ');
   return el(`
@@ -204,10 +190,14 @@ export function renderUserCard(user){
 }
 
 /**
- * Renders one comment/reply node.
+ * Renders one comment/reply node, including nested children.
+ * @param {Object} comment - FDM.models.createComment() shape
+ * @param {Object} author - resolved user for comment.authorId
+ * @param {Array} [children] - already-resolved child comments, each {comment, author, children}
+ * @param {string} [voteHtml] - pre-rendered vote control HTML (injected by comment.component.js)
  */
-export function renderCommentItem(comment, author, children, voteHtml){
-  const time = formatRelativeTime(comment.createdAt);
+function renderCommentItem(comment, author, children, voteHtml){
+  const time = (FDM.utils && FDM.utils.formatRelativeTime) ? FDM.utils.formatRelativeTime(comment.createdAt) : comment.createdAt;
   const roleBadge = renderRoleBadge(author);
   const vote = voteHtml || '';
   const attachments = (comment.attachments && comment.attachments.length)
@@ -224,7 +214,7 @@ export function renderCommentItem(comment, author, children, voteHtml){
           ${comment.editedAt ? '<span class="comment-edited">· edited</span>' : ''}
           ${comment.isAcceptedAnswer ? '<span class="accepted">✓ Accepted</span>' : ''}
         </div>
-        <div class="comment-text ${comment.isCollapsed?'is-collapsed':''}">${comment.body}</div>
+        <div class="comment-text ${comment.isCollapsed?'is-collapsed':''}">${FDM.safeText(comment.body)}</div>
         ${comment.isCollapsed ? '<button class="comment-action comment-expand">Show more</button>' : ''}
         ${attachments}
         <div class="comment-actions">
@@ -250,43 +240,21 @@ export function renderCommentItem(comment, author, children, voteHtml){
   return node;
 }
 
-/** Company directory card. */
-export function renderCompanyCard(company){
-  const certs = (company.certifications || []).slice(0,3).map(c=>`<span class="tag">${c}</span>`).join('');
-  return el(`
-    <a href="company.html?id=${company.id}" class="company-card"
-       data-title="${company.name.toLowerCase()}"
-       data-city="${(company.city||'').toLowerCase()}"
-       data-specialization="${(company.specialization||'').toLowerCase()}"
-       data-certifications="${(company.certifications||[]).join(' ').toLowerCase()}"
-       data-technologies="${(company.technologies||[]).join(' ').toLowerCase()}"
-       data-sectors="${(company.productSectors||[]).join(' ').toLowerCase()}">
-      <div class="company-card-logo">
-        <img loading="lazy" src="${company.logoUrl}" alt="${company.name}">
-      </div>
-      <div class="company-card-body">
-        <div class="eyebrow" style="display:inline-flex; margin-bottom:8px; font-size:10px;">${company.specialization}</div>
-        <h4 class="company-card-name">${company.name}</h4>
-        <div class="company-card-location">&#x1F4CD; ${company.city}${company.district && company.district !== company.city ? ', ' + company.district : ''}</div>
-        <p class="company-card-desc">${company.description}</p>
-        <div class="company-card-meta">
-          ${company.foundedYear ? `<span>Est. ${company.foundedYear}</span><span class="dot"></span>` : ''}
-          <span>${company.employeeRange ? company.employeeRange + ' emp.' : ''}</span>
-        </div>
-        <div class="company-card-certs">${certs}</div>
-      </div>
-    </a>`);
+/** Company directory card — links to future company.html?id=... */
+function renderCompanyCard(company){
+  const safe=FDM.safeText;
+  return el(`<a href="company.html?id=${encodeURIComponent(company.id)}" class="company-card" data-title="${safe(company.name.toLowerCase())}" data-city="${safe(company.city.toLowerCase())}" data-specialization="${safe(company.specialization.toLowerCase())}">
+    <div class="company-card-logo"><span class="company-initial" aria-hidden="true">${safe(company.name.split(/\s+/).slice(0,2).map(x=>x[0]).join(''))}</span></div>
+    <div class="company-card-body"><span class="eyebrow">${safe(company.specialization)}</span><h2 class="company-card-name">${safe(company.name)}</h2><p class="company-card-location">${safe(company.city||'Comune non indicato nella fonte consultata')}</p><p class="company-card-desc">${safe(company.description)}</p><span class="company-source">Fonti ufficiali consultate: ${safe(company.checkedAt)}</span></div></a>`);
 }
-
-/** @future company.html — "Verify on ReportAziende" CTA. */
-export function renderVerifyCompanyLink(company){
-  const query = encodeURIComponent(company.vatNumber || company.name);
-  return el(`<a href="https://www.reportaziende.it/ricerca?q=${query}" target="_blank" rel="noopener noreferrer" class="btn-line">Verify on ReportAziende &#x2197;</a>`);
+/** @future company.html — "Verify on ReportAziende" CTA using VAT number. No iframe/scraping. */
+function renderVerifyCompanyLink(company){
+  return el('<span class="demo-data-label">DEMO: nessuna visura o certificazione reale associata.</span>');
 }
 
 /** @future notifications.html — single notification list item. */
-export function renderNotificationItem(n){
-  const time = formatRelativeTime(n.createdAt);
+function renderNotificationItem(n){
+  const time = (FDM.utils && FDM.utils.formatRelativeTime) ? FDM.utils.formatRelativeTime(n.createdAt) : n.createdAt;
   return el(`
     <a href="${n.link}" class="notification-item ${n.isRead?'':'is-unread'}">
       <span class="notification-dot"></span>
@@ -297,17 +265,20 @@ export function renderNotificationItem(n){
     </a>`);
 }
 
-/** Generic empty state. */
-export function renderEmptyState(message, hint){
+/** Generic empty state, used by any list that currently has zero items. */
+function renderEmptyState(message, hint){
   return el(`
     <div class="state-block state-empty">
       <div class="state-title">${message || 'Nothing here yet'}</div>
       ${hint ? `<div class="state-hint">${hint}</div>` : ''}
     </div>`);
 }
-
-/** Generic error state. */
-export function renderErrorState(message){
+/** @future async data loading — generic loading skeleton state. */
+function renderLoadingState(){
+  return el(`<div class="state-block state-loading"><span class="state-spinner"></span> Loading…</div>`);
+}
+/** Generic error state, with optional retry callback wired by the caller. */
+function renderErrorState(message){
   return el(`
     <div class="state-block state-error">
       <div class="state-title">${message || 'Something went wrong.'}</div>
@@ -315,9 +286,9 @@ export function renderErrorState(message){
     </div>`);
 }
 
-/** Generic stat strip. */
-export function renderStatStrip(stats){
-  const fmt = formatCompactNumber;
+/** Generic stat strip — used by article/discussion/event headers. @param {Array} stats - [{value,label}] */
+function renderStatStrip(stats){
+  const fmt = (n) => (FDM.utils && FDM.utils.formatCompactNumber) ? FDM.utils.formatCompactNumber(n) : n;
   return el(`
     <div class="stat-strip">
       ${stats.map(s => `<div class="stat-item"><b>${typeof s.value==='number'?fmt(s.value):s.value}</b><span>${s.label}</span></div>`).join('')}
@@ -325,9 +296,18 @@ export function renderStatStrip(stats){
 }
 
 /**
- * Mounts a Knowledge Graph panel.
+ * Mounts a Knowledge Graph panel: optional title + either rendered
+ * items or an empty state. Used for every "Related X" panel so the
+ * empty-state fallback logic exists exactly once. Pass an empty
+ * string/falsy `title` to omit the heading (e.g. when the surrounding
+ * sidebar block already renders its own title).
+ * @param {string} targetId
+ * @param {string} title
+ * @param {Array} items
+ * @param {function} itemRenderer - (item) => Node
+ * @param {string} emptyMessage
  */
-export function mountKgPanel(targetId, title, items, itemRenderer, emptyMessage){
+function mountKgPanel(targetId, title, items, itemRenderer, emptyMessage){
   const target = document.getElementById(targetId);
   if(!target) return;
   if(title) target.appendChild(el(`<div class="kg-panel-title">${title}</div>`));
@@ -335,61 +315,66 @@ export function mountKgPanel(targetId, title, items, itemRenderer, emptyMessage)
     target.appendChild(renderEmptyState(emptyMessage || 'Nothing connected here yet.'));
     return;
   }
-  const list = el('<div class="kg-panel-list"></div>');
+  const list = el(`<div class="kg-panel-list"></div>`);
   items.forEach(item => list.appendChild(itemRenderer(item)));
   target.appendChild(list);
 }
 
-/** Adapts Question model into renderQuestionCard shape. */
-export function adaptQuestionForCard(question, expert){
+/** Adapts a Question model + resolved expert into the shape renderQuestionCard expects. */
+function adaptQuestionForCard(question, expert){
   return renderQuestionCard({
-    tags: question.tags, q: question.title, category: question.category, difficulty: question.difficulty,
+    id: question.id, tags: question.tags, q: question.title, category: question.category, difficulty: question.difficulty,
     voteCount: question.voteCount, answerCount: question.answerCount, createdAt: question.createdAt,
     expert: expert ? expert.nickname : 'Community', role: expert ? expert.professionalRole : '',
     seed: question.expertId || question.id, accepted: question.accepted,
   });
 }
-export function renderKgDiscussionItem(discussion){
+function renderKgDiscussionItem(discussion){
   return el(`
-    <a href="discussions.html" class="kg-item-discussion">${discussion.title}
+    <a href="thread.html?id=${encodeURIComponent(discussion.id)}" class="kg-item-discussion">${discussion.title}
       <span class="kg-meta">${discussion.replyCount} replies · ${discussion.voteCount} votes</span>
     </a>`);
 }
-export function renderKgQuestionItem(question){
-  return el(`<a href="questions.html" class="kg-item-discussion">${question.title}</a>`);
+/** Renders one row in a "Related Questions" knowledge-graph panel. */
+function renderKgQuestionItem(question){
+  return el(`<a href="question.html?id=${encodeURIComponent(question.id)}" class="kg-item-discussion">${question.title}</a>`);
 }
-
-/** Adapts Event model into tuple shape renderEventCard expects. */
-export function adaptEventForCard(event){
+/** Adapts an Event model into the tuple shape renderEventCard expects. */
+function adaptEventForCard(event){
   return [event.day, event.month, event.type, event.title];
 }
-
-/** Adapts Article model into renderNewsCard shape. */
-export function renderArticleAsNewsCard(article){
-  const author = (staff || []).find(s => s.id === article.authorId);
+/** Adapts an Article model into the shape renderNewsCard expects, resolving the byline against staff. */
+function renderArticleAsNewsCard(article){
+  const author = (FDM.data.staff || []).find(s => s.id === article.authorId);
   return renderNewsCard({
-    cat: article.category,
+    id: article.id, cat: article.category,
     title: article.title,
-    author: author ? author.nickname : 'Forum della Moda',
+    author: author ? author.nickname : 'PratoHub Magazine',
     time: article.readingTime,
-    date: formatDate(article.publishedAt),
+    date: FDM.utils.formatDate(article.publishedAt),
     seed: article.imageSeed || article.id,
   });
 }
-
 /**
- * Shared entity byline row.
+ * Shared entity byline row (author + meta chips).
+ * Used by thread.js, question.js and any future detail page.
+ * @param {Object|null} author
+ * @param {string[]} metaChips
  */
-export function renderEntityByline(author, metaChips){
+function renderEntityByline(author, metaChips){
   const badge = renderRoleBadge(author);
   const chips = metaChips.filter(Boolean).map((c,i) => (i ? '<span class="dot"></span>' : '') + `<span>${c}</span>`).join('');
   return `${author ? `<img class="avatar" style="width:28px;height:28px;" src="${author.avatarUrl||''}" alt=""><span>${author.nickname||''}</span>${badge ? ' '+badge : ''}<span class="dot"></span>` : ''}${chips}`;
 }
-
 /**
- * Thin wrapper that gives any card a sortable/filterable envelope.
+ * Thin wrapper that gives any card a sortable/filterable envelope for unified feeds.
+ * @param {'article'|'discussion'|'question'|'event'} type
+ * @param {Element} cardNode - output of any existing renderer
+ * @param {string} dateIso   - ISO 8601 for sort; for events use a synthetic value
+ * @param {string} [title]   - plain-text title for search
+ * @returns {Element} wrapper div with data-type, data-date, data-title attributes
  */
-export function renderFeedCard(type, cardNode, dateIso, title){
+function renderFeedCard(type, cardNode, dateIso, title){
   const TYPE_LABELS = { article:'Article', discussion:'Discussion', question:'Question', event:'Event' };
   const wrapper = document.createElement('div');
   wrapper.className = 'feed-card';
@@ -403,11 +388,10 @@ export function renderFeedCard(type, cardNode, dateIso, title){
   wrapper.appendChild(cardNode);
   return wrapper;
 }
-
-/** @future profile.html, admin dashboard. */
-export function renderLeaderboardRow(user, rank){
+/** @future also demo.html, admin dashboard. */
+function renderLeaderboardRow(user, rank){
   const badge = renderRoleBadge(user);
-  const rep = formatCompactNumber(user.reputation || 0);
+  const rep = (FDM.utils && FDM.utils.formatCompactNumber) ? FDM.utils.formatCompactNumber(user.reputation||0) : String(user.reputation||0);
   return el(`
     <div class="leaderboard-row">
       <div class="lb-rank ${rank <= 3 ? 'top3' : ''}">${rank}</div>
@@ -421,4 +405,3 @@ export function renderLeaderboardRow(user, rank){
       <div class="lb-rep"><b>${rep}</b><span>Reputation</span></div>
     </div>`);
 }
-

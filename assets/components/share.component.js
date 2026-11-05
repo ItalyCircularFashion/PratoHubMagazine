@@ -1,11 +1,8 @@
 /* ============================================================
-import { getCurrentUser, isAuthenticated, login, logout, setMockUser, MOCK_USERS } from '../services/auth.js';
-import { gateOrCta } from '../components/ui.js';
-import { isBookmarked, toggleBookmark } from '../services/session.service.js';
-import { canBookmark } from '../permissions/permissions.js';
    SHARE / BOOKMARK COMPONENT
    assets/components/share.component.js
    ============================================================ */
+window.FDM = window.FDM || {};
 
 (function(){
 
@@ -14,17 +11,17 @@ import { canBookmark } from '../permissions/permissions.js';
     if(!container) return;
 
     function render(){
-      const user = getCurrentUser();
-      const canBookmarkResult = canBookmark(user);
-      const bookmarked = canBookmarkResult && isBookmarked(content.targetType, content.targetId);
+      const user = FDM.auth.getCurrentUser();
+      const canBookmark = FDM.permissions.canBookmark(user);
+      const isBookmarked = canBookmark && FDM.session.isBookmarked(content.targetType, content.targetId);
 
       container.innerHTML = `
         <div class="share-panel">
           <button class="share-btn share-native" aria-label="Share">↗ Share</button>
           <button class="share-btn share-copy" aria-label="Copy link">⎘ Copy Link</button>
-          ${canBookmarkResult
-            ? `<button class="share-btn share-bookmark ${bookmarked?'is-active':''}" aria-pressed="${bookmarked}">🔖 ${bookmarked?'Saved':'Save'}</button>`
-            : gateOrCta('BOOKMARK', '', 'Sign in to save')}
+          ${canBookmark
+            ? `<button class="share-btn share-bookmark ${isBookmarked?'is-active':''}" aria-pressed="${isBookmarked}">🔖 ${isBookmarked?'Saved':'Save'}</button>`
+            : FDM.components.gateOrCta('BOOKMARK', '', 'Sign in to save')}
           <span class="share-copy-feedback" aria-live="polite"></span>
         </div>`;
 
@@ -51,7 +48,7 @@ import { canBookmark } from '../permissions/permissions.js';
       const bookmarkBtn = container.querySelector('.share-bookmark');
       if(bookmarkBtn){
         bookmarkBtn.addEventListener('click', () => {
-          toggleBookmark(content.targetType, content.targetId);
+          FDM.session.toggleBookmark(content.targetType, content.targetId);
           render();
         });
       }
@@ -60,5 +57,7 @@ import { canBookmark } from '../permissions/permissions.js';
     render();
     document.addEventListener('fdm:authchange', render);
   }
+
+  FDM.shareComponent = { mount };
 
 })();

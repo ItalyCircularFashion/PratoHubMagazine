@@ -2,6 +2,8 @@
    NOTIFICATION MODEL
    assets/models/notification.model.js
    ============================================================ */
+window.FDM = window.FDM || {};
+FDM.models = FDM.models || {};
 
 /**
  * @typedef {Object} Notification
@@ -14,7 +16,7 @@
  * @property {boolean} isRead
  * @property {string} createdAt
  */
-export function createNotification(overrides){
+FDM.models.createNotification = function createNotification(overrides){
   overrides = overrides || {};
   return Object.assign({
     id: null,
@@ -26,4 +28,4 @@ export function createNotification(overrides){
     isRead: false,
     createdAt: new Date().toISOString(),
   }, overrides);
-}
+};

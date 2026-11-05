@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Distretto di Prato · PratoHub Magazine</title>
+<meta name="description" content="Imprese, addetti, export e riciclo del distretto tessile di Prato, con fonte e anno accanto a ogni dato.">
+<meta name="theme-color" content="#1b2a52">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%20stroke-width%3D%225%22%3E%3Cpath%20d%3D%22M4%2012H44%22%20stroke%3D%22%23c81d62%22/%3E%3Cpath%20d%3D%22M4%2024H44%22%20stroke%3D%22%23c81d62%22/%3E%3Cpath%20d%3D%22M4%2036H44%22%20stroke%3D%22%23c81d62%22/%3E%3Cpath%20d%3D%22M12%204V44%22%20stroke%3D%22%231b2a52%22/%3E%3Cpath%20d%3D%22M24%204V44%22%20stroke%3D%22%231b2a52%22/%3E%3Cpath%20d%3D%22M36%204V44%22%20stroke%3D%22%231b2a52%22/%3E%3Cpath%20d%3D%22M8.5%2012H15.5%22%20stroke%3D%22%23c81d62%22/%3E%3Cpath%20d%3D%22M32.5%2012H39.5%22%20stroke%3D%22%23c81d62%22/%3E%3Cpath%20d%3D%22M20.5%2024H27.5%22%20stroke%3D%22%23c81d62%22/%3E%3Cpath%20d%3D%22M8.5%2036H15.5%22%20stroke%3D%22%23c81d62%22/%3E%3Cpath%20d%3D%22M32.5%2036H39.5%22%20stroke%3D%22%23c81d62%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile.css">
+<link rel="canonical" href="https://italycircularfashion.github.io/PratoHubMagazine/distretto/">
+</head>
+<body>
+<a class="skip-link" href="#top">Vai al contenuto</a>
+<header class="top">
+  <a class="brand" href="#top" aria-label="PratoHub"><svg class="logo" width="34" height="34" aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke-width="5"><path class="t h" pathLength="1" d="M4 12H44" stroke="var(--dye)"/><path class="t h" pathLength="1" d="M4 24H44" stroke="var(--dye)"/><path class="t h" pathLength="1" d="M4 36H44" stroke="var(--dye)"/><path class="t v" pathLength="1" d="M12 4V44" stroke="var(--ink)"/><path class="t v" pathLength="1" d="M24 4V44" stroke="var(--ink)"/><path class="t v" pathLength="1" d="M36 4V44" stroke="var(--ink)"/><path class="t o" pathLength="1" d="M8.5 12H15.5" stroke="var(--dye)"/><path class="t o" pathLength="1" d="M32.5 12H39.5" stroke="var(--dye)"/><path class="t o" pathLength="1" d="M20.5 24H27.5" stroke="var(--dye)"/><path class="t o" pathLength="1" d="M8.5 36H15.5" stroke="var(--dye)"/><path class="t o" pathLength="1" d="M32.5 36H39.5" stroke="var(--dye)"/></svg><span>PratoHub</span></a>
+  <nav aria-label="Sezioni"><a href="../index.html">← Magazine</a><a href="#numeri">Numeri</a><a href="#ciclo">Ciclo</a><a href="#territorio">Territorio</a><a href="#storia">Storia</a><a href="#congiuntura">Congiuntura</a><a href="#certificazioni">Certificazioni</a><a href="#glossario">Glossario</a><a href="#turismo">Musei</a><a href="#aziende">Aziende</a><a href="#dati">Dati</a><a href="#fonti">Fonti</a></nav>
+  <button type="button" id="cbtn" class="cbtn" aria-haspopup="dialog">Cerca <kbd>/</kbd></button>
+</header>
+<main id="top" tabindex="-1">
+  <section class="hero">
+    <div>
+      <h1>Da oltre un secolo Prato fa tessuti nuovi con la lana vecchia.</h1>
+      <div class="pick" id="pick" role="group" aria-label="Scegli il tessuto"></div>
+      <p class="lead">Il distretto tessile di Prato: imprese, lavoro e riciclo, attraverso i materiali e le fonti raccolte. Settemila imprese e quarantatremila addetti sono le stime riportate da Controradio, senza periodo del dato specificato.</p>
+    </div>
+    <div class="swatch" id="swatch" role="img" aria-label="Campione di tessuto, a scelta tra quattro armature"></div>
+  </section>
+
+  <section class="story" aria-label="La storia in breve">
+    <div class="stage">
+      <svg class="sthread" viewBox="0 0 1000 200" aria-hidden="true"><path pathLength="1" d="M0 120 C150 20 250 220 400 120 S650 20 800 120 S950 180 1000 100"/></svg>
+      <ol class="beats" id="beats"></ol>
+      <p class="cue">Scorri</p>
+    </div>
+  </section>
+
+  <section id="numeri" class="band">
+    <h2>Il distretto in cifre</h2>
+    <div id="stats" class="stats"></div>
+    <p class="note">Le cifre arrivano da fonti e anni diversi e non costituiscono un quadro aggiornato in tempo reale. La data di un articolo non coincide necessariamente con il periodo del dato. I 22.000 t/anno sono riportati in un comunicato del 20 marzo 2010, non una misura attuale. Dove il periodo non è specificato viene dichiarato; gli altri periodi sono quelli riportati nei materiali forniti, non tutti ricontrollati.</p>
+  </section>
+
+  <section id="ciclo" class="wrap">
+    <h2>Dalla fibra al capo, in sei fasi</h2>
+    <p class="intro">A Prato le fasi stanno a pochi chilometri l’una dall’altra. Nel cardato, la lana di recupero viene selezionata, igienizzata, tagliata e sfilacciata prima di tornare filato.</p>
+    <ol id="steps" class="steps"></ol>
+    <p class="note">La descrizione storica del marchio Cardato Recycled nei materiali forniti risale al 2014 e riporta una soglia del 65%: non è una verifica del disciplinare attuale.</p>
+  </section>
+
+  <section id="cardato" class="wrap">
+    <h2>Il ciclo del cardato, in un giro</h2>
+    <p class="intro">Il filo percorre le sei fasi e ricomincia. Clicca una fase per fermarti, oppure lascialo girare.</p>
+    <div class="loop"><svg id="loopsvg" viewBox="0 0 560 420" role="group" aria-label="Ciclo circolare del cardato in sei fasi"></svg>
+    <div class="info" aria-live="polite"><div id="loopinfo"></div><button type="button" id="loopbtn">Pausa</button></div></div>
+  </section>
+
+  <section id="territorio" class="wrap">
+    <h2>Il territorio: sette comuni lungo il Bisenzio</h2>
+    <p class="intro">Il distretto non coincide con la sola città di Prato. Il cerchio di ogni comune è proporzionale ai residenti (Istat, 1° gennaio 2025). Lo schema non è in scala.</p>
+    <figure class="ph" data-foto="bisenzio" hidden></figure>
+    <div class="terr"><svg id="map" viewBox="0 0 400 330" role="group" aria-label="Schema dei sette comuni del distretto di Prato"></svg><div id="comuni" class="comuni"></div></div>
+  </section>
+
+  <section id="storia" class="wrap">
+    <h2>Dal Medioevo a oggi, in nove tappe</h2>
+    <p class="intro">Dalle gualchiere medievali sul Bisenzio al consorzio digitale di oggi.</p>
+    <figure class="ph" data-foto="campolmi" hidden></figure>
+    <ol id="timeline" class="timeline"></ol>
+  </section>
+
+  <section id="congiuntura" class="wrap">
+    <h2>Un periodo difficile, con segnali diversi</h2>
+    <p class="intro">Variazioni percentuali rispetto allo stesso periodo dell’anno prima. Ogni barra riporta il suo periodo.</p>
+    <div id="chart" class="chart"></div>
+    <p class="note">Il pronto moda cresce mentre filati e tessuti calano. Prato è la città italiana con più imprese a conduzione straniera, e nel pronto moda la maggior parte della manodopera è di origine immigrata.</p>
+  </section>
+
+  <section class="wrap rules">
+    <h2>Le regole europee decideranno molto</h2>
+    <p>Secondo la posizione di Confindustria Toscana Nord riportata da <a href="https://www.controradio.it/podcast/tessile-prato-porta-a-bruxelles-la-sfida-del-riciclo-a-rischio-diecimila-posti/" target="_blank" rel="noopener noreferrer">Controradio</a>, norme su ecodesign, tracciabilità e riciclo scritte senza guardare ai processi reali metterebbero a rischio tra 8.000 e 10.000 posti di lavoro. Si tratta di uno scenario dichiarato, non di una perdita già misurata. Il nodo è quando un tessuto riciclato smette di essere rifiuto.</p>
+    <p>L’articolo de <a href="https://www.lanazione.it/prato/cronaca/didip-la-piattaforma-del-distretto-e083ae26" target="_blank" rel="noopener noreferrer">La Nazione del 28 febbraio 2026</a> riporta la nascita di Didip con 31 imprese fondatrici per la piattaforma digitale del distretto.</p>
+  </section>
+
+  <section id="certificazioni" class="wrap">
+    <h2>Certificazioni e standard</h2>
+    <p class="intro">Non sono tutte la stessa cosa: alcune certificano il prodotto, altre il processo, una è un obbligo di legge. Schede divulgative dai materiali forniti, non una verifica dei disciplinari vigenti né delle certificazioni delle aziende elencate.</p>
+    <div id="certs" class="certs"></div>
+    <h3 class="sub">Per approfondire</h3>
+    <ul id="articoli" class="arts"></ul>
+  </section>
+
+  <section id="glossario" class="wrap">
+    <h2>Glossario tessile</h2>
+    <dl id="gloss" class="gloss"></dl>
+  </section>
+
+  <section id="turismo" class="wrap">
+    <h2>Musei, visite ed eventi</h2>
+    <p class="intro">Il progetto TIPO (Turismo Industriale Prato) mette in rete musei, fabbriche ed ex opifici. È promosso dal Comune di Prato con gli altri sei comuni del distretto.</p>
+    <figure class="ph" data-foto="mumat" hidden></figure>
+    <div id="musei" class="certs"></div>
+    <h3 class="sub">Eventi e visite</h3>
+    <ul id="eventi" class="arts"></ul>
+  </section>
+
+  <section id="aziende" class="wrap">
+    <h2>Le aziende</h2>
+    <p class="warn" id="warn"></p>
+    <div class="tools">
+      <input id="af" type="search" placeholder="Cerca tra le aziende" aria-label="Cerca tra le aziende">
+      <label for="asort">Ordina aziende</label>
+      <select id="asort"><option value="originale">Ordine originale</option><option value="az">Nome A–Z</option><option value="za">Nome Z–A</option></select>
+      <button type="button" id="areset">Azzera filtri aziende</button>
+    </div>
+    <div id="filters" class="filters" role="group" aria-label="Filtra per categoria"></div>
+    <p id="an" class="note" aria-live="polite"></p>
+    <ul id="companies" class="companies"></ul>
+  </section>
+
+  <section id="dati" class="wrap">
+    <h2>I dati, in tabella</h2>
+    <p class="intro">Cifre chiave, variazioni e residenti in un’unica tabella. Ordina cliccando sulle intestazioni, filtra con la casella e scarica in CSV: il file rispecchia righe e ordine visibili. Il CSV aziende usa invece i filtri e l’ordine della sezione Aziende. Il sort Valore raggruppa le unità: percentuali, euro, tonnellate, metri e conteggi non sono confrontabili tra loro.</p>
+    <div class="tools">
+      <input id="tf" type="search" placeholder="Filtra la tabella" aria-label="Filtra la tabella">
+      <button type="button" id="treset">Azzera filtro dati</button>
+      <button type="button" id="csvd">Scarica i dati (CSV)</button>
+      <button type="button" id="csva">Scarica le aziende (CSV)</button>
+    </div>
+    <div class="tw" tabindex="0" role="region" aria-label="Tabella dati scorrevole orizzontalmente"><table id="tab"><caption class="vh">Cifre del distretto tessile di Prato</caption><thead></thead><tbody></tbody></table></div>
+    <p class="note" id="tn"></p>
+  </section>
+
+  <section id="fonti" class="wrap">
+    <h2>Fonti</h2>
+    <p class="intro">Bibliografia del materiale originale, con integrazioni istituzionali e siti aziendali. Un collegamento non equivale a una validazione: non tutti i documenti e i dati sono stati ricontrollati. Le fonti aziendali riportano dichiarazioni delle imprese, non visure o certificazioni indipendenti.</p>
+    <ul id="sources" class="sources"></ul>
+  </section>
+</main>
+<footer><p><a href="../index.html">← Torna a PratoHub Magazine</a></p><p>PratoHub è un progetto di Italy Circular Fashion. Dati in <code>data.js</code>: per aggiornare una cifra, indica valore, fonte e periodo del dato.</p></footer>
+<noscript><p class="wrap warn">Questa sezione interattiva richiede JavaScript per mostrare grafici, schede e tabelle. <a href="data.js">Consulta i dati testuali</a> oppure <a href="../index.html">torna al Magazine</a>.</p></noscript>
+<dialog id="cerca" aria-label="Cerca nel sito">
+  <div class="cbox">
+    <div class="crow"><input id="q" type="text" role="searchbox" placeholder="Cerca aziende, termini, certificazioni, comuni" aria-label="Cerca nel sito" autocomplete="off"><button type="button" id="cx">Chiudi</button></div>
+    <p id="cn" class="note" aria-live="polite"></p>
+    <ul id="cris" class="cris"></ul>
+  </div>
+</dialog>
+<script src="data.js"></script>
+<script src="../assets/data/companies.public.js"></script>
+<script src="companies-adapter.js"></script>
+<script src="js/util.js"></script>
+<script src="js/numeri.js"></script>
+<script src="js/grafico.js"></script>
+<script src="js/aziende.js"></script>
+<script src="js/territorio.js"></script>
+<script src="js/musei.js"></script>
+<script src="js/contenuti.js"></script>
+<script src="js/ricerca.js"></script>
+<script src="js/tabella.js"></script>
+<script src="js/identita.js"></script>
+<script src="js/effetti.js"></script>
+<script src="js/racconto.js"></script>
+<script src="js/ciclo.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -3,32 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta property="og:title" content="Company Profile — Forum della Moda">
-<meta property="og:description" content="Textile company profile: products, certifications, technologies, history and industry connections.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://italycircularfashion.github.io/PratoHubMagazine/company.html">
-<meta property="og:image" content="https://images.unsplash.com/photo-1758270804188-8ca0b6d254bc?w=1600&q=80&fit=crop&auto=format">
-<meta property="og:site_name" content="PratoHub">
-
-<title>Company Profile — Forum della Moda</title><meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="PratoHub">
-<meta name="twitter:description" content="Piattaforma professionale per il settore tessile e moda.">
-
+<title>Company Profile — PratoHub Magazine</title>
 <meta name="description" content="Textile company profile: products, certifications, technologies, history and industry connections.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://images.unsplash.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="icon" href="./favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="./apple-touch-icon.svg">
-<link rel="manifest" href="./manifest.json">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles/main.css">
+<link rel="stylesheet" href="assets/styles/integration.css">
+<link rel="icon" href="favicon.svg">
 <link rel="canonical" href="https://italycircularfashion.github.io/PratoHubMagazine/company.html">
 
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","url":"https://italycircularfashion.github.io/PratoHubMagazine/company.html","name":"PratoHub","description":"Pagina company."}
-</script>
 </head>
 <body>
 
@@ -49,20 +33,15 @@
 
 <header id="siteHeader">
   <a href="index.html" class="logo">
-    <span class="l1">Forum della Moda</span>
+    <span class="l1">PratoHub Magazine</span>
     <span class="l2">FASHION · INTELLIGENCE · COMMUNITY</span>
   </a>
-  <nav class="primary" aria-label="Primary navigation">
-    <a href="news.html">News</a>
-    <a href="market.html" class="current">Market</a>
-    <a href="discussions.html">Discussions</a>
-    <a href="questions.html">Questions</a>
-    <a href="events.html">Events</a>
-    <a href="community.html">Community</a>
+  <nav class="primary" id="primaryNav" aria-label="Navigazione principale">
+    <a href="news.html">News</a><a href="market.html">Market</a><a href="discussions.html">Discussions</a><a href="questions.html">Questions</a><a href="events.html">Events</a><a href="community.html">Community</a><a href="aziende.html">Aziende</a><a href="distretto/">Distretto di Prato</a>
   </nav>
   <div class="nav-cta">
     <div id="authNav" class="auth-nav"></div>
-    <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button type="button" class="menu-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="primaryNav"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -73,8 +52,7 @@
   <div class="ticker-head"><span class="ticker-dot"></span><span class="ticker-label">Energy &amp; FX</span></div>
 </aside>
 
-<main id="main-content">
-<p style="margin:12px 0;padding:10px 14px;background:#FFF3C4;border:1px solid #E9C81E;border-radius:4px;font-size:13px;line-height:1.5"><strong>DEMO:</strong> aziende e dati in questa pagina sono fittizi e dimostrativi, non riferimenti a società reali.</p>
+<main id="main-content" tabindex="-1"><noscript><p class="nojs">Queste liste richiedono JavaScript. La navigazione e la pagina del progetto restano disponibili.</p></noscript><aside class="demo-notice" aria-label="Stato dimostrativo"><div><strong>MAGAZINE DEMO</strong> Articoli, profili, commenti, eventi e quotazioni sono esempi, non dati verificati o live. Le interazioni restano in questa pagina, senza account né invio al server. <a href="progetto.html">Limiti e metodo</a> · <a href="distretto/">Vai al Distretto con fonti</a></div></aside>
 
 <!-- COMPANY HERO -->
 <section class="page-header" id="coHero" style="padding-bottom:0;">
@@ -150,7 +128,7 @@
         <div id="coQuestions"></div>
       </div>
       <div class="sidebar-block">
-        <div class="sidebar-block-title">Upcoming Events</div>
+        <div class="sidebar-block-title">Events · DEMO calendar</div>
         <div id="coEvents"></div>
       </div>
     </aside>
@@ -173,123 +151,90 @@
   </div>
 </section>
 
-<section class="newsletter" id="newsletter">
-  <div class="wrap reveal">
-    <div class="eyebrow" style="justify-content:center; color:rgba(255,255,255,.6);"><span style="color:rgba(255,255,255,.6)">Weekly Digest</span></div>
-    <h2 style="margin-top:22px;">Join 42,000 fashion professionals who read before everyone else.</h2>
-    <p>Trending discussions, the best expert answers, and what's worth your attention this week — every Friday.</p>
-    <form class="nl-form" onsubmit="return false;">
-      <input type="email" aria-label="Email address" placeholder="your@email.com" required>
-      <button type="submit">Subscribe &#x2192;</button>
-    </form>
-    <div class="nl-note">No spam. Unsubscribe anytime.</div>
-  </div>
-</section>
-
-
-<div class="wrap"><div class="divider"></div></div>
-<section class="tight" style="padding-top:18px;">
-  <div class="wrap">
-    <div class="eyebrow" style="margin-bottom:14px;">Directory &amp; Filiera</div>
-    <h2 style="margin-bottom:18px;">Perché una directory aziendale certificata conta per la filiera tessile</h2>
-    <p>Nel settore tessile italiano la tracciabilità non è più un optional: le <strong>aziende tessili</strong> che investono in <strong>certificazioni</strong> e tecnologia ottengono accesso a bandi, export e partnership che altrimenti restano chiusi. Questa pagina raccoglie profili verificati perché la <strong>filiera italiana</strong> resta competitiva solo se ogni anello è riconoscibile.</p>
-    <p>Una <strong>directory</strong> utile non è un elenco: deve permettere di capire dove finisce un prodotto e inizia un controlllo. Ogni profilo qui segue criteri comuni di <strong>tecnologia</strong>, sostenibilità e governance, così il confronto tra fornitori non si basa solo sul prezzo.</p>
-    <p>Se stai cercando partner per <strong>filiera</strong> circolare, tessuti rigenerati o tintorie a basso impatto, usa questa sezione come punto di partenza. Per i prezzi delle <strong>materie prime</strong> collegate, consulta la pagina <a href="market.html">Prezzi Materie Prime Tessili</a>.</p>
-    <h2 style="margin-top:28px; margin-bottom:14px;">Criteri di selezione</h2>
-    <p>I profili selezionati combinano tre elementi: documentazione di <strong>certificazioni</strong> aggiornata, tecnologie di <strong>filiera</strong> misurabili e dati economici coerenti con il mercato attuale. Questo riduce il rischio per chi valuta nuovi fornitori.</p>
-    <p>La <strong>sostenibilità</strong> non è dichiarata: deve essere dimostrabile. Per questo abbiamo integrato criteri di selezione allineati alle best practice internazionali, inclusi i riferimenti usati da piattaforme come Ecobalyse e Textile Exchange.</p>
-    <p>Scopri di più sull’impatto dei materiali nella <a href="ecobalyse.html">dashboard LCA</a> e resta aggiornato sulle tendenze nella sezione <a href="news.html">News</a>.</p>
-  </div>
-</section>
-
-
-<div class="wrap"><div class="divider"></div></div>
-<section class="tight" style="padding-top:18px;">
-  <div class="wrap">
-    <div class="eyebrow" style="margin-bottom:14px;">Directory &amp; Filiera</div>
-    <h2 style="margin-bottom:18px;">Perché una directory aziendale certificata conta per la filiera tessile</h2>
-    <p>Nel settore <strong>tessile</strong> italiano la tracciabilità non è più un optional: le <strong>aziende tessili</strong> che investono in <strong>certificazioni</strong> e <strong>tecnologia</strong> ottengono accesso a bandi, export e partnership che altrimenti restano chiusi. Questa pagina raccoglie profili verificati perché la <strong>filiera italiana</strong> resta competitiva solo se ogni anello è riconoscibile.</p>
-    <p>Una <strong>directory</strong> utile non è un elenco: deve permettere di capire dove finisce un prodotto e inizia un controllo. Ogni profilo qui segue criteri comuni di <strong>tecnologia</strong>, <strong>sostenibilità</strong> e governance, così il confronto tra fornitori non si basa solo sul prezzo.</p>
-    <p>Se stai cercando partner per <strong>filiera</strong> circolare, tessuti rigenerati o tintorie a basso impatto, usa questa sezione come punto di partenza. Per i prezzi delle <strong>materie prime</strong> collegate, consulta la pagina <a href="market.html">Prezzi Materie Prime Tessili</a>.</p>
-    <h2 style="margin-top:28px; margin-bottom:14px;">Criteri di selezione</h2>
-    <p>I profili selezionati combinano tre elementi: documentazione di <strong>certificazioni</strong> aggiornata, tecnologie di <strong>filiera</strong> misurabili e dati economici coerenti con il mercato attuale. Questo riduce il rischio per chi valuta nuovi fornitori.</p>
-    <p>La <strong>sostenibilità</strong> non è dichiarata: deve essere dimostrabile. Per questo abbiamo integrato criteri di selezione allineati alle best practice internazionali, inclusi i riferimenti usati da piattaforme come <strong>Ecobalyse</strong> e Textile Exchange.</p>
-    <p>Scopri i trend e le notizie che influenzano queste scelte nella sezione <a href="news.html">News</a> e confronta le discussioni nella <a href="discussions.html">pagina Discussions</a>.</p>
-  </div>
-</section>
-
-
-<div class="wrap"><div class="divider"></div></div>
-<section class="tight" style="padding-top:18px;">
-  <div class="wrap">
-    <div class="eyebrow" style="margin-bottom:14px;">Trasparenza &amp; Mercato</div>
-    <h2 style="margin-bottom:18px;">Come valutare un'azienda tessile oltre il prezzo</h2>
-    <p>Nel confronto tra <strong>aziende tessili</strong>, il prezzo è solo l’ultimo indicatore. Prima vengono i <strong>certificazioni</strong>, la tracciabilità dei lotti, la densità tecnologica e la capacità di reagire a shock di <strong>filiera</strong>. Una <strong>directory</strong> non è utile se mostra solo il costo: deve mostrare il metodo.</p>
-    <p>Quando valuti un fornitore, verifica prima la governance, poi l’impianto, poi i campioni. Questo ordine evita sorprese nelle consegne successive. Nella sezione <a href="community.html">Community</a> trovi riferimenti a esperti che operano direttamente nel distretto.</p>
-    <h3 style="margin-top:22px; margin-bottom:10px;">Indicatori chiave</h3>
-    <p>Ogni profilo include almeno tre indicatori: certificazioni aggiornate, tecnologia di processo e storico export. Se vuoi incrociare questi dati con i prezzi delle <strong>materie prime</strong> usa la pagina <a href="market.html">Market</a>. Se ti serve un esempio pratico di applicazione, leggi la <a href="article.html">storia correlata</a>.</p>
-  </div>
-</section>
-
-
-<div class="wrap"><div class="divider"></div></div>
-<section class="tight" style="padding-top:18px;">
-  <div class="wrap">
-    <div class="eyebrow" style="margin-bottom:14px;">Governance &amp; Caso</div>
-    <h2 style="margin-bottom:18px;">Casi concreti: come le aziende tessili certificate influenzano la filiera</h2>
-    <p>Prendi il caso di un’azienda che ha adottato <strong>certificazioni</strong> ambientali e sociali prima che diventasse obbligatorio. Oggi that company partecipa a gare pubbliche, accede a fondi europei e vende a brand che richiedono tracciabilità minima. Questo non è un caso isolato: nella <strong>filiera italiana</strong> il pattern si sta ripetendo.</p>
-    <p>Ogni volta che un fornitore adotta standard misurabili, genera un effetto a catena sui subfornitori. La <strong>directory</strong> serve anche a questo: capire chi guida il cambiamento e chi lo subisce.</p>
-    <h3 style="margin-top:22px; margin-bottom:10px;">Come scegliere</h3>
-    <p>Non fermarti alla prima azienda. Confronta almeno tre profili, verifica l’aggiornamento delle <strong>certificazioni</strong> e l’adozione di <strong>tecnologia</strong> per il controllo qualità. Se possibile, chiedi riferimenti di <strong>produzione</strong> recenti.</p>
-  </div>
-</section>
+<section class="newsletter" id="newsletter"><div class="wrap"><div class="eyebrow">PratoHub</div><h2>Conoscere la filiera, partendo dalle fonti.</h2><p>La newsletter non è ancora attiva. Non raccogliamo indirizzi email: esplora gli approfondimenti sul distretto e il metodo del progetto.</p><a class="btn btn-line" href="distretto/">Esplora il Distretto di Prato →</a></div></section>
 
 </main>
 
-<footer id="footer">
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <span class="l1" style="font-family:var(--serif);">Forum della Moda</span>
-        <p>Where fashion meets collective intelligence. Journalism and community, reinforcing one another.</p>
-      </div>
-      <div class="foot-col">
-        <h6>Read</h6>
-        <a href="news.html">News</a>
-        <a href="news.html#featured">Featured Stories</a>
-        <a href="index.html#agenda">Daily Agenda</a>
-        <a href="#newsletter">Newsletter</a>
-      </div>
-      <div class="foot-col">
-        <h6>Discuss</h6>
-        <a href="discussions.html">Discussions</a>
-        <a href="questions.html">Questions</a>
-        <a href="community.html">Experts</a>
-        <a href="community.html">Guidelines</a>
-      </div>
-      <div class="foot-col">
-        <h6>Explore</h6>
-        <a href="events.html">Events</a>
-        <a href="market.html">Companies</a>
-        <a href="market.html#commodities">Market Data</a>
-        <a href="#">Brands</a>
-      </div>
-      <div class="foot-col">
-        <h6>Company</h6>
-        <a href="#">About</a>
-        <a href="#">Careers</a>
-        <a href="#">Press</a>
-        <a href="#">Contact</a>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>&#x00A9; 2026 Forum della Moda. All rights reserved.</span>
-      <span>Privacy &#xB7; Terms &#xB7; Editorial Standards</span>
-    </div>
-  </div>
-</footer>
+<footer id="footer"><div class="wrap"><div class="foot-top"><div class="foot-brand"><span class="l1">PratoHub Magazine</span><p>Tessile, innovazione e cultura del distretto. Magazine dimostrativo e approfondimenti con fonti.</p></div><div class="foot-col"><h2>Magazine</h2><a href="news.html">News</a><a href="discussions.html">Discussions</a><a href="questions.html">Questions</a><a href="events.html">Events</a></div><div class="foot-col"><h2>Esplora</h2><a href="distretto/">Distretto di Prato</a><a href="market.html">Market DEMO</a><a href="aziende.html">Aziende</a><a href="community.html">Community DEMO</a></div><div class="foot-col"><h2>Il progetto</h2><a href="progetto.html">Stato e metodo</a><a href="progetto.html#privacy">Privacy e servizi esterni</a><a href="demo.html">Prova le interazioni DEMO</a></div></div><div class="foot-bottom"><span>© 2026 Italy Circular Fashion · PratoHub Magazine</span><span>PratoHub: community e indicatori sono dimostrativi; aziende con fonti ufficiali.</span></div></div></footer>
 
-<script type="module" src="assets/pages/company.js"></script>
-<script type="module" src="assets/js/page-transitions.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="assets/models/user.model.js"></script>
+<script src="assets/models/discussion.model.js"></script>
+<script src="assets/models/article.model.js"></script>
+<script src="assets/models/comment.model.js"></script>
+<script src="assets/models/notification.model.js"></script>
+<script src="assets/models/vote.model.js"></script>
+<script src="assets/models/category.model.js"></script>
+<script src="assets/models/question.model.js"></script>
+<script src="assets/models/poll.model.js"></script>
+<script src="assets/models/company.model.js"></script>
+<script src="assets/permissions/permissions.js"></script>
+<script src="assets/data/articles.data.js"></script>
+<script src="assets/data/discussions.data.js"></script>
+<script src="assets/data/questions.data.js"></script>
+<script src="assets/data/events.data.js"></script>
+<script src="assets/data/notifications.data.js"></script>
+<script src="assets/data/polls.data.js"></script>
+<script src="assets/data/comments.data.js"></script>
+<script src="assets/data/companies.public.js"></script>
+<script src="assets/data/companies.data.js"></script>
+<script src="assets/data/experts.data.js"></script>
+<script src="assets/utils/format.js"></script>
+<script src="assets/utils/validation.js"></script>
+<script src="assets/auth/auth.js"></script>
+<script src="assets/services/session.service.js"></script>
+<script src="assets/data/demo-policy.js"></script>
+<script src="assets/utils/safe-text.js"></script>
+<script src="assets/renderers/card.renderer.js"></script>
+<script src="assets/renderers/timeline.renderer.js"></script>
+<script src="assets/services/market.service.js"></script>
+<script src="assets/services/navigation.service.js"></script>
+<script src="assets/services/interaction.service.js"></script>
+<script src="assets/services/knowledge-graph.service.js"></script>
+<script src="assets/services/comment.service.js"></script>
+<script src="assets/components/ui.js"></script>
+<script src="assets/components/poll.component.js"></script>
+<script src="assets/components/comment.component.js"></script>
+<script src="assets/components/toc.component.js"></script>
+<script src="assets/components/gallery.component.js"></script>
+<script src="assets/components/share.component.js"></script>
+<script src="assets/components/moderation.component.js"></script>
+<script src="assets/company.js"></script>
+<script src="assets/site.js"></script>
 </body>
 </html>

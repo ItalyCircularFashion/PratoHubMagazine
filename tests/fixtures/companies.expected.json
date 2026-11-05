@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Lanificio Mario Bellucci",
+    "city": "Prato",
+    "specialization": "Tessuti"
+  },
+  {
+    "name": "Pecci Filati",
+    "city": "Campi Bisenzio",
+    "specialization": "Filati"
+  },
+  {
+    "name": "Filati Biagioli Modesto",
+    "city": "",
+    "specialization": "Filati"
+  },
+  {
+    "name": "Marini Industrie",
+    "city": "Montemurlo",
+    "specialization": "Tessuti"
+  },
+  {
+    "name": "Gruppo Colle",
+    "city": "Cantagallo",
+    "specialization": "Tintura"
+  },
+  {
+    "name": "Lanificio Bisentino",
+    "city": "Carmignano",
+    "specialization": "Tessuti"
+  },
+  {
+    "name": "Unitech Industries",
+    "city": "Montemurlo",
+    "specialization": "Macchine tessili"
+  },
+  {
+    "name": "Lanificio dell’Olivo",
+    "city": "Campi Bisenzio",
+    "specialization": "Filati"
+  },
+  {
+    "name": "Rifò",
+    "city": "Prato",
+    "specialization": "Abbigliamento"
+  },
+  {
+    "name": "Lanificio Nova Fides",
+    "city": "Montemurlo",
+    "specialization": "Tessuti"
+  },
+  {
+    "name": "Lanificio Fratelli Balli",
+    "city": "Prato",
+    "specialization": "Tessuti"
+  },
+  {
+    "name": "Tintoria Cometa",
+    "city": "Prato",
+    "specialization": "Tintura"
+  }
+]

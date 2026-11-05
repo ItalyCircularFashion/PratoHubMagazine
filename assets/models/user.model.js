@@ -6,6 +6,8 @@
    public identity used everywhere on the platform (bylines,
    avatars, comment authorship, mentions).
    ============================================================ */
+window.FDM = window.FDM || {};
+FDM.models = FDM.models || {};
 
 /**
  * @typedef {Object} User
@@ -34,7 +36,7 @@
  * permissions are always DERIVED from `role` via FDM.permissions,
  * never stored on the user, so there is exactly one source of truth.
  */
-export function createUser(overrides){
+FDM.models.createUser = function createUser(overrides){
   overrides = overrides || {};
   return Object.assign({
     id: null,
@@ -58,4 +60,4 @@ export function createUser(overrides){
     notificationSettings: { replies: true, mentions: true, follows: true, admin: true },
     privacySettings: { showEmail: false, showCountry: true },
   }, overrides);
-}
+};

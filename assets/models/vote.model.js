@@ -2,6 +2,8 @@
    VOTE MODEL
    assets/models/vote.model.js
    ============================================================ */
+window.FDM = window.FDM || {};
+FDM.models = FDM.models || {};
 
 /**
  * @typedef {Object} Vote
@@ -12,7 +14,7 @@
  * @property {1|-1} value
  * @property {string} createdAt
  */
-export function createVote(overrides){
+FDM.models.createVote = function createVote(overrides){
   overrides = overrides || {};
   return Object.assign({
     id: null,
@@ -22,4 +24,4 @@ export function createVote(overrides){
     value: 1,
     createdAt: new Date().toISOString(),
   }, overrides);
-}
+};

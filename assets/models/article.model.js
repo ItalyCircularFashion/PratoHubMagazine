@@ -7,6 +7,8 @@
    needs: TOC sections, citations, and the cross-links that
    make the article behave like a node in the knowledge graph.
    ============================================================ */
+window.FDM = window.FDM || {};
+FDM.models = FDM.models || {};
 
 /**
  * @typedef {Object} ArticleSection
@@ -50,7 +52,7 @@
  * @property {Object[]} revisionHistory         - [{date, label, note}]
  * @property {string|null} pollId               - resolved via FDM.knowledgeGraph.findPoll()
  */
-export function createArticle(overrides){
+FDM.models.createArticle = function createArticle(overrides){
   overrides = overrides || {};
   return Object.assign({
     id: null,
@@ -85,4 +87,4 @@ export function createArticle(overrides){
     revisionHistory: [],
     pollId: null,
   }, overrides);
-}
+};

@@ -5,6 +5,7 @@
    about to enter the viewport (lazy mount), and every <img>
    uses loading="lazy" on top of that.
    ============================================================ */
+window.FDM = window.FDM || {};
 
 (function(){
 
@@ -77,5 +78,7 @@
     }, {rootMargin:'200px'});
     io.observe(container);
   }
+
+  FDM.galleryComponent = { mount };
 
 })();

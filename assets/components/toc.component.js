@@ -2,6 +2,7 @@
    TABLE OF CONTENTS + READING PROGRESS COMPONENT
    assets/components/toc.component.js
    ============================================================ */
+window.FDM = window.FDM || {};
 
 (function(){
 
@@ -45,5 +46,7 @@
       update();
     }
   }
+
+  FDM.tocComponent = { mount };
 
 })();

@@ -4,8 +4,7 @@
    Renders nothing for non-moderators. Mutates the in-memory
    model directly (no backend yet) and re-renders on change.
    ============================================================ */
-import { getCurrentUser } from '../services/auth.js';
-import { canModerateDiscussion, canLockDiscussion, canPinDiscussion } from '../permissions/permissions.js';
+window.FDM = window.FDM || {};
 
 (function(){
 
@@ -14,8 +13,8 @@ import { canModerateDiscussion, canLockDiscussion, canPinDiscussion } from '../p
     if(!container) return;
 
     function render(){
-      const user = getCurrentUser();
-      if(!canModerateDiscussion(user)){ container.innerHTML = ''; return; }
+      const user = FDM.auth.getCurrentUser();
+      if(!FDM.permissions.canModerateDiscussion(user)){ container.innerHTML = ''; return; }
       container.innerHTML = `
         <div class="moderation-toolbar">
           <span class="moderation-label">Moderator Tools</span>
@@ -23,11 +22,11 @@ import { canModerateDiscussion, canLockDiscussion, canPinDiscussion } from '../p
           <button class="btn btn-line mod-action" data-action="pin">${discussion.isPinned?'Unpin':'Pin'} Discussion</button>
         </div>`;
       container.querySelectorAll('.mod-action').forEach(btn => btn.addEventListener('click', () => {
-        const u = getCurrentUser();
-        if(btn.dataset.action === 'lock' && canLockDiscussion(u)){
+        const u = FDM.auth.getCurrentUser();
+        if(btn.dataset.action === 'lock' && FDM.permissions.canLockDiscussion(u)){
           discussion.moderationStatus = discussion.moderationStatus === 'locked' ? 'open' : 'locked';
         }
-        if(btn.dataset.action === 'pin' && canPinDiscussion(u)){
+        if(btn.dataset.action === 'pin' && FDM.permissions.canPinDiscussion(u)){
           discussion.isPinned = !discussion.isPinned;
         }
         render();
@@ -38,5 +37,7 @@ import { canModerateDiscussion, canLockDiscussion, canPinDiscussion } from '../p
     render();
     document.addEventListener('fdm:authchange', render);
   }
+
+  FDM.moderationComponent = { mountToolbar };
 
 })();

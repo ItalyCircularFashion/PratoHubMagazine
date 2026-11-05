@@ -1,32 +1,18 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta property="og:title" content="Domanda Tessile | Q&A su Produzione, Filiera e Certificazioni | PratoHub">
-<meta property="og:description" content="Domanda tecnica sul settore tessile e moda: produzione, filiera, certificazioni, sostenibilità e innovazione.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://italycircularfashion.github.io/PratoHubMagazine/question.html">
-<meta property="og:image" content="https://images.unsplash.com/photo-1758270804188-8ca0b6d254bc?w=1600&q=80&fit=crop&auto=format">
-<meta property="og:site_name" content="PratoHub">
-
-<meta name="description" content="Domanda tecnica per il settore tessile e moda. Produzione, filiera, certificazioni, sostenibilità e innovazione.">
-<meta name="keywords" content="domanda tessile, Q&A moda, produzione, filiera, certificazioni, sostenibilità, innovazione, PratoHub">
-<title>Domanda Tessile | Q&A su Produzione, Filiera e Certificazioni | PratoHub</title><meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Domanda Tessile | PratoHub">
-<meta name="twitter:description" content="Q&amp;A tecnico su produzione, filiera, certificazioni e innovazione tessile.">
+<title>How do you set acceptable defect tolerance for jacquard weaving? — PratoHub Magazine</title>
+<meta name="description" content="Expert answer: setting acceptable defect tolerance for jacquard weaving using the 4-point system and statistical thresholds.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://images.unsplash.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="icon" href="./favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="./apple-touch-icon.svg">
-<link rel="manifest" href="./manifest.json">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles/main.css">
+<link rel="stylesheet" href="assets/styles/integration.css">
+<link rel="icon" href="favicon.svg">
 <link rel="canonical" href="https://italycircularfashion.github.io/PratoHubMagazine/question.html">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","url":"https://italycircularfashion.github.io/PratoHubMagazine/question.html","name":"PratoHub","description":"Pagina question."}
-</script>
+
 </head>
 <body>
 
@@ -44,20 +30,15 @@
 
 <header id="siteHeader">
   <a href="index.html" class="logo">
-    <span class="l1">Forum della Moda</span>
+    <span class="l1">PratoHub Magazine</span>
     <span class="l2">FASHION · INTELLIGENCE · COMMUNITY</span>
   </a>
-  <nav class="primary" aria-label="Primary navigation">
-    <a href="news.html">News</a>
-    <a href="market.html">Market</a>
-    <a href="discussions.html">Discussions</a>
-    <a href="questions.html" class="current">Questions</a>
-    <a href="events.html">Events</a>
-    <a href="community.html">Community</a>
+  <nav class="primary" id="primaryNav" aria-label="Navigazione principale">
+    <a href="news.html">News</a><a href="market.html">Market</a><a href="discussions.html">Discussions</a><a href="questions.html">Questions</a><a href="events.html">Events</a><a href="community.html">Community</a><a href="aziende.html">Aziende</a><a href="distretto/">Distretto di Prato</a>
   </nav>
   <div class="nav-cta">
     <div id="authNav" class="auth-nav"></div>
-    <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button type="button" class="menu-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="primaryNav"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -68,15 +49,20 @@
   <div class="ticker-head"><span class="ticker-dot"></span><span class="ticker-label">Energy &amp; FX</span></div>
 </aside>
 
-<main id="main-content">
+<main id="main-content" tabindex="-1"><noscript><p class="nojs">Queste liste richiedono JavaScript. La navigazione e la pagina del progetto restano disponibili.</p></noscript><aside class="demo-notice" aria-label="Stato dimostrativo"><div><strong>MAGAZINE DEMO</strong> Articoli, profili, commenti, eventi e quotazioni sono esempi, non dati verificati o live. Le interazioni restano in questa pagina, senza account né invio al server. <a href="progetto.html">Limiti e metodo</a> · <a href="distretto/">Vai al Distretto con fonti</a></div></aside>
 
 <!-- QUESTION HEADER -->
-<section class="page-header" id="qHero" style="padding-top:clamp(110px, 14vw, 160px); padding-bottom:36px;">
+<section class="page-header" id="qHero" style="padding-bottom:0;">
   <div class="wrap">
-    <div class="eyebrow" style="margin-bottom:14px;">Q&amp;A tecnico</div>
+    <nav class="breadcrumbs" id="qBreadcrumbs" aria-label="Breadcrumb"></nav>
+    <div id="qBadges" style="margin-bottom:16px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;"></div>
     <h1 id="qTitle" style="font-size:clamp(24px,3.8vw,40px); max-width:860px;"></h1>
-    <p class="subtitle" id="qSubtitle" style="max-width:720px; display:none;"></p>
-    <p>Domande e risposte tecniche per il settore <strong>produzione</strong>, <strong>filiera</strong>, <strong>certificazioni</strong> e <strong>sostenibilità</strong>. Ogni risposta è scritta per rimanere utile anche a distanza di tempo.</p>
+    <div class="article-byline-meta" id="qByline" style="margin-top:20px;"></div>
+    <div style="margin-top:28px;" id="qStats"></div>
+    <div style="margin-top:28px; display:flex; gap:24px; align-items:center; padding-bottom:32px; border-bottom:1px solid var(--soft-gray);">
+      <div id="qVote"></div>
+      <div id="qShare" style="flex:1;"></div>
+    </div>
   </div>
 </section>
 
@@ -108,119 +94,90 @@
   </div>
 </section>
 
-<section class="newsletter" id="newsletter">
-  <div class="wrap reveal">
-    <div class="eyebrow" style="justify-content:center; color:rgba(255,255,255,.6);"><span style="color:rgba(255,255,255,.6)">Weekly Digest</span></div>
-    <h2 style="margin-top:22px;">Join 42,000 fashion professionals who read before everyone else.</h2>
-    <p>Trending discussions, the best expert answers, and what's worth your attention this week — every Friday.</p>
-    <form class="nl-form" onsubmit="return false;">
-      <input type="email" aria-label="Email address" placeholder="your@email.com" required>
-      <button type="submit">Subscribe →</button>
-    </form>
-    <div class="nl-note">No spam. Unsubscribe anytime.</div>
-  </div>
-</section>
-
-
-<div class="wrap"><div class="divider"></div></div>
-<section class="tight" style="padding-top:18px;">
-  <div class="wrap">
-    <div class="eyebrow" style="margin-bottom:14px;">Q&amp;A tecnico &amp; Produzione</div>
-    <h2 style="margin-bottom:18px;">Come orientarsi tra domande tecniche sulla filiera</h2>
-    <p>Le domande più frequenti nel settore tessile non sono quelle teoriche: riguardano la <strong>produzione</strong> quotidiana, la gestione delle <strong>certificazioni</strong>, l’interpretazione delle tolleranze difetto e l’ottimizzazione della <strong>filiera</strong>. Questa pagina raccoglie risposte scritte per essere riutilizzate.</p>
-    <p>Ogni risposta include criteri pratici e riferimenti a pratiche comuni nel distretto tessile italiano. Non trovi solo regole astratte: trovi criteri, soglie e segnali di controllo che puoi adattare alla tua linea produttiva.</p>
-    <p>Per approfondimenti più ampi visita <a href="news.html">News</a> e <a href="article.html">Approfondimenti</a>. Se vuoi analizzare l’impatto di un prodotto, prova la <a href="ecobalyse.html">dashboard LCA</a>.</p>
-    <h2 style="margin-top:28px; margin-bottom:14px;">Domande correlate</h2>
-    <p>Le domande che finiscono in questa sezione sono scelte perché ripetute nel tempo: <strong>tolleranza difetti</strong>, <strong>certificazioni</strong>, controllo processo, <strong>sostenibilità</strong>. Non sono casuali: rappresentano i punti dove la <strong>filiera</strong> italiana ha bisogno di chiarezza.</p>
-  </div>
-</section>
-
-
-<div class="wrap"><div class="divider"></div></div>
-<section class="tight" style="padding-top:18px;">
-  <div class="wrap">
-    <div class="eyebrow" style="margin-bottom:14px;">Q&amp;A tecnico &amp; Produzione</div>
-    <h2 style="margin-bottom:18px;">Come orientarsi tra domande tecniche sulla filiera</h2>
-    <p>Le domande più frequenti nel settore <strong>tessile</strong> non sono quelle teoriche: riguardano la <strong>produzione</strong> quotidiana, la gestione delle <strong>certificazioni</strong>, l’interpretazione delle tolleranze difetto e l’ottimizzazione della <strong>filiera</strong>. Questa pagina raccoglie risposte scritte per essere riutilizzate.</p>
-    <p>Ogni risposta include criteri pratici e riferimenti a pratiche comuni nel distretto <strong>tessile</strong> italiano. Non trovi solo regole astratte: trovi criteri, soglie e segnali di controllo che puoi adattare alla tua linea produttiva.</p>
-    <p>Per approfondimenti più ampi visita <a href="news.html">News</a> e <a href="article.html">Approfondimenti</a>. Se vuoi analizzare l’impatto di un prodotto, prova la <a href="ecobalyse.html">dashboard LCA</a>.</p>
-    <h2 style="margin-top:28px; margin-bottom:14px;">Domande correlate</h2>
-    <p>Le domande che finiscono in questa sezione sono scelte perché ripetute nel tempo: tolleranza difetti, <strong>certificazioni</strong>, controllo processo, <strong>sostenibilità</strong>. Non sono casuali: rappresentano i punti dove la <strong>filiera italiana</strong> ha bisogno di chiarezza.</p>
-  </div>
-</section>
-
-
-<div class="wrap"><div class="divider"></div></div>
-<section class="tight" style="padding-top:18px;">
-  <div class="wrap">
-    <div class="eyebrow" style="margin-bottom:14px;">Metodo &amp; Controllo</div>
-    <h2 style="margin-bottom:18px;">Perché le risposte tecniche sulla filiera servono a tutti</h2>
-    <p>Una risposta tecnica ben scritta non risolve solo una domanda singola: crea un riferimento riutilizzabile per tutta la <strong>produzione</strong>. Per questo premi contributi che includono soglie, metodi di controllo e riferimenti a normative condivise.</p>
-    <p>Le migliori risposte combinano teoria e pratica: spiegano il perché di una regola e mostrano come applicarla nella <strong>filiera italiana</strong>. Se vuoi approfondire l’impatto di un materiale, usa la <a href="ecobalyse.html">dashboard LCA</a>.</p>
-    <h3 style="margin-top:22px; margin-bottom:10px;">Risorse collegate</h3>
-    <p>Per domande più ampie usa <a href="discussions.html">Discussions</a>, per notizie <a href="news.html">News</a>, per fornitori <a href="company.html">Directory Aziende</a>. Ogni sezione è un pezzo dello stesso sistema informativo.</p>
-  </div>
-</section>
-
-
-<div class="wrap"><div class="divider"></div></div>
-<section class="tight" style="padding-top:18px;">
-  <div class="wrap">
-    <div class="eyebrow" style="margin-bottom:14px;">Strumenti &amp; Controllo</div>
-    <h2 style="margin-bottom:18px;">Come trasformare una domanda tecnica in un metodo condiviso</h2>
-    <p>Le migliori risposte non risolvono solo il caso singolo: creano un metodo riutilizzabile. Nella <strong>filiera tessile</strong>, questo significa definire criteri di accettazione, soglie di controllo e riferimenti a <strong>certificazioni</strong> e normative.</p>
-    <p>Se l’argomento coinvolge l’impatto ambientale di un processo, usa la <a href="ecobalyse.html">dashboard Ecobalyse</a> per ottenere dati quantitativi. Se la domanda riguarda la scelta di fornitori, consulta la <a href="company.html">Directory Aziende</a>.</p>
-    <h3 style="margin-top:22px; margin-bottom:10px;">Come verificare una risposta</h3>
-    <p>Confronta sempre con almeno una fonte esterna. Se la risposta include valori numerici, controlla che siano aggiornati all’ultimo mercato. Le risposte migliori sono quelle che resistono al tempo.</p>
-  </div>
-</section>
+<section class="newsletter" id="newsletter"><div class="wrap"><div class="eyebrow">PratoHub</div><h2>Conoscere la filiera, partendo dalle fonti.</h2><p>La newsletter non è ancora attiva. Non raccogliamo indirizzi email: esplora gli approfondimenti sul distretto e il metodo del progetto.</p><a class="btn btn-line" href="distretto/">Esplora il Distretto di Prato →</a></div></section>
 
 </main>
 
-<footer id="footer">
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <span class="l1" style="font-family:var(--serif);">Forum della Moda</span>
-        <p>Where fashion meets collective intelligence. Journalism and community, reinforcing one another.</p>
-      </div>
-      <div class="foot-col">
-        <h6>Read</h6>
-        <a href="news.html">News</a>
-        <a href="news.html#featured">Featured Stories</a>
-        <a href="index.html#agenda">Daily Agenda</a>
-        <a href="#newsletter">Newsletter</a>
-      </div>
-      <div class="foot-col">
-        <h6>Discuss</h6>
-        <a href="discussions.html">Discussions</a>
-        <a href="questions.html">Questions</a>
-        <a href="community.html">Experts</a>
-        <a href="community.html">Guidelines</a>
-      </div>
-      <div class="foot-col">
-        <h6>Explore</h6>
-        <a href="events.html">Events</a>
-        <a href="#">Designers</a>
-        <a href="market.html">Materials</a>
-        <a href="#">Brands</a>
-      </div>
-      <div class="foot-col">
-        <h6>Company</h6>
-        <a href="#">About</a>
-        <a href="#">Careers</a>
-        <a href="#">Press</a>
-        <a href="#">Contact</a>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>© 2026 Forum della Moda. All rights reserved.</span>
-      <span>Privacy · Terms · Editorial Standards</span>
-    </div>
-  </div>
-</footer>
+<footer id="footer"><div class="wrap"><div class="foot-top"><div class="foot-brand"><span class="l1">PratoHub Magazine</span><p>Tessile, innovazione e cultura del distretto. Magazine dimostrativo e approfondimenti con fonti.</p></div><div class="foot-col"><h2>Magazine</h2><a href="news.html">News</a><a href="discussions.html">Discussions</a><a href="questions.html">Questions</a><a href="events.html">Events</a></div><div class="foot-col"><h2>Esplora</h2><a href="distretto/">Distretto di Prato</a><a href="market.html">Market DEMO</a><a href="aziende.html">Aziende</a><a href="community.html">Community DEMO</a></div><div class="foot-col"><h2>Il progetto</h2><a href="progetto.html">Stato e metodo</a><a href="progetto.html#privacy">Privacy e servizi esterni</a><a href="demo.html">Prova le interazioni DEMO</a></div></div><div class="foot-bottom"><span>© 2026 Italy Circular Fashion · PratoHub Magazine</span><span>PratoHub: community e indicatori sono dimostrativi; aziende con fonti ufficiali.</span></div></div></footer>
 
-<script type="module" src="assets/pages/question.js"></script>
-<script type="module" src="assets/js/page-transitions.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="assets/models/user.model.js"></script>
+<script src="assets/models/discussion.model.js"></script>
+<script src="assets/models/article.model.js"></script>
+<script src="assets/models/comment.model.js"></script>
+<script src="assets/models/notification.model.js"></script>
+<script src="assets/models/vote.model.js"></script>
+<script src="assets/models/category.model.js"></script>
+<script src="assets/models/question.model.js"></script>
+<script src="assets/models/poll.model.js"></script>
+<script src="assets/models/company.model.js"></script>
+<script src="assets/permissions/permissions.js"></script>
+<script src="assets/data/articles.data.js"></script>
+<script src="assets/data/discussions.data.js"></script>
+<script src="assets/data/questions.data.js"></script>
+<script src="assets/data/events.data.js"></script>
+<script src="assets/data/notifications.data.js"></script>
+<script src="assets/data/polls.data.js"></script>
+<script src="assets/data/comments.data.js"></script>
+<script src="assets/data/companies.public.js"></script>
+<script src="assets/data/companies.data.js"></script>
+<script src="assets/data/experts.data.js"></script>
+<script src="assets/utils/format.js"></script>
+<script src="assets/utils/validation.js"></script>
+<script src="assets/auth/auth.js"></script>
+<script src="assets/services/session.service.js"></script>
+<script src="assets/data/demo-policy.js"></script>
+<script src="assets/utils/safe-text.js"></script>
+<script src="assets/renderers/card.renderer.js"></script>
+<script src="assets/renderers/timeline.renderer.js"></script>
+<script src="assets/services/market.service.js"></script>
+<script src="assets/services/navigation.service.js"></script>
+<script src="assets/services/interaction.service.js"></script>
+<script src="assets/services/knowledge-graph.service.js"></script>
+<script src="assets/services/comment.service.js"></script>
+<script src="assets/components/ui.js"></script>
+<script src="assets/components/poll.component.js"></script>
+<script src="assets/components/comment.component.js"></script>
+<script src="assets/components/toc.component.js"></script>
+<script src="assets/components/gallery.component.js"></script>
+<script src="assets/components/share.component.js"></script>
+<script src="assets/components/moderation.component.js"></script>
+<script src="assets/question.js"></script>
+<script src="assets/site.js"></script>
 </body>
 </html>
