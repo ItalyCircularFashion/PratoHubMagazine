@@ -11,7 +11,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default {
   root: '.',
-  base: '/',
+  base: '/PratoHubMagazine/',
   build: {
     outDir: 'dist',
     emptyOutDir: true,
