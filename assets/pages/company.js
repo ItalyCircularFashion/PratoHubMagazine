@@ -9,7 +9,7 @@ import { companies } from '../data/companies.data.js';
    ============================================================ */
 
 const urlId = new URLSearchParams(window.location.search).get('id');
-const company = findCompany(urlId) || companies[0];
+const company = findCompany(urlId) || companies[0]; if(!findCompany(urlId)){ console.warn('[company] fallback a primo record demo'); }
 
 if(!company){
   document.getElementById('coHero').appendChild(renderErrorState('Company not found.'));
@@ -39,7 +39,7 @@ function renderCompanyPage(co){
   document.getElementById('coLogo').innerHTML =
     `<img src="${co.logoUrl}" alt="${co.name}">`;
 
-  set('coSpecBadge', `<span class="eyebrow" style="display:inline-flex;">${co.specialization}</span>`);
+  set('coSpecBadge', `<span class="eyebrow" style="display:inline-flex;">${co.specialization}</span> <span class="company-badge ${co.datasetType==='REAL'?'is-real':'is-demo'}">${co.datasetType==='REAL'?'REAL':'DEMO'}</span>${co.datasetType!=='REAL'?' <span class="small" style="font-size:12px">Dati dimostrativi — non azienda reale</span>':''}`);
   set('coName', co.name);
   set('coMeta', [
     co.city && co.district && co.district !== co.city
@@ -148,6 +148,8 @@ function renderCompanyPage(co){
     document.getElementById('coVerify').insertAdjacentHTML('afterbegin',
       `<div style="font-size:12px; color:var(--stone); margin-bottom:10px;">VAT: ${co.vatNumber} &nbsp;&#x7C;&nbsp; REA: ${co.rea||'N/A'}</div>`);
 
+  // verifica separata (identità / informazioni / pubblicazione)
+  const verEl=document.getElementById('coVerify'); if(verEl && co.verification){ const v=co.verification; verEl.insertAdjacentHTML('beforeend', `<div style="font-size:12px;color:var(--stone);margin-top:8px">Identità: ${v.identity||''} · Info: ${v.information||''} · Pubblicazione: ${v.publishEligibility||''} (allowed:${co.publish?.allowed===true})</div>`);} 
   mountKgPanel('coExperts', '', related.experts, renderUserCard, 'No experts linked to this company yet.');
   mountKgPanel('coDiscussions', '', related.discussions, renderKgDiscussionItem, 'No linked discussions yet.');
   mountKgPanel('coQuestions', '', related.questions, renderKgQuestionItem, 'No linked questions yet.');

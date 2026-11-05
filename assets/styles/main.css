@@ -17,6 +17,7 @@
     --container: 1320px;
     --gutter: clamp(24px, 5vw, 64px);
     --ease: cubic-bezier(.16,1,.3,1);
+    --ink:#0E1626; --paper:#FDFBF7; --surface:#FFFFFF; --line:#E2E6EC; --line-2:#CBD4E0; --muted:#5B6B7A; --accent-strong:#003B7A; --data-bg:#F4F7FA; --data-line:#D7E3F0; --community-bg:#F7F5F0; --radius:6px; --radius-lg:10px; --container-article:72ch;
   }
 
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -213,7 +214,8 @@
   .sec-head .desc{max-width:420px; font-size:15px;}
   .divider{height:1px; background:var(--soft-gray); width:100%;}
 
-  .reveal{opacity:0; transform:translateY(36px); transition:opacity .9s var(--ease), transform .9s var(--ease);}
+  .reveal{opacity:0; transform:translateY(20px); transition:opacity .6s var(--ease), transform .6s var(--ease)}
+  @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none}}
   .reveal.is-visible{opacity:1; transform:translateY(0);}
 
   /* ===== FEATURED STORY ===== */
@@ -935,3 +937,25 @@ body.is-entering #page-transition{
   55%{ transform: scaleX(1); transform-origin:left; background:#0A5EA6; }
   100%{ transform: scaleX(0); transform-origin:left; background:#0A5EA6; }
 }
+
+
+/* WP02: Premium Editorial x Industrial Intelligence */
+.surface-editorial{background:var(--surface)}
+.surface-data{background:var(--data-bg);border:1px solid var(--data-line);border-radius:var(--radius-lg)}
+.surface-community{background:var(--community-bg);border:1px solid var(--line);border-radius:var(--radius-lg)}
+.article-body{max-width:var(--container-article);margin-left:auto;margin-right:auto;line-height:1.75;font-size:1.0625rem}
+@supports not (interpolate-size: allow-keywords) { .reveal{transition-duration:.6s} }
+
+/* WP08 Directory B2B — DEMO vs REAL */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.demo-banner{margin:12px 0;padding:10px 14px;background:#FFF3C4;border:1px solid #E9C81E;border-radius:4px;font-size:13px;line-height:1.5}
+.company-badge{display:inline-flex;align-items:center;gap:6px;font:700 10px/1 var(--mono);letter-spacing:.12em;padding:4px 8px;border-radius:999px;text-transform:uppercase}
+.company-badge.is-demo{background:#FFF3C4;border:1px solid #E9C81E;color:#5b4a00}
+.company-badge.is-real{background:#E6F4EA;border:1px solid #1e7d32;color:#1e7d32}
+.chip-group-label{font:700 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin:18px 0 8px}
+.dataset-switch{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+.dataset-switch a{border:1px solid var(--soft-gray);padding:8px 12px;font-size:12.5px;background:var(--white)}
+.dir-note{font-size:12.5px;color:var(--stone);margin-top:18px;max-width:68ch}
+.empty{padding:24px;border:1px dashed var(--soft-gray);text-align:center;color:var(--stone)}
+.empty button{margin-left:8px}
+@media (max-width:640px){.filter-bar{flex-direction:column;align-items:stretch}.filter-bar .search-bar{max-width:none}.company-grid{grid-template-columns:1fr}}

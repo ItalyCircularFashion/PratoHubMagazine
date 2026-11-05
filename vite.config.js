@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 const pages = [
   'index', 'news', 'article', 'discussions', 'thread',
   'questions', 'question', 'events', 'community',
-  'market', 'company', 'notifications', 'ecobalyse',
+  'market', 'company', 'aziende', 'notifications', 'ecobalyse',
 ];
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
