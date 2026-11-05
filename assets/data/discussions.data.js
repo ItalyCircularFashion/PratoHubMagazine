@@ -104,4 +104,47 @@ export const discussions = [
     viewCount:1760, replyCount:25, voteCount:108, readingTime:5,
     recommendedExpertIds:['exp-marco','exp-paolo'], createdAt:'2026-06-20T08:00:00Z', updatedAt:'2026-06-25T11:25:00Z',
   }),
+  createDiscussion({
+    id:'disc-scuola-rcs-grs', title:'RCS e GRS: quando il riciclato diventa certificabile nel tessile',
+    authorId:'u-201', category:'Certificazioni', tags:['RCS','GRS','Recycled','Chain of Custody'],
+    viewCount:4200, replyCount:84, voteCount:275, readingTime:7, isPinned:true,
+    recommendedExpertIds:['exp-marta','exp-federica'], createdAt:'2026-06-28T08:00:00Z', updatedAt:'2026-06-30T09:00:00Z',
+    relatedArticleIds:['art-tariff-spreadsheet'],
+  }),
+  createDiscussion({
+    id:'disc-scuola-make-or-buy', title:'Make or Buy nel tessile: quando convenienza e controllo entrano in conflitto',
+    authorId:'u-201', category:'Strategia', tags:['Make or Buy','Outsourcing','Transazione'],
+    viewCount:3700, replyCount:67, voteCount:241, readingTime:7,
+    recommendedExpertIds:['exp-federica','exp-marta'], createdAt:'2026-06-27T08:00:00Z', updatedAt:'2026-06-29T16:00:00Z',
+  }),
+  createDiscussion({
+    id:'disc-scuola-kraljic', title:'Matrice Kraljic applicata ai fornitori di filiera: categorie, leve e contratti',
+    authorId:'u-201', category:'Acquisti', tags:['Kraljic','Sourcing','Vendor Rating','Acquisti'],
+    viewCount:3100, replyCount:55, voteCount:210, readingTime:6,
+    recommendedExpertIds:['exp-federica','exp-marta'], createdAt:'2026-06-26T08:00:00Z', updatedAt:'2026-06-28T11:00:00Z',
+  }),
+  createDiscussion({
+    id:'disc-scuola-mps-mrp', title:'MPS e MRP per il tessile: un caso pratico tra forecast e distinta base',
+    authorId:'u-201', category:'Pianificazione', tags:['MPS','MRP','BOM','Forecast','Lead Time'],
+    viewCount:2800, replyCount:49, voteCount:189, readingTime:7,
+    recommendedExpertIds:['exp-federica','exp-renzo'], createdAt:'2026-06-25T08:00:00Z', updatedAt:'2026-06-27T14:00:00Z',
+  }),
+  createDiscussion({
+    id:'disc-scuola-gantt', title:'Gantt del ciclo tessile: bottlenecks, celle a U e capacity finita vs infinita',
+    authorId:'u-201', category:'Produzione', tags:['Gantt','Cycle Time','Bottleneck','Lean'],
+    viewCount:2600, replyCount:44, voteCount:175, readingTime:6,
+    recommendedExpertIds:['exp-federica','exp-paolo'], createdAt:'2026-06-24T08:00:00Z', updatedAt:'2026-06-26T10:00:00Z',
+  }),
+  createDiscussion({
+    id:'disc-scuola-bullwhip', title:'Effetto bullwhip nel tessile: perché gli ordini amplificano la domanda reale',
+    authorId:'u-201', category:'Supply Chain', tags:['Bullwhip','Forecast','Lead Time','SCM'],
+    viewCount:3300, replyCount:61, voteCount:228, readingTime:7,
+    recommendedExpertIds:['exp-marta','exp-federica'], createdAt:'2026-06-23T08:00:00Z', updatedAt:'2026-06-25T09:00:00Z',
+  }),
+  createDiscussion({
+    id:'disc-scuola-finissaggio', title:'Finissaggio sostenibile: normative RSL, chimica ridotta e controllo tintoria',
+    authorId:'u-201', category:'Sostenibilita', tags:['Finishing','RSL','ZDHC','Tintoria','Sostenibilita'],
+    viewCount:2400, replyCount:39, voteCount:160, readingTime:6,
+    recommendedExpertIds:['exp-chiara','exp-anna'], createdAt:'2026-06-22T08:00:00Z', updatedAt:'2026-06-24T13:00:00Z',
+  }),
 ];

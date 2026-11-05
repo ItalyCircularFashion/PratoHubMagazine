@@ -1,30 +1,24 @@
 /* ============================================================
+   DISCUSSIONS.JS — page-specific composition for discussions.html.
+   ============================================================ */
 import { getCurrentUser, isAuthenticated, login, logout, setMockUser, MOCK_USERS } from '../services/auth.js';
 import { renderRoleBadge, renderAuthNav, mountAuthNav, isVisibleFor, applyPermissionVisibility, gateOrCta, renderCommentComposer, renderVoteControl, mountRoleSwitcher } from '../components/ui.js';
 import { canFollow } from '../permissions/permissions.js';
 import { initReveal, initChipFilters, initNewsletterForm, initPagination, initSearchBars, wireSearchFilter, wireSortSelect, wireChipFilter, wireChipCategoryFilter, initVoteControls } from '../services/interaction.service.js';
 import { findArticle, findDiscussion, findQuestion, findEvent, findPoll, findCompany, findUser, getRelatedForCompany, getRelatedForArticle as getRelatedForArticle_kg, getRelatedForDiscussion, getRelatedForQuestion, findExpert, findCommodity } from '../services/knowledge-graph.service.js';
-import { mountBreadcrumbs, navigateTo, navigateBack } from '../services/navigation.service.js';
-import { getCurrentUser as sessionGetCurrentUser, isFollowing, toggleFollow } from '../services/session.service.js';
+import { mountBreadcrumbs } from '../services/navigation.service.js';
+import { isFollowing, toggleFollow } from '../services/session.service.js';
 import { discussions } from '../data/discussions.data.js';
-   DISCUSSIONS.JS — page-specific composition for discussions.html.
-   Every render, lookup, permission check and interaction wiring
-   is delegated to an existing FDM service/component/renderer.
-   ============================================================ */
-
-const discussions = discussions || [];
-
-// ---- Breadcrumbs ----
 mountBreadcrumbs('discBreadcrumbs', [
   { label:'Home', href:'index.html' },
   { label:'Discussions' },
 ]);
 
 // ---- Header stats ----
-const totalReplies = discussions.reduce((sum,d) => sum + d.replyCount, 0);
-const totalVotes = discussions.reduce((sum,d) => sum + d.voteCount, 0);
+const totalReplies = discussionList.reduce((sum,d) => sum + d.replyCount, 0);
+const totalVotes = discussionList.reduce((sum,d) => sum + d.voteCount, 0);
 document.getElementById('discStats').appendChild(renderStatStrip([
-  { value: discussions.length, label:'Open Threads' },
+  { value: discussionList.length, label:'Open Threads' },
   { value: totalReplies, label:'Replies' },
   { value: totalVotes, label:'Votes Cast' },
 ]));
@@ -37,7 +31,7 @@ document.getElementById('createDiscussionCta').innerHTML = gateOrCta(
 );
 
 // ---- Categories: derived from the data, not hardcoded ----
-const categoryCounts = discussions.reduce((acc,d) => { acc[d.category] = (acc[d.category]||0)+1; return acc; }, {});
+const categoryCounts = discussionList.reduce((acc,d) => { acc[d.category] = (acc[d.category]||0)+1; return acc; }, {});
 const categories = Object.keys(categoryCounts);
 
 document.getElementById('discTopics').append(...categories.map(cat =>
@@ -57,7 +51,7 @@ function makeFollowHtml(d){
 
 // ---- Render the list (model + resolved author, via the extended renderDiscussionRow) ----
 document.getElementById('discListContainer').append(
-  ...discussions.map(d => renderDiscussionRow(d, findUser(d.authorId), makeFollowHtml(d)))
+  ...discussionList.map(d => renderDiscussionRow(d, findUser(d.authorId), makeFollowHtml(d)))
 );
 
 // ---- Search, sort, category filter — all existing interaction-service functions ----

@@ -1,8 +1,10 @@
 import { createCompany } from '../models/company.model.js';
 
 /* ============================================================
-   COMPANIES SEED DATA — Prato Textile District
-   assets/data/companies.data.js
+   COMPANIES SEED DATA — DEMO / FICTIONAL SAMPLE DATA
+   Companies, VAT numbers, REA codes and certifications in
+   this file are invented for demonstration only and do NOT
+   refer to real entities. Do not treat as factual records.
    ============================================================ */
 
 export const companies = [

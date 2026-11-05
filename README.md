@@ -28,13 +28,20 @@ ESM-first static site for fashion/textile discussion, market data, knowledge gra
 ```bash
 npm install
 npm run build
+npm run dev
 ```
 
 ## Deployment
 
-Deploy `dist/` to a static host with SPA fallback. See `output/ph28/` and `output/deploy01/` for hosting notes.
+Deploy `dist/` to GitHub Pages (branch `main`, folder `/`) or any static host.
+Build command: `npm run build` — output directory: `dist`.
 
-## Documentation
+## Note on data
 
-- Release notes: `output/release/RELEASE_NOTES_v1.0.0.md`
-- Certification: `output/release/FINAL_CERTIFICATION.md`
+Company and expert data in `assets/data/` are demo / fictional sample data for
+demonstration purposes only. VAT numbers, REA codes, certifications and company
+names do not refer to real entities and must not be treated as factual records.
+
+## License
+
+MIT — see `LICENSE`.

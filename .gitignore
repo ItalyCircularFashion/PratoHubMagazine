@@ -1,6 +1,5 @@
 # Dependencies
 node_modules/
-package-lock.json
 
 # Build output
 dist/
@@ -26,6 +25,10 @@ pnpm-debug.log*
 *.tmp
 *.temp
 .obsidian/
+.claudian/
+.hermes/
+*.base
+Senza nome.base
 
 # OS/IDE
 .DS_Store
@@ -48,3 +51,4 @@ oc24-migration-execution-playbook.md
 playwright.config.ts
 tests/
 migration-dependency-graph.html
+*.bak-20261105T1253Z

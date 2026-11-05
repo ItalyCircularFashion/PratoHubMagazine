@@ -3,297 +3,280 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simulatore Impatto Tessile | Analisi LCA Moda | PratoHub</title>
-<meta name="description" content="Simulatore di sostenibilità tessile basato su Ecobalyse: valuta l'impatto ambientale di un prodotto moda con indicatori LCA, materiali, filiera e modelli di business.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://pratohub.example.com/ecobalyse.html">
-<meta property="og:title" content="Simulatore Impatto Tessile | Analisi LCA Moda | PratoHub">
-<meta property="og:description" content="Valuta l'impatto ambientale di un prodotto tessile con il simulatore Ecobalyse di PratoHub: LCA, indicatori e scenari di sostenibilità.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://pratohub.example.com/ecobalyse.html">
-<meta property="og:image" content="https://images.unsplash.com/photo-1583301718876-4bc02730b666?w=1600&q=80&fit=crop&auto=format">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Simulatore Impatto Tessile | PratoHub">
-<meta name="twitter:description" content="Analisi LCA moda e sostenibilità tessile con dati Ecobalyse.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Simulatore Impatto Tessile | LCA, Carbon Footprint, Sostenibilità | PratoHub</title>
+<meta name="description" content="Simulatore LCA per l'impatto ambientale dei prodotti tessili: carbon footprint, acqua, energia, tossicità. Metodologia Ecobalyse. Dati B2B per filiera, sostenibilità e innovazione.">
+<meta name="keywords" content="LCA, carbon footprint, sostenibilità, filiera, moda, PratoHub, Ecobalyse, impatto ambientale, tessile, innovazione">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles/main.css">
+<link rel="stylesheet" href="assets/styles/ecobalyse.css">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.svg">
+<meta property="og:title" content="Simulatore Impatto Tessile | Analisi LCA Moda | PratoHub">
+<meta property="og:description" content="Simulatore LCA per l'impatto ambientale dei prodotti tessili: carbon footprint, acqua, energia, tossicità.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://italycircularfashion.github.io/PratoHubMagazine//ecobalyse">
+<meta property="og:image" content="https://italycircularfashion.github.io/PratoHubMagazine//apple-touch-icon.svg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simulatore Impatto Tessile | Analisi LCA Moda | PratoHub">
+<meta name="twitter:description" content="Simulatore LCA per l'impatto ambientale dei prodotti tessili.">
+<link rel="canonical" href="https://italycircularfashion.github.io/PratoHubMagazine//ecobalyse">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Simulatore Impatto Tessile",
-  "applicationCategory": "Sustainability",
+  "name": "Simulatore Impatto Tessile PratoHub",
+  "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web",
-  "url": "https://pratohub.example.com/ecobalyse.html",
-  "description": "Simulatore di sostenibilità tessile basato su Ecobalyse per l'analisi LCA di prodotti moda.",
-  "about": [
-    "sostenibilità tessile",
-    "life cycle assessment",
-    "moda circolare",
-    "impatto ambientale"
-  ]
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+  "description": "Simulatore LCA per l'impatto ambientale dei prodotti tessili basato sulla metodologia Ecobalyse."
 }
 </script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "url": "https://pratohub.example.com/ecobalyse.html",
-  "name": "Simulatore Impatto Tessile",
-  "description": "Guida agli indicatori ambientali del settore tessile con simulatore Ecobalyse."
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://italycircularfashion.github.io/PratoHubMagazine//"},
+    {"@type": "ListItem", "position": 2, "name": "Ecobalyse", "item": "https://italycircularfashion.github.io/PratoHubMagazine//ecobalyse"}
+  ]
 }
 </script>
-
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.svg">
-<link rel="manifest" href="/manifest.json">
 </head>
 <body>
-<a class="skip-link" href="#main-content">Salta al contenuto principale</a>
-
-<div class="folio" id="folio">
-  <div class="folio-inner">
-    <span class="folio-mark">E</span>
-    <div class="folio-line"></div>
-    <span class="folio-label" data-for="pageHeader">Simulatore</span>
-    <span class="folio-label" data-for="step-product">Prodotto</span>
-    <span class="folio-label" data-for="step-materials">Materiali</span>
-    <span class="folio-label" data-for="step-production">Produzione</span>
-    <span class="folio-label" data-for="step-scenario">Scenario</span>
-    <span class="folio-label" data-for="results">Risultati</span>
-    <span class="folio-label" data-for="education">Educazione</span>
-    <div class="folio-line"></div>
+<header class="eco-header">
+  <div class="wrap">
+    <div class="eco-breadcrumbs" aria-label="Breadcrumb">
+      <a href="index.html">PratoHub</a>
+      <span class="sep" aria-hidden="true">/</span>
+      <span class="current" aria-current="page">Simulatore Ecobalyse</span>
+    </div>
+    <div class="eco-meta">
+      <div>
+        <div class="eyebrow">Strumenti di sostenibilità</div>
+        <h1>Simulatore Impatto Tessile</h1>
+        <p class="subtitle">Analisi LCA di prodotto secondo la metodologia Ecobalyse. Carbon footprint, acqua, energia e tossicità per scenari business e filiera.</p>
+        <p><strong>Filiera italiana</strong>, <strong>sostenibilità</strong> e <strong>innovazione</strong> in un unico strumento B2B.</p>
+      </div>
+      <div class="eco-actions">
+        <button class="btn btn-primary" id="ecoShareBtn">Condividi scenario</button>
+        <button class="btn btn-ghost" id="ecoResetBtn">Reset</button>
+      </div>
+    </div>
   </div>
-</div>
-
-<header id="siteHeader">
-  <a href="index.html" class="logo"><span class="l1">Forum della Moda</span><span class="l2">Prato</span></a>
-  <nav aria-label="Navigazione principale">
-    <a href="index.html">Home</a>
-    <a href="news.html">News</a>
-    <a href="discussions.html">Discussioni</a>
-    <a href="market.html">Market</a>
-    <a href="events.html">Eventi</a>
-    <a href="community.html">Community</a>
-    <a href="notifications.html">Notifiche</a>
-  </nav>
-  <a id="notifBell" href="notifications.html" class="notif-bell" aria-label="Notifiche">2</a>
 </header>
 
-<main id="main-content">
-  <section class="page-wrap">
+<section class="eco-hero--dashboard" id="ecoMain">
+  <div class="wrap">
+    <div class="eco-dashboard-grid" id="ecoDashboardGrid">
+      <article class="eco-card eco-score-card" aria-labelledby="ecoScoreLabel">
+        <div class="eco-score-label" id="ecoScoreLabel">Punteggio impatto</div>
+        <div class="eco-score-value" id="ecoScoreValue">—</div>
+        <div class="eco-score-caption" id="ecoScoreCaption">Inserisci un prodotto per stimare l’impatto totale.</div>
+        <div class="eco-unit" id="ecoScoreUnit">Pts</div>
+      </article>
 
-    <button type="button" class="back-link" onclick="history.back()">← Indietro</button>
-    <nav aria-label="Breadcrumb" id="ecoBreadcrumbs"></nav>
-
-    <section class="eco-hero" id="pageHeader">
-      <div class="eco-hero-inner">
-        <div class="eco-hero-copy">
-          <h1>Simulatore Impatto Tessile</h1>
-          <p class="eco-subtitle">Valuta l'impatto ambientale di un prodotto moda attraverso dati LCA</p>
-        </div>
-        <div class="eco-hero-badges">
-          <span class="eco-badge">Metodologia LCA</span>
-          <span class="eco-badge">Dati Ecobalyse</span>
-          <span class="eco-badge">Solo indicazioni</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="eco-stepper" aria-label="Fasi simulazione">
-      <ol class="eco-steps">
-        <li><button type="button" class="eco-step-btn" data-target="step-product" aria-controls="step-product"><span class="eco-step-num">1</span><span class="eco-step-label">Prodotto</span></button></li>
-        <li><button type="button" class="eco-step-btn" data-target="step-materials" aria-controls="step-materials"><span class="eco-step-num">2</span><span class="eco-step-label">Materiali</span></button></li>
-        <li><button type="button" class="eco-step-btn" data-target="step-production" aria-controls="step-production"><span class="eco-step-num">3</span><span class="eco-step-label">Produzione</span></button></li>
-        <li><button type="button" class="eco-step-btn" data-target="step-scenario" aria-controls="step-scenario"><span class="eco-step-num">4</span><span class="eco-step-label">Scenario</span></button></li>
-      </ol>
-    </section>
-
-    <section class="eco-form-wrap" id="ecoMain">
-      <form class="eco-form" id="ecoForm" onsubmit="return false" autocomplete="off">
-
-        <fieldset class="eco-card" id="step-product">
-          <legend class="eco-card-title">Prodotto</legend>
-          <div class="eco-form-row">
-            <label for="ecoProduct">Tipologia</label>
-            <select id="ecoProduct" required>
-              <option value="tshirt" selected>T-shirt</option>
-              <option value="jeans">Jeans</option>
-              <option value="sweater">Maglia</option>
-              <option value="shirt">Camicia</option>
-              <option value="other">Altro</option>
-            </select>
+      <article class="eco-card eco-indicator-card" id="ecoResultsInner" aria-labelledby="ecoResultsLabel">
+        <div class="eco-card-title" id="ecoResultsLabel">Indicatori ambientali</div>
+        <div class="eco-indicators" id="ecoIndicators">
+          <div class="eco-indicator">
+            <span class="eco-indicator-label">Carbon footprint</span>
+            <span class="eco-indicator-value" id="ecoCarbon">—</span>
           </div>
-          <div class="eco-form-row">
-            <label for="ecoMass">Peso <span class="eco-hint" id="ecoMassHint">(g)</span></label>
-            <input id="ecoMass" type="number" min="20" max="4000" value="150" step="1" required>
+          <div class="eco-indicator">
+            <span class="eco-indicator-label">Acqua</span>
+            <span class="eco-indicator-value" id="ecoWater">—</span>
           </div>
-        </fieldset>
-
-        <fieldset class="eco-card" id="step-materials">
-          <legend class="eco-card-title">Materiali</legend>
-          <div id="ecoMaterialRows" class="eco-material-usage"></div>
-          <div id="ecoShareSummary" class="eco-share-summary" hidden></div>
-        </fieldset>
-
-        <fieldset class="eco-card" id="step-production">
-          <legend class="eco-card-title">Produzione</legend>
-          <div class="eco-form-row">
-            <label for="ecoQuantity">Quantità produzione</label>
-            <input id="ecoQuantity" type="number" min="1" max="10000000" value="1000" step="1" required>
+          <div class="eco-indicator">
+            <span class="eco-indicator-label">Energia</span>
+            <span class="eco-indicator-value" id="ecoEnergy">—</span>
           </div>
-          <div class="eco-form-row">
-            <label for="ecoPrice">Prezzo stimato (€)</label>
-            <input id="ecoPrice" type="number" min="0" max="50000" value="19" step="0.5" required>
+          <div class="eco-indicator">
+            <span class="eco-indicator-label">Risorse</span>
+            <span class="eco-indicator-value" id="ecoResource">—</span>
           </div>
-          <div class="eco-form-row">
-            <label for="ecoCountry">Paese filatura</label>
-            <select id="ecoCountry">
-              <option value="IT" selected>Italia</option>
-              <option value="FR">Francia</option>
-              <option value="ES">Spagna</option>
-              <option value="DE">Germania</option>
-              <option value="CN">Cina</option>
-              <option value="IN">India</option>
-              <option value="BD">Bangladesh</option>
-              <option value="PK">Pakistan</option>
-              <option value="TR">Turchia</option>
-              <option value="PT">Portogallo</option>
-            </select>
-          </div>
-          <div class="eco-form-row">
-            <label for="ecoBusiness">Tipo di impresa</label>
-            <select id="ecoBusiness">
-              <option value="large-business-without-services" selected>Grande impresa senza servizi</option>
-              <option value="large-business-with-services">Grande impresa con servizi</option>
-              <option value="sme">Piccola e media impresa</option>
-              <option value="individual-company">Micro impresa / individuale</option>
-            </select>
-          </div>
-        </fieldset>
-
-        <fieldset class="eco-card" id="step-scenario">
-          <legend class="eco-card-title">Scenario</legend>
-          <div class="eco-form-row eco-form-row-inline">
-            <label class="eco-checkbox">
-              <input type="checkbox" id="ecoUpcycled">
-              <span class="eco-checkbox-label">Upcycling attivo</span>
-            </label>
-          </div>
-          <div class="eco-form-actions">
-            <button type="button" class="eco-btn" id="ecoSimulate">Calcola scenario</button>
-            <button type="button" class="eco-btn eco-btn-ghost" id="ecoReset">Azzera</button>
-          </div>
-        </fieldset>
-
-        <div id="ecoError" role="alert" aria-live="assertive"></div>
-        <div id="ecoLoading" aria-live="polite"></div>
-      </form>
-    </section>
-
-    <section class="eco-results" id="results" hidden>
-      <header class="section-header">
-        <h2>Risultati simulazione</h2>
-        <p>Valori stimati dal modello Ecobalyse. Indicazioni scientifiche, non certificazioni legali.</p>
-      </header>
-
-      <div class="eco-results-grid">
-        <article class="eco-card eco-score-card" aria-labelledby="ecoScoreLabel">
-          <div class="eco-score-label" id="ecoScoreLabel">Impatto climatico stimato</div>
-          <div class="eco-score-value" id="ecoScore">—</div>
-          <div class="eco-score-caption">kg CO₂e per unità</div>
-        </article>
-
-        <article class="eco-card eco-indicator-card" id="ecoResultsInner" aria-labelledby="ecoResultsLabel">
-          <h3 id="ecoResultsLabel" class="eco-card-title">Indicatori</h3>
-        </article>
-      </div>
-
-      <details class="eco-card eco-compare">
-        <summary class="eco-card-title">Confronto scenari</summary>
-        <div class="eco-compare-grid">
-          <div>
-            <h3 class="eco-card-title">Scenario tradizionale</h3>
-            <p class="eco-caption">Filatura e produzione standard, materiali vergini prevalenti, senza upcycling.</p>
-          </div>
-          <div>
-            <h3 class="eco-card-title">Scenario più sostenibile</h3>
-            <p class="eco-caption">Materiali riciclati/riciclati, filiera corta e upcycling riducono gli indicatori.</p>
+          <div class="eco-indicator">
+            <span class="eco-indicator-label">Ecossistemi / tossicità</span>
+            <span class="eco-indicator-value" id="ecoEco">—</span>
           </div>
         </div>
-      </details>
+      </article>
 
-      <div class="eco-notes" id="ecoNotes" hidden></div>
-    </section>
+      <article class="eco-card eco-product-card" aria-labelledby="ecoProductLabel">
+        <div class="eco-card-title" id="ecoProductLabel">Prodotto</div>
+        <div class="eco-form-row">
+          <label for="ecoProduct">Categoria</label>
+          <select id="ecoProduct">
+            <option value="tshirt">T-shirt / Polo</option>
+            <option value="pantaloni">Pantaloni</option>
+            <option value="camicia">Camicia</option>
+            <option value="giacca">Giacca</option>
+            <option value="vestito">Vestito</option>
+            <option value="cappotto">Cappotto</option>
+          </select>
+        </div>
+        <div class="eco-form-row">
+          <label for="ecoMass">Massa (kg)</label>
+          <input type="number" id="ecoMass" value="0.15" min="0.01" step="0.01">
+        </div>
+        <div class="eco-form-row">
+          <label for="ecoPrice">Prezzo nuovo (€)</label>
+          <input type="number" id="ecoPrice" value="10" min="0" step="1">
+        </div>
+        <div class="eco-form-row">
+          <label for="ecoRefs">Numero di riferimenti</label>
+          <input type="number" id="ecoRefs" value="100000" min="0" step="1000">
+        </div>
+        <div class="eco-form-row eco-form-row-inline">
+          <label class="eco-checkbox" for="ecoUpcycled">
+            <input type="checkbox" id="ecoUpcycled">
+            <span>Upcycled / rimanufacturé</span>
+          </label>
+        </div>
+        <div class="eco-form-row">
+          <label for="ecoBusiness">Business</label>
+          <select id="ecoBusiness">
+            <option value="small-business">PME/TPE</option>
+            <option value="large-business-without-services" selected>Grande impresa senza servizi</option>
+            <option value="large-business-with-services">Grande impresa con servizi</option>
+          </select>
+        </div>
+      </article>
 
-    <section class="eco-knowledge" id="knowledge">
-      <header class="section-header">
-        <h2>Conoscenza</h2>
-        <p>Contenuti editoriali correlati alla sostenibilità tessile.</p>
-      </header>
+      <article class="eco-card eco-materials-card" aria-labelledby="ecoMaterialsLabel">
+        <div class="eco-card-title" id="ecoMaterialsLabel">Materie prime</div>
+        <div class="eco-material-usage" id="ecoMaterials"></div>
+        <button class="btn btn-ghost" id="ecoAddMaterialBtn" style="margin-top:16px;">Aggiungi materia</button>
+        <div class="eco-explorer-block" id="ecoMaterialsExplorer" style="display:none;">
+          <div class="eco-explorer-title">Dettaglio materiali</div>
+          <div class="eco-explorer-row">
+            <div class="eco-explorer-cell eco-explorer-cell--label"><div>Materiale</div></div>
+            <div class="eco-explorer-cell eco-explorer-cell--label"><div>Paese</div></div>
+            <div class="eco-explorer-cell eco-explorer-cell--label"><div>Quote</div></div>
+            <div class="eco-explorer-cell eco-explorer-cell--label"><div>Impatto</div></div>
+          </div>
+          <div id="ecoMaterialsExplorerRows"></div>
+        </div>
+      </article>
 
-      <div class="eco-grid">
-        <article class="eco-card eco-article">
-          <h3 class="eco-card-title">LCA nel settore tessile</h3>
-          <p>La Life Cycle Assessment quantifica impatti ambientali lungo tutta la filiera: materie prime, produzione, distribuzione e fine vita.</p>
-        </article>
-        <article class="eco-card eco-article">
-          <h3 class="eco-card-title">Materiali riciclati e impatto ambientale</h3>
-          <p>L'uso di poliestere riciclato, cotone riciclato e fibre rigenerate riduce il consumo di risorse e le emissioni di CO₂e.</p>
-        </article>
-        <article class="eco-card eco-article">
-          <h3 class="eco-card-title">Upcycling e economia circolare</h3>
-          <p>Modelli circolari estendono la vita dei materiali, riducono rifiuti e abbassano l'impatto per unità prodotta.</p>
-        </article>
+      <article class="eco-card eco-chain-card" aria-labelledby="ecoChainLabel">
+        <div class="eco-card-title" id="ecoChainLabel">Filiera</div>
+        <div class="eco-chain" id="ecoChain"></div>
+        <button class="btn btn-ghost" id="ecoAddChainBtn" style="margin-top:16px;">Aggiungi stadio</button>
+        <div class="eco-explorer-block" id="ecoChainExplorer" style="display:none;">
+          <div class="eco-explorer-title">Dettaglio filiera</div>
+          <div id="ecoStageRows"></div>
+        </div>
+      </article>
+
+      <article class="eco-card eco-params-card" aria-labelledby="ecoParamsLabel">
+        <div class="eco-card-title" id="ecoParamsLabel">Scenario</div>
+        <div class="eco-form-row">
+          <label for="ecoCountry">Paese filatura / trasformazione</label>
+          <select id="ecoCountry">
+            <option value="CN">Cina</option>
+            <option value="IT">Italia</option>
+            <option value="IN">India</option>
+            <option value="BD">Bangladesh</option>
+            <option value="VN">Vietnam</option>
+            <option value="FR">Francia</option>
+            <option value="PK">Pakistan</option>
+            <option value="TR">Turchia</option>
+            <option value="MA">Marocco</option>
+            <option value="MM">Myanmar</option>
+            <option value="TN">Tunisia</option>
+            <option value="unknown">Paese sconosciuto</option>
+          </select>
+        </div>
+        <div class="eco-form-row">
+          <label for="ecoDurability">Coefficiente di durabilità</label>
+          <input type="number" id="ecoDurability" value="0.67" min="0" max="1" step="0.01">
+        </div>
+        <div class="eco-form-row" id="ecoAccessoryRow">
+          <label>Accessori</label>
+          <div id="ecoAccessories"></div>
+          <button class="btn btn-ghost" id="ecoAddAccessoryBtn" style="margin-top:10px;">Aggiungi accessorio</button>
+        </div>
+      </article>
+    </div>
+
+    <div class="eco-actions-row" style="margin-top:28px;">
+      <button class="btn btn-primary" id="ecoCalculateBtn">Calcola impatto</button>
+      <span class="eco-hint" id="ecoStatusHint">Modalità simulazione locale attiva.</span>
+    </div>
+  </div>
+</section>
+
+<section class="eco-results" id="ecoResults">
+  <div class="wrap">
+    <div class="eco-results-grid">
+      <article class="eco-card eco-score-card" aria-labelledby="ecoScoreLabel2">
+        <div class="eco-score-label" id="ecoScoreLabel2">Punteggio finale</div>
+        <div class="eco-score-value" id="ecoScoreValue2">—</div>
+        <div class="eco-score-caption" id="ecoScoreCaption2">Dettaglio composito per scenario.</div>
+        <div class="eco-unit" id="ecoScoreUnit2">Pts</div>
+      </article>
+
+      <article class="eco-card eco-indicator-card" aria-labelledby="ecoDetailsLabel">
+        <div class="eco-card-title" id="ecoDetailsLabel">Risultati Filiera</div>
+        <div class="eco-indicators" id="ecoStageResults"></div>
+      </article>
+    </div>
+
+    <details class="eco-card eco-compare" id="ecoCompare">
+      <summary>Confronto scenari</summary>
+      <div class="eco-compare-grid">
+        <div>
+          <h3 id="ecoScenarioA">Scenario A</h3>
+          <p class="eco-caption" id="ecoScenarioAText">Parametri correnti.</p>
+        </div>
+        <div>
+          <h3 id="ecoScenarioB">Scenario B</h3>
+          <p class="eco-caption" id="ecoScenarioBText">Modifica i parametri o salva un confronto futuro.</p>
+        </div>
       </div>
-    </section>
+    </details>
 
-    <section class="eco-education" id="education">
-      <header class="section-header">
-        <h2>Apprendimento</h2>
-        <p>Strumenti di lettura critica dei risultati.</p>
-      </header>
+    <article class="eco-card eco-knowledge" aria-labelledby="ecoKnowledgeLabel">
+      <div class="eco-card-title" id="ecoKnowledgeLabel">Metodologia e limiti</div>
+      <p class="eco-caption" style="margin-top:10px;">La metodologia si basa sui fattori di impatto Ecobalyse e su dati di filiera standard. I risultati sono indicative e dipendono da ipotesi di scenario, durabilità e massa.</p>
+      <p class="eco-caption" style="margin-top:10px;">Le categorie di impatto includono: cambiamento climatico, ecotossicità, consumo d’acqua, energia e uso di risorse.</p>
+    </article>
+  </div>
+</section>
 
-      <div class="eco-grid">
-        <article class="eco-card eco-article">
-          <h3 class="eco-card-title">Cos'è Ecobalyse</h3>
-          <p>Ecobalyse è un riferimento metodologico per la sostenibilità tessile. Questo simulatore riporta indicatori stimati, non certificazioni ufficiali.</p>
-        </article>
-        <article class="eco-card eco-article">
-          <h3 class="eco-card-title">Come funziona la simulazione</h3>
-          <p>Il modello combina prodotto, materiali, filiera e scenario produttivo. Il risultato è un confronto parametrico utile a esplorare ipotesi.</p>
-        </article>
-        <article class="eco-card eco-article">
-          <h3 class="eco-card-title">Cosa significano gli indicatori</h3>
-          <p>Ogni indicatore misura un diverso impatto ambientale: cambiamento climatico, ecotossicità, consumo idrico, uso del suolo e altro.</p>
-        </article>
-        <article class="eco-card eco-article">
-          <h3 class="eco-card-title">Limiti della simulazione</h3>
-          <p>I valori sono stime modellistiche. Dipendono da ipotesi, dati di background e dalla rappresentatività della filiera indicata.</p>
-        </article>
-      </div>
-    </section>
+<div class="wrap"><div class="divider"></div></div>
+<section class="tight" style="padding-top:18px;">
+  <div class="wrap">
+    <div class="eyebrow" style="margin-bottom:14px;">Sostenibilità &amp; Innovazione</div>
+    <h2 style="margin-bottom:18px;">Perché una dashboard LCA è utile per la filiera italiana</h2>
+    <p>La <strong>sostenibilità</strong> non è più una pagina di marketing: è un dato di processo. Il <strong>Simulatore Impatto Tessile</strong> permette di stimare <strong>carbon footprint</strong>, acqua, energia e tossicità direttamente nel contesto della <strong>filiera italiana</strong>.</p>
+    <p>Conoscere l’impatto di <strong>cotone</strong>, <strong>filiera</strong> di tintoria, confezione e trasporto consente di scegliere fornitori, materiali e scenari <strong>business</strong> con prove quantitative. Questo strumento serve a chi deve rendicontare, certificare o simply ottimizzare.</p>
+    <p>Per i prezzi delle <strong>materie prime</strong> correlate visita <a href="market.html">Prezzi Materie Prime Tessili</a>. Per notizie e casi pratici consulta <a href="news.html">News</a>.</p>
+  </div>
+</section>
 
-    <section class="eco-limitations" id="limitations" hidden>
-      <div class="eco-card">
-        <h3 class="eco-card-title">Note metodologiche</h3>
-        <ul class="eco-notes">
-          <li>Questo tool non sostituisce una Dichiarazione Ambientale di Prodotto (EPD).</li>
-          <li>I dati dipendono da modelli LCA e da ipotesi di filiera.</li>
-          <li>Confronta scenari simili, non valori assoluti.</li>
-        </ul>
-      </div>
-    </section>
 
-    <footer class="site-footer">
-      <div>Forum della Moda — Prato</div>
-      <div>Simulatore dimostrativo. Dati Ecobalyse soggetti a limiti modellistici.</div>
-    </footer>
-  </section>
-</main>
+<div class="wrap"><div class="divider"></div></div>
+<section class="tight" style="padding-top:18px;">
+  <div class="wrap">
+    <div class="eyebrow" style="margin-bottom:14px;">Sostenibilità &amp; Innovazione</div>
+    <h2 style="margin-bottom:18px;">Perché una dashboard LCA è utile per la filiera italiana</h2>
+    <p>La <strong>sostenibilità</strong> non è più una pagina di marketing: è un dato di processo. Il <strong>Simulatore Impatto Tessile</strong> permette di stimare <strong>carbon footprint</strong>, acqua, energia e tossicità direttamente nel contesto della <strong>filiera italiana</strong>.</p>
+    <p>Conoscere l’impatto di <strong>cotone</strong>, <strong>filiera</strong> di tintoria, confezione e trasporto consente di scegliere fornitori, materiali e scenari <strong>business</strong> con prove quantitative. Questo strumento serve a chi deve rendicontare, certificare o ottimizzare.</p>
+    <p>Per i prezzi delle <strong>materie prime</strong> correlate visita <a href="market.html">Prezzi Materie Prime Tessili</a>. Per notizie e casi pratici consulta <a href="news.html">News</a>.</p>
+  </div>
+</section>
+
+<footer style="padding:60px 0 40px; border-top:1px solid var(--soft-gray); margin-top:40px;">
+  <div class="wrap">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; font-size:12.5px; color:var(--stone);">
+      <span>PratoHub — Ecobalyse integration</span>
+      <span>Dati metodologici: beta.gouv.fr</span>
+    </div>
+  </div>
+</footer>
 
 <script type="module" src="assets/pages/ecobalyse.js"></script>
+<script type="module" src="assets/js/page-transitions.js"></script>
 </body>
 </html>

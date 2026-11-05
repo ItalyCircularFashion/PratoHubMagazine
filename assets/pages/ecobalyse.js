@@ -1,5 +1,5 @@
 /* ============================================================
-   ECOBALYSE PAGE CONTROLLER — PH-26B enhanced UX
+   ECOBALYSE PAGE CONTROLLER — PH-33B dashboard UX
    assets/pages/ecobalyse.js
    ============================================================ */
 
@@ -27,6 +27,15 @@ function setHtml(id, html) {
   if (node) node.innerHTML = html;
 }
 
+function clampInputs() {
+  const mass = el('ecoMass');
+  const quantity = el('ecoRefs');
+  const price = el('ecoPrice');
+  if (mass) mass.value = String(Math.max(Number(mass.min || 0), Math.min(Number(mass.max || 4000), Number(mass.value || 0.15))) || 0.15);
+  if (quantity) quantity.value = String(Math.max(Number(quantity.min || 0), Math.min(Number(quantity.max || 10000000), Number(quantity.value || 100000))) || 100000);
+  if (price) price.value = String(Math.max(Number(price.min || 0), Math.min(Number(price.max || 50000), Number(price.value || 10))) || 10);
+}
+
 function clearResults() {
   ['ecoScore','ecoResultsInner','ecoLoading','ecoError','ecoNotes'].forEach(id => setHtml(id, ''));
   const section = el('results');
@@ -47,7 +56,21 @@ function setLoading(message) {
   setHtml('ecoLoading', message || '');
 }
 
+function renderPlaceholderIndicators() {
+  const placeholders = [
+    ['Cambiamento climatico', '—', 'kg CO₂e'],
+    ['Ecotossicità', '—', 'CTUe'],
+    ['Consumo idrico', '—', 'm³/unit'],
+    ['Consumo risorse', '—', 'MJ/unit'],
+    ['Uso del suolo', '—', 'm²/unit'],
+    ['Acidificazione aria', '—', 'mol H⁺/unit'],
+    ['Eutrofizzazione idrica', '—', 'kg PO₄e'],
+  ];
+  setHtml('ecoResultsInner', placeholders.map(([label, value, unit]) => renderResultIndicator(label, value, unit)).join(''));
+}
+
 async function runSimulation() {
+  clampInputs();
   const productInput = el('ecoProduct');
   const massInput = el('ecoMass');
   const countrySpinning = el('ecoCountry');
@@ -66,17 +89,32 @@ async function runSimulation() {
     product: validateProduct(productInput?.value),
     mass: Number(massInput?.value || 0) || 0.15,
     materials: buildMaterialShareArray(materialsArray),
-    countrySpinning: countrySpinning ? String(countrySpinning.value) : 'IT',
+    countrySpinning: el('ecoCountry') ? String(el('ecoCountry').value) : 'IT',
     business: business ? String(business.value || '').trim() : 'large-business-without-services',
     numberOfReferences: Number(quantity?.value || 0) || 1000,
     price: Number(price?.value || 0) || 10,
     upcycled: Boolean(upcycledCheckbox?.checked),
+    durability: Number(el('ecoDurability')?.value || 0.67) || 0.67,
+    physicalDurability: Number(el('ecoPhysicalDurability')?.value || '') || undefined,
+    countryDyeing: el('ecoCountryDyeing')?.value || undefined,
+    countryFabric: el('ecoCountryFabric')?.value || undefined,
+    countryMaking: el('ecoCountryMaking')?.value || undefined,
+    fabricProcess: el('ecoFabricProcess')?.value || undefined,
+    dyingProcessType: el('ecoDyingProcessType')?.value || undefined,
+    makingComplexity: el('ecoMakingComplexity')?.value || undefined,
+    makingWaste: el('ecoMakingWaste')?.value !== '' ? Number(el('ecoMakingWaste').value) : undefined,
+    makingDeadStock: el('ecoMakingDeadStock')?.value !== '' ? Number(el('ecoMakingDeadStock').value) : undefined,
+    fading: Boolean(el('ecoFading')?.checked),
+    airTransportRatio: el('ecoAirTransport')?.value !== '' ? Number(el('ecoAirTransport').value) : undefined,
+    surfaceMass: el('ecoSurfaceMass')?.value !== '' ? Number(el('ecoSurfaceMass').value) : undefined,
+    yarnSize: el('ecoYarnSize')?.value || undefined,
   };
 
   setErrorHtml('');
   setLoading('Sto calcolando...');
   const resultsSection = el('results');
   if (resultsSection) resultsSection.hidden = false;
+  renderPlaceholderIndicators();
 
   try {
     const data = await simulateTextileImpact(payload);
@@ -99,6 +137,9 @@ async function runSimulation() {
     add('Acidificazione aria', data.airAcidification, 'mol H⁺/unit');
     add('Eutrofizzazione idrica', data.waterEutrophication, 'kg PO₄e');
     setHtml('ecoResultsInner', blocks.join(''));
+
+    if (data.lifeCycle && typeof renderChainExplorer === 'function') renderChainExplorer(data.lifeCycle, data.transport);
+    if (payload.materials && payload.materials.length && typeof renderMaterialExplorer === 'function') renderMaterialExplorer(payload.materials, data);
 
     const notes = [];
     if (payload.upcycled) notes.push('Upcycling attivo: può ridurre l’impatto puntuale riconosciuto dal modello LCA base.');
@@ -148,7 +189,7 @@ function buildMaterialRows() {
     row.innerHTML = `
       <label class="eco-material-label">${item.icon} ${item.name}</label>
       <input class="eco-share" type="number" min="0" max="100" value="${item.share}" placeholder="0" aria-label="Percentuale ${item.name}">
-      <output class="eco-share-output">0%</output>
+      <output class="eco-share-output">${item.share}%</output>
     `;
     container.appendChild(row);
   });
@@ -204,6 +245,7 @@ function initReset() {
     el('ecoForm')?.reset();
     buildMaterialRows();
     bindSummaryLoop();
+    clampInputs();
   });
 }
 
@@ -219,7 +261,51 @@ buildMaterialRows();
 bindSummaryLoop();
 initStepper();
 initReset();
+clampInputs();
 setLoading('');
 setErrorHtml('');
 if (el('results')) el('results').hidden = true;
 if (el('ecoMain')) el('ecoMain').classList.add('is-ready');
+
+function renderMaterialExplorer(materials = [], data = {}) {
+  const explorer = el('ecoMaterialsExplorer');
+  const rows = el('ecoMaterialsExplorerRows');
+  if (!explorer || !rows) return;
+  explorer.style.display = 'block';
+  rows.innerHTML = materials.map((item, idx) => {
+    const name = item.name || item.id;
+    const country = item.country || el('ecoCountry')?.value || '—';
+    const impact = data.lifeCycle?.rawMaterials ? `${Number(data.lifeCycle.rawMaterials[idx]).toLocaleString('it-IT')} Pts` : '—';
+    return `<div class="eco-explorer-row">
+      <div class="eco-explorer-cell">${name}</div>
+      <div class="eco-explorer-cell">${country}</div>
+      <div class="eco-explorer-cell">${Number(item.share * 100).toLocaleString('it-IT')}%</div>
+      <div class="eco-explorer-cell">${impact}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderChainExplorer(lifeCycle = {}, transport = {}) {
+  const explorer = el('ecoChainExplorer');
+  const rows = el('ecoStageRows');
+  if (!explorer || !rows) return;
+  explorer.style.display = 'block';
+  const stages = [
+    { key: 'rawMaterials', label: 'Materie prime', mass: '—', distance: '—' },
+    { key: 'spinning', label: 'Filatura', mass: '—', distance: transport.distanceSpinning || el('ecoCountry')?.value || '—' },
+    { key: 'fabric', label: 'Tessitura/Tricottura', mass: '—', distance: transport.distanceFabric || '—' },
+    { key: 'making', label: 'Confezione', mass: '—', distance: transport.distanceMaking || '—' },
+    { key: 'use', label: 'Uso', mass: '—', distance: '—' },
+    { key: 'endOfLife', label: 'Fine vita', mass: '—', distance: '—' },
+  ];
+  rows.innerHTML = stages.map(stage => {
+    const score = lifeCycle[stage.key] != null ? Number(lifeCycle[stage.key]).toLocaleString('it-IT') + ' Pts' : '—';
+    return `<div class="eco-chain-row">
+      <div>
+        <div class="eco-chain-name">${stage.label}</div>
+        <div class="eco-chain-meta">Massa: ${stage.mass} · Distanza stimata: ${stage.distance}</div>
+      </div>
+      <div class="eco-chain-score">${score}<span>Impatto</span></div>
+    </div>`;
+  }).join('');;
+}

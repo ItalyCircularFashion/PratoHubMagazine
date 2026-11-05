@@ -5,6 +5,9 @@
    file runs.
    ============================================================ */
 
+import { el, renderAgendaCard, renderNewsCard, renderPick, renderDiscussionRow, renderQuestionCard, renderEventCard } from '../renderers/card.renderer.js';
+import { mountMarketGrid, commodities } from '../services/market.service.js';
+
 const agenda = [
   ["Manufacturing","Inside the Last Mile of Italian Knitwear","Marco Bianchi","6 min"],
   ["AI","Can a Model Learn to Spot a Bad Hem?","Sofia Rossi","5 min"],

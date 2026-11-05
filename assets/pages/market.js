@@ -1,12 +1,12 @@
 /* ============================================================
-import { initReveal, initChipFilters, initNewsletterForm, initPagination, initSearchBars, wireSearchFilter, wireSortSelect, wireChipFilter, wireChipCategoryFilter, initVoteControls } from '../services/interaction.service.js';
-import { mountMarketGrid, commodities } from '../services/market.service.js';
-import { mountBreadcrumbs, navigateTo, navigateBack } from '../services/navigation.service.js';
-import { companies } from '../data/companies.data.js';
    MARKET.JS — page-specific composition for market.html.
    ============================================================ */
+import { initReveal, initChipFilters, initNewsletterForm, initPagination, initSearchBars, wireSearchFilter, wireSortSelect, wireChipFilter, wireChipCategoryFilter, initVoteControls } from '../services/interaction.service.js';
+import { mountMarketGrid, commodities } from '../services/market.service.js';
+import { mountBreadcrumbs } from '../services/navigation.service.js';
+import { companies } from '../data/companies.data.js';
 
-const companies = companies || [];
+const companiesList = companies || [];
 
 mountBreadcrumbs('mktBreadcrumbs', [
   { label:'Home', href:'index.html' },
@@ -44,6 +44,34 @@ document.querySelectorAll('#coCertChips .chip').forEach(chip => {
     });
   });
 });
+
+// Seed official certification options derived from Textile Exchange, bluesign, ZDHC and ISO listings.
+(function buildCertificationChips(){
+  const seed = [
+    ['GOTS','Textile Exchange / GOTS'],
+    ['GRS','Textile Exchange / GRS'],
+    ['RCS','Textile Exchange / RCS'],
+    ['ZDHC','ZDHC Roadmap to Zero'],
+    ['Bluesign','bluesign SYSTEM PARTNER'],
+    ['ISO 9001','ISO 9001'],
+    ['ISO 14001','ISO 14001'],
+    ['Oeko-Tex 100','Oeko-Tex 100'],
+    ['OEKO-TEX','OEKO-TEX Standard 100'],
+    ['amfori BSCI','amfori BSCI'],
+    ['EN 11612 FR','EN 11612 FR'],
+    ['ISO 27001','ISO 27001'],
+    ['Accredia LAB 1427','Accredia LAB 1427'],
+    ['ISO/IEC 17025','ISO/IEC 17025'],
+  ];
+  const container = document.getElementById('coCertChips');
+  if(!container) return;
+  const frag = document.createDocumentFragment();
+  frag.appendChild(Object.assign(document.createElement('div'), {className:'chip active', textContent:'All Certifications'}));
+  seed.forEach(([label]) => {
+    frag.appendChild(Object.assign(document.createElement('div'), {className:'chip', textContent:label}));
+  });
+  container.appendChild(frag);
+})();
 
 // ---- Sort ----
 // Employee range encodes as first number for numeric sort.
