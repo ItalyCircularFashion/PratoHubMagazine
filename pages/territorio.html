@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Territorio · PratoHub</title>
+  <meta name="description" content="Il territorio del distretto tessile di Prato: 7 comuni nel cuore del Trebbia.">
+  <meta name="theme-color" content="#1b2a52">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='%23c81d62' stroke-width='5'%3E%3Cpath d='M4 12 H44' /%3E%3Cpath d='M4 24 H44' /%3E%3Cpath d='M4 36 H44' /%3E%3Cpath d='M12 4 V44' /%3E%3Cpath d='M24 4 V44' /%3E%3Cpath d='M36 4 V44' /%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/three.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="/js/three.js"></script>
+  <script type="module" src="/js/main.js"></script>
+</head>
+<body>
+<header>
+  <a class="brand" href="/" aria-label="PratoHub">
+    <svg width="34" height="34" viewBox="0 0 48 48" fill="none" stroke-width="5">
+      <path class="t h" d="M4 12 H44" stroke="var(--dye)"/>
+      <path class="t v" d="M12 4 V44" stroke="var(--ink)"/>
+      <path class="t v" d="M24 4 V44" stroke="var(--ink)"/>
+      <path class="t v" d="M36 4 V44" stroke="var(--ink)"/>
+      <path class="t o" d="M8.5 12 H15.5" stroke="var(--dye)"/>
+      <path class="t o" d="M32.5 12 H39.5" stroke="var(--dye)"/>
+      <path class="t o" d="M20.5 24 H27.5" stroke="var(--dye)"/>
+      <path class="t o" d="M8.5 36 H15.5" stroke="var(--dye)"/>
+      <path class="t o" d="M32.5 36 H39.5" stroke="var(--dye)"/>
+    </svg>
+    <span>PratoHub</span>
+  </a>
+  <nav>
+    <a href="/pages/index.html">Numeri</a>
+    <a href="/pages/ciclo.html">Ciclo</a>
+    <a href="/pages/territorio.html">Territorio</a>
+    <a href="/pages/aziende.html">Aziende</a>
+    <a href="/pages/dati.html">Dati</a>
+  </nav>
+</header>
+<main id="top">
+  <div class="page-header">
+    <div>
+      <h1>Un territorio intrecciato</h1>
+      <p class="desc">Sette comuni che circondano Prato: ciascuno ha la sua filiera, i suoi centri, i suoi nodi di mercato.</p>
+    </div>
+  </div>
+
+  <section class="stats-row">
+    <div class="stat-card">
+      <div class="num">7</div>
+      <div class="label">Comuni del distretto</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">~320.000</div>
+      <div class="label">Residenti circa</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">~17,5</div>
+      <div class="label">Km del perimetro</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">3</div>
+      <div class="label">Coni d'olivo</div>
+    </div>
+  </section>
+
+  <section id="territorio-3d-wrap">
+    <div class="territorio-3d" id="territorio-3d" aria-label="Mappa terriatoria 3D" role="img"></div>
+  </section>
+
+  <section class="grid-2">
+    <div>
+      <h3>Comuni del distretto</h3>
+      <ul class="comuni-list">
+        <li><strong>Prato</strong> — il centro, con la bottega e l'industria</li>
+        <li><strong>Gambettola</strong> — la bottega tessile</li>
+        <li><strong>San Piero a Ponti</strong> — archeologia dei Saraceni</li>
+        <li><strong>Belmonte</strong> — il borgo medievale</li>
+        <li><strong>Alto Reno</strong> — l'antica via dei monti</li>
+        <li><strong>Paraco</strong> — la valle del fiume</li>
+        <li><strong>Laghè</strong> — la riserva naturale</li>
+      </ul>
+    </div>
+    <div>
+      <h3>I nodi</h3>
+      <p>Prato è il nodo che unisce la via Aurelia al Firenze, con una rete di cascine, frutteti e coni d'olivo che entra nella percezione del Paesaggio Culturale. Il territorio non è solo un contesto: è un prodotto attivo, tra distretti e collaborazioni.</p>
+      <p><a href="/pages/aziende.html">Vai aziende →</a></p>
+    </div>
+  </section>
+</main>
+<footer>
+  <p>PratoHub · Italy Circular Fashion · Dati: <a href="/data.js">data.js</a></p>
+</footer>
+<script type="module" src="/js/pages/territorio.js"></script>
+</body>
+</html>

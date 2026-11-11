@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Le Aziende · PratoHub</title>
+  <meta name="description" content="Le aziende del distretto tessile di Prato: imprese che fanno il tessuto di Prato.">
+  <meta name="theme-color" content="#1b2a52">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='%23c81d62' stroke-width='5'%3E%3Cpath d='M4 12 H44' /%3E%3Cpath d='M4 24 H44' /%3E%3Cpath d='M4 36 H44' /%3E%3Cpath d='M12 4 V44' /%3E%3Cpath d='M24 4 V44' /%3E%3Cpath d='M36 4 V44' /%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/three.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="/js/three.js"></script>
+  <script type="module" src="/js/main.js"></script>
+</head>
+<body>
+<header>
+  <a class="brand" href="/" aria-label="PratoHub">
+    <svg width="34" height="34" viewBox="0 0 48 48" fill="none" stroke-width="5">
+      <path class="t h" d="M4 12 H44" stroke="var(--dye)"/>
+      <path class="t v" d="M12 4 V44" stroke="var(--ink)"/>
+      <path class="t v" d="M24 4 V44" stroke="var(--ink)"/>
+      <path class="t v" d="M36 4 V44" stroke="var(--ink)"/>
+      <path class="t o" d="M8.5 12 H15.5" stroke="var(--dye)"/>
+      <path class="t o" d="M32.5 12 H39.5" stroke="var(--dye)"/>
+      <path class="t o" d="M20.5 24 H27.5" stroke="var(--dye)"/>
+      <path class="t o" d="M8.5 36 H15.5" stroke="var(--dye)"/>
+      <path class="t o" d="M32.5 36 H39.5" stroke="var(--dye)"/>
+    </svg>
+    <span>PratoHub</span>
+  </a>
+  <nav>
+    <a href="/pages/index.html">Numeri</a>
+    <a href="/pages/ciclo.html">Ciclo</a>
+    <a href="/pages/territorio.html">Territorio</a>
+    <a href="/pages/aziende.html">Aziende</a>
+    <a href="/pages/dati.html">Dati</a>
+  </nav>
+</header>
+<main id="top">
+  <div class="page-header">
+    <div>
+      <h1>Le imprese</h1>
+      <p class="desc">Un cerchio di aziende che si appoggiano: filatina, armonio, mare e vetro danno vita a un sistema.</p>
+    </div>
+  </div>
+
+  <section class="stats-row">
+    <div class="stat-card">
+      <div class="num">~7.000</div>
+      <div class="label">Imprese<br>(anni '90)</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">~13.000</div>
+      <div class="label">Dipendenti<br>medio<br>annuo</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">46.5%</div>
+      <div class="label">Delle imprese<br>con team<br>dimensione piccola</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">84%</div>
+      <div class="label">Del valore<br>aggiunto<br>locale</div>
+    </div>
+  </section>
+
+  <section id="aziende-3d-wrap">
+    <div class="aziende-3d" id="aziende-3d" aria-label="Cards aziende 3D" role="img"></div>
+  </section>
+
+  <section class="grid-2">
+    <div>
+      <h3>L'indice dell'arte e dei tessuti</h3>
+      <p>La complessità del tessuto che attraversa il territorio, che taglia il Quinto e il Prato tramite una rete di filiere che cambia volto nel tempo.</p>
+    </div>
+    <div>
+      <h3>La filiera</h3>
+      <p>Dai macelli alla maglieria, dalla lana all'armonia ecosostenibile. Le aziende di Prato hanno una chiave di volta su una fraudolenza, riuscita in un sistema imprenditoriale che è cresciuto sino ai 3.000 dattiloscopi lorda totali.</p>
+      <p><a href="/pages/dati.html">Dati dettagliati →</a></p>
+    </div>
+  </section>
+</main>
+<footer>
+  <p>PratoHub · Italy Circular Fashion · Dati: <a href="/data.js">data.js</a></p>
+</footer>
+<script type="module" src="/js/pages/aziende.js"></script>
+</body>
+</html>

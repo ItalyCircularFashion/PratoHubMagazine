@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Dati & Statistiche · PratoHub</title>
+  <meta name="description" content="I dati del distretto tessile di Prato: imprese, addetti, produzione, export e riciclo.">
+  <meta name="theme-color" content="#1b2a52">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='%23c81d62' stroke-width='5'%3E%3Cpath d='M4 12 H44' /%3E%3Cpath d='M4 24 H44' /%3E%3Cpath d='M4 36 H44' /%3E%3Cpath d='M12 4 V44' /%3E%3Cpath d='M24 4 V44' /%3E%3Cpath d='M36 4 V44' /%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/three.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="/js/three.js"></script>
+  <script type="module" src="/js/main.js"></script>
+</head>
+<body>
+<header>
+  <a class="brand" href="/" aria-label="PratoHub">
+    <svg width="34" height="34" viewBox="0 0 48 48" fill="none" stroke-width="5">
+      <path class="t h" d="M4 12 H44" stroke="var(--dye)"/>
+      <path class="t v" d="M12 4 V44" stroke="var(--ink)"/>
+      <path class="t v" d="M24 4 V44" stroke="var(--ink)"/>
+      <path class="t v" d="M36 4 V44" stroke="var(--ink)"/>
+      <path class="t o" d="M8.5 12 H15.5" stroke="var(--dye)"/>
+      <path class="t o" d="M32.5 12 H39.5" stroke="var(--dye)"/>
+      <path class="t o" d="M20.5 24 H27.5" stroke="var(--dye)"/>
+      <path class="t o" d="M8.5 36 H15.5" stroke="var(--dye)"/>
+      <path class="t o" d="M32.5 36 H39.5" stroke="var(--dye)"/>
+    </svg>
+    <span>PratoHub</span>
+  </a>
+  <nav>
+    <a href="/pages/index.html">Numeri</a>
+    <a href="/pages/ciclo.html">Ciclo</a>
+    <a href="/pages/territorio.html">Territorio</a>
+    <a href="/pages/aziende.html">Aziende</a>
+    <a href="/pages/dati.html">Dati</a>
+  </nav>
+</header>
+<main id="top">
+  <div class="page-header">
+    <div>
+      <h1>I numeri e le statistiche</h1>
+      <p class="desc">Da dove vengono i numeri del distretto: fonti istituzionali, redazione, database aziendali.</p>
+    </div>
+  </div>
+
+  <section class="stats-row">
+    <div class="stat-card">
+      <div class="num">~7.000</div>
+      <div class="label">Imprese<br>(anni '90)</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">46.481</div>
+      <div class="label">Addetti<br>(2021)</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">€ 1.168</div>
+      <div class="label">Export miliardo<br>(no investimenti)</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">46%</div>
+      <div class="label">Dati<br>utilizzabili</div>
+    </div>
+  </section>
+
+  <section class="accent">
+    <h3>Benchmarking</h3>
+    <p>I numeri del distretto punto per punto. La ricostruzione propone una sintesi esplicativa dei trend, basata su fonti istituzionali e dati di redazione.</p>
+  </section>
+
+  <section id="dati-3d-wrap">
+    <div class="dati-3d" id="dati-3d" aria-label="Grafico 3D" role="img"></div>
+  </section>
+
+  <section class="grid-2">
+    <div>
+      <h3>Tabella dei dati</h3>
+      <table>
+        <thead><tr><th>Indice</th><th>2017</th><th>2019</th><th>2021</th><th>2023</th><th>Δ%</th></tr></thead>
+        <tbody>
+          <tr><td>Imprese</td><td>7.463</td><td>7.253</td><td>7.193</td><td>7.018</td><td>-5,9%</td></tr>
+          <tr><td>Addetti</td><td>46.481</td><td>46.540</td><td>46.481</td><td>—</td><td>—</td></tr>
+          <tr><td>Export (mld €)</td><td>1.050</td><td>1.240</td><td>1.168</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p class="source">Fonti: Istat, Confindussile, redazione (dati a maggio 2024).</p>
+    </div>
+    <div>
+      <h3>Note metodologiche</h3>
+      <p>I dati riportati sono elaborati a partire da fonti ufficiali, redazione, database aziendali.</p>
+      <p>Gli indici non sono sempre il risultato di una serie storica, ma una media dei dati a disposizione.</p>
+      <p><a href="/pages/index.html">Torna alla home →</a></p>
+    </div>
+  </section>
+</main>
+<footer>
+  <p>PratoHub · Italy Circular Fashion · Dati: <a href="/data.js">data.js</a></p>
+</footer>
+<script type="module" src="/js/pages/dati.js"></script>
+</body>
+</html>

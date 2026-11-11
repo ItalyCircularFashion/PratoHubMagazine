@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Il Cardato · PratoHub</title>
+  <meta name="description" content="Il ciclo del cardato: 6 fasi dalla lana al filato, contate in trejs.">
+  <meta name="theme-color" content="#1b2a52">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='%23c81d62' stroke-width='5'%3E%3Cpath d='M4 12 H44' /%3E%3Cpath d='M4 24 H44' /%3E%3Cpath d='M4 36 H44' /%3E%3Cpath d='M12 4 V44' /%3E%3Cpath d='M24 4 V44' /%3E%3Cpath d='M36 4 V44' /%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/three.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="/js/three.js"></script>
+  <script type="module" src="/js/main.js"></script>
+</head>
+<body>
+<header>
+  <a class="brand" href="/" aria-label="PratoHub">
+    <svg width="34" height="34" viewBox="0 0 48 48" fill="none" stroke-width="5">
+      <path class="t h" d="M4 12 H44" stroke="var(--dye)"/>
+      <path class="t v" d="M12 4 V44" stroke="var(--ink)"/>
+      <path class="t v" d="M24 4 V44" stroke="var(--ink)"/>
+      <path class="t v" d="M36 4 V44" stroke="var(--ink)"/>
+      <path class="t o" d="M8.5 12 H15.5" stroke="var(--dye)"/>
+      <path class="t o" d="M32.5 12 H39.5" stroke="var(--dye)"/>
+      <path class="t o" d="M20.5 24 H27.5" stroke="var(--dye)"/>
+      <path class="t o" d="M8.5 36 H15.5" stroke="var(--dye)"/>
+      <path class="t o" d="M32.5 36 H39.5" stroke="var(--dye)"/>
+    </svg>
+    <span>PratoHub</span>
+  </a>
+  <nav>
+    <a href="/pages/index.html">Numeri</a>
+    <a href="/pages/ciclo.html">Ciclo</a>
+    <a href="/pages/territorio.html">Territorio</a>
+    <a href="/pages/aziende.html">Aziende</a>
+    <a href="/pages/dati.html">Dati</a>
+  </nav>
+</header>
+<main id="top">
+  <div class="page-header">
+    <div>
+      <h1>Il cardato, da lana a filato</h1>
+      <p class="desc">Sei fasi che trasformano il grezzo tessuto in filato per tessuti. Palpita nel 3D.</p>
+    </div>
+  </div>
+
+  <section class="stats-row">
+    <div class="stat-card">
+      <div class="num">6</div>
+      <div class="label">Fasi del cardato</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">48</div>
+      <div class="label">Ponti del telaio</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">2</div>
+      <div class="label">Direzioni d'itritto</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">100%</div>
+      <div class="label">Matrici locali</div>
+    </div>
+  </section>
+
+  <section class="accent">
+    <h3>Il percorso</h3>
+    <p>Il cardato inizia con la lana vera (a Prato, raccolta e macellazione) e prosegue con la cardatura, la tornitura, lo stop, il filato e la vegetazione del filato. Ogni fase ha una sua storia, delle figure e di persone, da raccontare.</p>
+  </section>
+
+  <section id="ciclo-3d-wrap">
+    <div class="ciclo-3d" id="ciclo-3d" aria-label="Cardato 3D" role="img"></div>
+  </section>
+
+  <section class="grid-2">
+    <div>
+      <h3>Le 6 fasi</h3>
+      <ol class="stages">
+        <li><strong>Cardatura</strong> — sfilatura dei lanoli.</li>
+        <li><strong>Tornitura</strong> — rendimento del filato.</li>
+        <li><strong>Stop</strong> — controllo qualità.</li>
+        <li><strong>Filato</strong> — spino e filo.</li>
+        <li><strong>Vegetazione</strong> — tenuta.</li>
+        <li><strong>Pieno</strong> — tessitura.</li>
+      </ol>
+    </div>
+    <div>
+      <h3>I materiali</h3>
+      <p>Verde lana, panno, lana vera, tappeti e tessuti da tenda. L'alleanza tra filatina, armonio e vitigni racconta un territorio nella soglia tra artigianato e industria.</p>
+      <p><a href="/pages/territorio.html">Vai al territorio →</a></p>
+    </div>
+  </section>
+</main>
+<footer>
+  <p>PratoHub · Italy Circular Fashion · Dati: <a href="/data.js">data.js</a></p>
+</footer>
+<script type="module" src="/js/pages/ciclo.js"></script>
+</body>
+</html>
