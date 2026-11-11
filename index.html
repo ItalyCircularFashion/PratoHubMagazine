@@ -1,347 +1,155 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PratoHub Magazine — Where Fashion Meets Collective Intelligence</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles/main.css">
-<link rel="stylesheet" href="assets/styles/integration.css">
-<link rel="icon" href="favicon.svg">
-<link rel="canonical" href="https://italycircularfashion.github.io/PratoHubMagazine/index.html">
-<meta name="description" content="PratoHub Magazine: prototipo editoriale su tessile, innovazione e community. Esplora il Distretto di Prato con fonti e periodi dichiarati.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>PratoHub · Il distretto tessile di Prato in numeri</title>
+<meta name="description" content="Imprese, addetti, export e riciclo del distretto tessile di Prato, con fonte e anno accanto a ogni dato.">
+<meta name="theme-color" content="#1b2a52">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%20stroke-width%3D%225%22%3E%3Cpath%20d%3D%22M4%2012H44%22%20stroke%3D%22%23c81d62%22/%3E%3Cpath%20d%3D%22M4%2024H44%22%20stroke%3D%22%23c81d62%22/%3E%3Cpath%20d%3D%22M4%2036H44%22%20stroke%3D%22%23c81d62%22/%3E%3Cpath%20d%3D%22M12%204V44%22%20stroke%3D%22%231b2a52%22/%3E%3Cpath%20d%3D%22M24%204V44%22%20stroke%3D%22%231b2a52%22/%3E%3Cpath%20d%3D%22M36%204V44%22%20stroke%3D%22%231b2a52%22/%3E%3Cpath%20d%3D%22M8.5%2012H15.5%22%20stroke%3D%22%23c81d62%22/%3E%3Cpath%20d%3D%22M32.5%2012H39.5%22%20stroke%3D%22%23c81d62%22/%3E%3Cpath%20d%3D%22M20.5%2024H27.5%22%20stroke%3D%22%23c81d62%22/%3E%3Cpath%20d%3D%22M8.5%2036H15.5%22%20stroke%3D%22%23c81d62%22/%3E%3Cpath%20d%3D%22M32.5%2036H39.5%22%20stroke%3D%22%23c81d62%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<a class="skip-link" href="#main-content">Skip to main content</a>
-
-<div class="folio" id="folio">
-  <div class="folio-inner">
-    <span class="folio-mark">I</span>
-    <div class="folio-line"></div>
-    <span class="folio-label" data-for="hero">Forum</span>
-    <span class="folio-label" data-for="featured">Featured</span>
-    <span class="folio-label" data-for="agenda">Agenda</span>
-    <span class="folio-label" data-for="market">Market</span>
-    <span class="folio-label" data-for="news">News</span>
-    <span class="folio-label" data-for="discussions">Discuss</span>
-    <span class="folio-label" data-for="questions">Questions</span>
-    <span class="folio-label" data-for="events">Events</span>
-    <div class="folio-line"></div>
-  </div>
-</div>
-
-<header id="siteHeader">
-  <a href="index.html" class="logo">
-    <span class="l1">PratoHub Magazine</span>
-    <span class="l2">FASHION · INTELLIGENCE · COMMUNITY</span>
-  </a>
-  <nav class="primary" id="primaryNav" aria-label="Navigazione principale">
-    <a href="news.html">News</a><a href="market.html">Market</a><a href="discussions.html">Discussions</a><a href="questions.html">Questions</a><a href="events.html">Events</a><a href="community.html">Community</a><a href="aziende.html">Aziende</a><a href="distretto/">Distretto di Prato</a>
-  </nav>
-  <div class="nav-cta">
-    <div id="authNav" class="auth-nav"></div>
-    <button type="button" class="menu-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="primaryNav"><span></span><span></span><span></span></button>
-  </div>
+<header class="top">
+  <a class="brand" href="#top" aria-label="PratoHub"><svg class="logo" width="34" height="34" aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke-width="5"><path class="t h" pathLength="1" d="M4 12H44" stroke="var(--dye)"/><path class="t h" pathLength="1" d="M4 24H44" stroke="var(--dye)"/><path class="t h" pathLength="1" d="M4 36H44" stroke="var(--dye)"/><path class="t v" pathLength="1" d="M12 4V44" stroke="var(--ink)"/><path class="t v" pathLength="1" d="M24 4V44" stroke="var(--ink)"/><path class="t v" pathLength="1" d="M36 4V44" stroke="var(--ink)"/><path class="t o" pathLength="1" d="M8.5 12H15.5" stroke="var(--dye)"/><path class="t o" pathLength="1" d="M32.5 12H39.5" stroke="var(--dye)"/><path class="t o" pathLength="1" d="M20.5 24H27.5" stroke="var(--dye)"/><path class="t o" pathLength="1" d="M8.5 36H15.5" stroke="var(--dye)"/><path class="t o" pathLength="1" d="M32.5 36H39.5" stroke="var(--dye)"/></svg><span>PratoHub</span></a>
+  <nav aria-label="Sezioni"><a href="#numeri">Numeri</a><a href="#ciclo">Ciclo</a><a href="#territorio">Territorio</a><a href="#storia">Storia</a><a href="#congiuntura">Congiuntura</a><a href="#certificazioni">Certificazioni</a><a href="#glossario">Glossario</a><a href="#turismo">Musei</a><a href="#aziende">Aziende</a><a href="#dati">Dati</a><a href="#fonti">Fonti</a></nav>
+  <button type="button" id="cbtn" class="cbtn" aria-haspopup="dialog">Cerca <kbd>/</kbd></button>
 </header>
-
-<aside class="market-ticker left" id="tickerLeft">
-  <div class="ticker-head"><span class="ticker-dot"></span><span class="ticker-label">Natural Fibres</span></div>
-</aside>
-<aside class="market-ticker right" id="tickerRight">
-  <div class="ticker-head"><span class="ticker-dot"></span><span class="ticker-label">Energy &amp; FX</span></div>
-</aside>
-
-<main id="main-content" tabindex="-1"><noscript><p class="nojs">Queste liste richiedono JavaScript. La navigazione e la pagina del progetto restano disponibili.</p></noscript><aside class="demo-notice" aria-label="Stato dimostrativo"><div><strong>MAGAZINE DEMO</strong> Articoli, profili, commenti, eventi e quotazioni sono esempi, non dati verificati o live. Le interazioni restano in questa pagina, senza account né invio al server. <a href="progetto.html">Limiti e metodo</a> · <a href="distretto/">Vai al Distretto con fonti</a></div></aside>
-
-<!-- HERO -->
-<section class="hero" id="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <div class="eyebrow hero-eyebrow">Vol. I — Issue 001 · Prato &amp; Beyond</div>
-      <h1>
-        <span class="hero-line"><span>Where Fashion Meets</span></span>
-        <span class="hero-line"><span><em>Collective Intelligence</em></span></span>
-      </h1>
-      <p class="hero-sub">The definitive destination for fashion journalism, industry discussions and sustainable innovation.</p>
-      <div class="hero-actions">
-        <a href="news.html" class="btn btn-primary">Read Today's News</a>
-        <a href="community.html" class="btn btn-ghost">Join the Community</a>
-        <a href="discussions.html" class="hero-explore">Explore Discussions →</a>
-      </div>
+<main id="top">
+  <section class="hero">
+    <div>
+      <h1>Da oltre un secolo Prato fa tessuti nuovi con la lana vecchia.</h1>
+      <div class="pick" id="pick" role="group" aria-label="Scegli il tessuto"></div>
+      <p class="lead">Settemila imprese e quarantatremila addetti, in uno dei più grandi distretti tessili d’Europa. Qui trovi i numeri, ognuno con la sua fonte e il suo anno.</p>
     </div>
-    <div class="hero-visual">
-      <div class="hero-img-main">
-        <img src="assets/images/editorial-3.svg" alt="Immagine illustrativa del prototipo" id="heroImgMain">
-      </div>
-      <div class="hero-img-accent">
-        <img src="assets/images/editorial-1.svg" alt="Immagine illustrativa del prototipo">
-      </div>
-      <span class="hero-credit">Immagine illustrativa · archivio DEMO</span>
+    <div class="swatch" id="swatch" role="img" aria-label="Campione di tessuto, a scelta tra quattro armature"></div>
+  </section>
+
+  <section class="story" aria-label="La storia in breve">
+    <div class="stage">
+      <svg class="sthread" viewBox="0 0 1000 200" aria-hidden="true"><path pathLength="1" d="M0 120 C150 20 250 220 400 120 S650 20 800 120 S950 180 1000 100"/></svg>
+      <ol class="beats" id="beats"></ol>
+      <p class="cue">Scorri</p>
     </div>
-  </div>
-  <div class="scroll-cue"><span class="line"></span> Scroll</div>
-</section>
+  </section>
 
-<div class="hero-transition" aria-hidden="true"></div>
+  <section id="numeri" class="band">
+    <h2>Il distretto in cifre</h2>
+    <div id="stats" class="stats"></div>
+    <p class="note">Le cifre arrivano da fonti e anni diversi: il confronto tra una e l’altra va fatto con cautela. L’export, per esempio, è 2,8 miliardi nella stima più recente e 2,66 nel rapporto IRPET del 2023.</p>
+  </section>
 
-<!-- FEATURED STORY -->
-<section id="featured" style="padding-top:clamp(120px, 14vw, 180px);">
-  <div class="wrap">
-    <div class="eyebrow reveal" style="margin-bottom:36px;">Featured Story</div>
-    <div class="featured reveal">
-      <div class="featured-media">
-        <span class="featured-tag">Sustainability</span>
-        <img src="assets/images/editorial-3.svg" alt="Immagine illustrativa del prototipo">
-      </div>
-      <div class="featured-body">
-        <h3>Inside Prato's Quiet Race to Rebuild Wool, Thread by Thread</h3>
-        <p>How a district built on regenerated fibre is rewriting its own playbook — and what its terzisti network can teach the rest of the industry about resilience without losing craft.</p>
-        <div class="featured-meta">
-          <img class="avatar" src="assets/images/avatar.svg" alt="">
-          <span>Elena Marchetti</span><span class="dot"></span>
-          <span>Senior Editor, Materials</span><span class="dot"></span>
-          <span>9 min read</span>
-        </div>
-        <div class="progress"></div>
-        <div class="featured-actions">
-          <span>💬 142 Comments</span>
-          <span>🔖 Save</span>
-          <span>↗ Share</span>
-        </div>
-      </div>
+  <section id="ciclo" class="wrap">
+    <h2>Dalla fibra al capo, in sei fasi</h2>
+    <p class="intro">A Prato le fasi stanno a pochi chilometri l’una dall’altra. Nel cardato, la lana di recupero viene selezionata, igienizzata, tagliata e sfilacciata prima di tornare filato.</p>
+    <ol id="steps" class="steps"></ol>
+    <p class="note">Il marchio Cardato Recycled, nato a Prato nel 2014, richiede tessuti prodotti nel distretto con almeno il 65% di materiale riciclato.</p>
+  </section>
+
+  <section id="cardato" class="wrap">
+    <h2>Il ciclo del cardato, in un giro</h2>
+    <p class="intro">Il filo percorre le sei fasi e ricomincia. Clicca una fase per fermarti, oppure lascialo girare.</p>
+    <div class="loop"><svg id="loopsvg" viewBox="0 0 560 420" role="img" aria-label="Ciclo circolare del cardato in sei fasi"></svg>
+    <div class="info" aria-live="polite"><div id="loopinfo"></div><button type="button" id="loopbtn">Pausa</button></div></div>
+  </section>
+
+  <section id="territorio" class="wrap">
+    <h2>Il territorio: sette comuni lungo il Bisenzio</h2>
+    <p class="intro">Il distretto non coincide con la sola città di Prato. Il cerchio di ogni comune è proporzionale ai residenti (Istat, 1° gennaio 2025). Lo schema non è in scala.</p>
+    <figure class="ph" data-foto="bisenzio" hidden></figure>
+    <div class="terr"><svg id="map" viewBox="0 0 400 330" role="img" aria-label="Schema dei sette comuni del distretto di Prato"></svg><div id="comuni" class="comuni"></div></div>
+  </section>
+
+  <section id="storia" class="wrap">
+    <h2>Dal Medioevo a oggi, in nove tappe</h2>
+    <p class="intro">Dalle gualchiere medievali sul Bisenzio al consorzio digitale di oggi.</p>
+    <figure class="ph" data-foto="campolmi" hidden></figure>
+    <ol id="timeline" class="timeline"></ol>
+  </section>
+
+  <section id="congiuntura" class="wrap">
+    <h2>Un periodo difficile, con segnali diversi</h2>
+    <p class="intro">Variazioni percentuali rispetto allo stesso periodo dell’anno prima. Ogni barra riporta il suo periodo.</p>
+    <div id="chart" class="chart"></div>
+    <p class="note">Il pronto moda cresce mentre filati e tessuti calano. Prato è la città italiana con più imprese a conduzione straniera, e nel pronto moda la maggior parte della manodopera è di origine immigrata.</p>
+  </section>
+
+  <section class="wrap rules">
+    <h2>Le regole europee decideranno molto</h2>
+    <p>Secondo Confindustria Toscana Nord, norme su ecodesign, tracciabilità e riciclo scritte senza guardare ai processi reali metterebbero a rischio tra 8.000 e 10.000 posti di lavoro. Il punto principale è quando un tessuto riciclato smette di essere rifiuto. Prato chiede che succeda dopo selezione, igienizzazione e taglio, senza aspettare la sfilacciatura.</p>
+    <p>Nel frattempo 31 imprese hanno fondato Didip, una società consortile che sta costruendo la piattaforma digitale del distretto.</p>
+  </section>
+
+  <section id="certificazioni" class="wrap">
+    <h2>Certificazioni e standard</h2>
+    <p class="intro">Non sono tutte la stessa cosa: alcune certificano il prodotto, altre il processo, una è un obbligo di legge.</p>
+    <div id="certs" class="certs"></div>
+    <h3 class="sub">Per approfondire</h3>
+    <ul id="articoli" class="arts"></ul>
+  </section>
+
+  <section id="glossario" class="wrap">
+    <h2>Glossario tessile</h2>
+    <dl id="gloss" class="gloss"></dl>
+  </section>
+
+  <section id="turismo" class="wrap">
+    <h2>Musei, visite ed eventi</h2>
+    <p class="intro">Il progetto TIPO (Turismo Industriale Prato) mette in rete musei, fabbriche ed ex opifici. È promosso dal Comune di Prato con gli altri sei comuni del distretto.</p>
+    <figure class="ph" data-foto="mumat" hidden></figure>
+    <div id="musei" class="certs"></div>
+    <h3 class="sub">Eventi e visite</h3>
+    <ul id="eventi" class="arts"></ul>
+  </section>
+
+  <section id="aziende" class="wrap">
+    <h2>Le aziende</h2>
+    <p class="warn" id="warn"></p>
+    <div id="filters" class="filters" role="group" aria-label="Filtra per categoria"></div>
+    <ul id="companies" class="companies"></ul>
+  </section>
+
+  <section id="dati" class="wrap">
+    <h2>I dati, in tabella</h2>
+    <p class="intro">Tutte le cifre del sito in un’unica tabella. Ordina cliccando sulle intestazioni, filtra con la casella e scarica in CSV: il file si apre in Excel e rispecchia ciò che vedi.</p>
+    <div class="tools">
+      <input id="tf" type="search" placeholder="Filtra la tabella" aria-label="Filtra la tabella">
+      <button type="button" id="csvd">Scarica i dati (CSV)</button>
+      <button type="button" id="csva">Scarica le aziende (CSV)</button>
     </div>
-    <div class="continue-row reveal">
-      <div class="continue-cell">
-        <div class="k">Related Discussion</div>
-        <p class="lnk">"Is regenerated wool actually scaling, or just marketing?"</p>
-      </div>
-      <div class="continue-cell">
-        <div class="k">Expert Opinion</div>
-        <p class="lnk">A supply chain lead on traceability gaps in terzisti networks</p>
-      </div>
-      <div class="continue-cell">
-        <div class="k">Open Question</div>
-        <p class="lnk">"How do you audit a subcontractor for fibre origin?"</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <div class="tw"><table id="tab"><caption class="vh">Cifre del distretto tessile di Prato</caption><thead></thead><tbody></tbody></table></div>
+    <p class="note" id="tn"></p>
+  </section>
 
-<div class="wrap"><div class="divider"></div></div>
-
-<!-- AGENDA -->
-<section id="agenda" class="tight">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div>
-        <div class="eyebrow" style="margin-bottom:18px;">Curated Daily</div>
-        <h2>Today's Fashion Agenda</h2>
-      </div>
-      <p class="desc">Editorial highlights selected by our team — across luxury, manufacturing, retail and the conversations shaping the day.</p>
-    </div>
-    <div class="chips reveal">
-      <div class="chip active">All</div>
-      <div class="chip">Luxury</div>
-      <div class="chip">Streetwear</div>
-      <div class="chip">Runway</div>
-      <div class="chip">Textiles</div>
-      <div class="chip">Manufacturing</div>
-      <div class="chip">Business</div>
-      <div class="chip">AI</div>
-      <div class="chip">Circular Fashion</div>
-    </div>
-    <div class="rail reveal" id="agendaRail"></div>
-  </div>
-</section>
-
-<div class="wrap"><div class="divider"></div></div>
-
-<!-- MARKET INTELLIGENCE -->
-<section id="market">
-  <div class="wrap">
-    <div class="market-head reveal">
-      <div class="eyebrow" style="justify-content:center; margin:0 auto 18px;">Market Intelligence</div>
-      <h2>Market indicators — illustrative data, not live.</h2>
-      <p class="market-summary" id="marketSummary">Synthetic dataset for demonstrating the interface. Values, variations and chart series are illustrative and must not be used for business decisions.</p>
-      <div class="market-meta">
-        <span id="marketUpdated">DEMO · no live feed</span><span class="dot"></span><span>Synthetic values · not market quotations</span>
-      </div>
-    </div>
-
-    <div class="market-quote reveal">
-      <span class="market-quote-mark">“</span>
-      <p class="market-quote-text">Energy and fibre costs remain the two variables every sourcing director in Prato is watching this quarter — together, they explain most of the margin pressure mills are reporting right now.</p>
-      <span class="market-quote-cite">PratoHub Magazine — Market Desk</span>
-    </div>
-
-    <div class="market-grid reveal" id="marketGrid"></div>
-  </div>
-</section>
-
-<div class="wrap"><div class="divider"></div></div>
-
-<!-- NEWS -->
-<section id="news">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div>
-        <div class="eyebrow" style="margin-bottom:18px;">By the Editorial Desk</div>
-        <h2>Latest News</h2>
-      </div>
-      <p class="desc">Reported and written by PratoHub Magazine editors. Demonstration content, not verified journalism.</p>
-    </div>
-    <div class="news-grid reveal" id="newsGrid"></div>
-    <div class="reveal" style="margin-top:44px; text-align:center;">
-      <a href="news.html" class="btn btn-line">View All News →</a>
-    </div>
-  </div>
-</section>
-
-<div class="wrap"><div class="divider"></div></div>
-
-<!-- DISCUSSIONS -->
-<section id="discussions">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div>
-        <div class="eyebrow" style="margin-bottom:18px;">The Heart of the Platform</div>
-        <h2>Trending Discussions</h2>
-      </div>
-      <p class="desc">Organised for clarity, not chaos. Every thread is searchable, citable, and built to last.</p>
-    </div>
-    <div class="disc-list reveal" id="discList"></div>
-  </div>
-</section>
-
-<div class="wrap"><div class="divider"></div></div>
-
-<!-- QUESTIONS -->
-<section id="questions">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div>
-        <div class="eyebrow" style="margin-bottom:18px;">Demo Expertise</div>
-        <h2>Questions from the Community</h2>
-      </div>
-      <p class="desc">Ask the people who actually run the production floor, the pattern table, and the supply chain.</p>
-    </div>
-    <div class="q-grid reveal" id="qGrid"></div>
-  </div>
-</section>
-
-<div class="wrap"><div class="divider"></div></div>
-
-<!-- EVENTS -->
-<section id="events" class="tight">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div>
-        <div class="eyebrow" style="margin-bottom:18px;">Plan Ahead</div>
-        <h2>Events · DEMO calendar</h2>
-      </div>
-      <p class="desc">Fashion weeks, trade shows and webinars — follow them and join the conversation before, during and after.</p>
-    </div>
-    <div class="rail reveal" id="eventsRail"></div>
-  </div>
-</section>
-
-<div class="wrap"><div class="divider"></div></div>
-
-<!-- EDITOR'S PICKS -->
-<section class="tight">
-  <div class="wrap">
-    <div class="eyebrow reveal" style="margin-bottom:34px;">Editor's Picks</div>
-    <div class="picks-strip reveal" id="picksStrip"></div>
-  </div>
-</section>
-
-<!-- NEWSLETTER -->
-<section class="newsletter" id="newsletter"><div class="wrap"><div class="eyebrow">PratoHub</div><h2>Conoscere la filiera, partendo dalle fonti.</h2><p>La newsletter non è ancora attiva. Non raccogliamo indirizzi email: esplora gli approfondimenti sul distretto e il metodo del progetto.</p><a class="btn btn-line" href="distretto/">Esplora il Distretto di Prato →</a></div></section>
-
+  <section id="fonti" class="wrap">
+    <h2>Fonti</h2>
+    <ul id="sources" class="sources"></ul>
+  </section>
 </main>
-
-<footer id="footer"><div class="wrap"><div class="foot-top"><div class="foot-brand"><span class="l1">PratoHub Magazine</span><p>Tessile, innovazione e cultura del distretto. Magazine dimostrativo e approfondimenti con fonti.</p></div><div class="foot-col"><h2>Magazine</h2><a href="news.html">News</a><a href="discussions.html">Discussions</a><a href="questions.html">Questions</a><a href="events.html">Events</a></div><div class="foot-col"><h2>Esplora</h2><a href="distretto/">Distretto di Prato</a><a href="market.html">Market DEMO</a><a href="aziende.html">Aziende</a><a href="community.html">Community DEMO</a></div><div class="foot-col"><h2>Il progetto</h2><a href="progetto.html">Stato e metodo</a><a href="progetto.html#privacy">Privacy e servizi esterni</a><a href="demo.html">Prova le interazioni DEMO</a></div></div><div class="foot-bottom"><span>© 2026 Italy Circular Fashion · PratoHub Magazine</span><span>PratoHub: community e indicatori sono dimostrativi; aziende con fonti ufficiali.</span></div></div></footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="assets/models/user.model.js"></script>
-<script src="assets/models/discussion.model.js"></script>
-<script src="assets/models/article.model.js"></script>
-<script src="assets/models/comment.model.js"></script>
-<script src="assets/models/notification.model.js"></script>
-<script src="assets/models/vote.model.js"></script>
-<script src="assets/models/category.model.js"></script>
-<script src="assets/models/question.model.js"></script>
-<script src="assets/models/poll.model.js"></script>
-<script src="assets/models/company.model.js"></script>
-<script src="assets/permissions/permissions.js"></script>
-<script src="assets/data/articles.data.js"></script>
-<script src="assets/data/discussions.data.js"></script>
-<script src="assets/data/questions.data.js"></script>
-<script src="assets/data/events.data.js"></script>
-<script src="assets/data/notifications.data.js"></script>
-<script src="assets/data/polls.data.js"></script>
-<script src="assets/data/comments.data.js"></script>
-<script src="assets/data/companies.public.js"></script>
-<script src="assets/data/companies.data.js"></script>
-<script src="assets/data/experts.data.js"></script>
-<script src="assets/utils/format.js"></script>
-<script src="assets/utils/validation.js"></script>
-<script src="assets/auth/auth.js"></script>
-<script src="assets/services/session.service.js"></script>
-<script src="assets/data/demo-policy.js"></script>
-<script src="assets/utils/safe-text.js"></script>
-<script src="assets/renderers/card.renderer.js"></script>
-<script src="assets/renderers/timeline.renderer.js"></script>
-<script src="assets/services/market.service.js"></script>
-<script src="assets/services/navigation.service.js"></script>
-<script src="assets/services/interaction.service.js"></script>
-<script src="assets/services/knowledge-graph.service.js"></script>
-<script src="assets/services/comment.service.js"></script>
-<script src="assets/components/ui.js"></script>
-<script src="assets/components/poll.component.js"></script>
-<script src="assets/components/comment.component.js"></script>
-<script src="assets/components/toc.component.js"></script>
-<script src="assets/components/gallery.component.js"></script>
-<script src="assets/components/share.component.js"></script>
-<script src="assets/components/moderation.component.js"></script>
-<script src="assets/home.js"></script>
-<script src="assets/site.js"></script>
+<footer><p>PratoHub è un progetto di Italy Circular Fashion. Dati in <code>data.js</code>: per aggiornare una cifra, cambia il valore e la fonte.</p></footer>
+<dialog id="cerca" aria-label="Cerca nel sito">
+  <div class="cbox">
+    <div class="crow"><input id="q" type="text" role="searchbox" placeholder="Cerca aziende, termini, certificazioni, comuni" aria-label="Cerca nel sito" autocomplete="off"><button type="button" id="cx">Chiudi</button></div>
+    <p id="cn" class="note" aria-live="polite"></p>
+    <ul id="cris" class="cris"></ul>
+  </div>
+</dialog>
+<script src="data.js"></script>
+<script src="js/util.js"></script>
+<script src="js/numeri.js"></script>
+<script src="js/grafico.js"></script>
+<script src="js/aziende.js"></script>
+<script src="js/territorio.js"></script>
+<script src="js/musei.js"></script>
+<script src="js/contenuti.js"></script>
+<script src="js/ricerca.js"></script>
+<script src="js/tabella.js"></script>
+<script src="js/identita.js"></script>
+<script src="js/effetti.js"></script>
+<script src="js/racconto.js"></script>
+<script src="js/ciclo.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
