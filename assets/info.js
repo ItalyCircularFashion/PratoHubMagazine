@@ -1,1 +1,0 @@
-(function(){const n=document.getElementById('primaryNav'),b=document.querySelector('.menu-toggle');if(n&&b)b.addEventListener('click',()=>{const open=n.classList.toggle('is-open');b.setAttribute('aria-expanded',String(open));b.setAttribute('aria-label',open?'Chiudi menu':'Apri menu');});})();
